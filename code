@@ -1,17 +1,32 @@
-CANCELED
-[2025-03-06T07:52:06.499Z] ------
-[2025-03-06T07:52:06.499Z]  > [5/5] COPY project/build/ /usr/share/nginx/html/:
-[2025-03-06T07:52:06.499Z] ------
-[2025-03-06T07:52:06.499Z] Dockerfile:23
-[2025-03-06T07:52:06.499Z] --------------------
-[2025-03-06T07:52:06.499Z]   21 |     
-[2025-03-06T07:52:06.499Z]   22 |     # Copy the contents of the build folder to the Nginx web server directory
-[2025-03-06T07:52:06.499Z]   23 | >>> COPY project/build/ /usr/share/nginx/html/
-[2025-03-06T07:52:06.499Z]   24 |     
-[2025-03-06T07:52:06.499Z]   25 |     # Expose port 3000
-[2025-03-06T07:52:06.499Z] --------------------
-[2025-03-06T07:52:06.499Z] ERROR: failed to solve: failed to compute cache key: failed to calculate checksum of ref 4e4295c3-11f4-462c-98a8-9932a3ffe347::quyh8m2t3pu3wxh7p1sybpze0: failed to walk /var/lib/docker/tmp/buildkit-mount3570216691/project: lstat /var/lib/docker/tmp/buildkit-mount3570216691/project: no such file or directory
-
-
-after mentioning project/build in docker file we are getting this issue
-my folder structure as following
+ + docker build -t javz-docker.artifactrepo.jnj.com/visualization-mf:0.2.0-alpha.93.e2e -f _scm_container/visualization-ms/Dockerfile --iidfile=visualization-mf-imageId.txt .
+[2025-02-28T11:55:27.433Z] #0 building with "default" instance using docker driver
+[2025-02-28T11:55:27.437Z] 
+[2025-02-28T11:55:27.437Z] #1 [internal] load build definition from Dockerfile
+[2025-02-28T11:55:27.437Z] #1 transferring dockerfile: 729B done
+[2025-02-28T11:55:27.437Z] #1 DONE 0.0s
+[2025-02-28T11:55:27.437Z] 
+[2025-02-28T11:55:27.437Z] #2 [auth] nginxinc/nginx-unprivileged:pull token for jnj.artifactrepo.jnj.com
+[2025-02-28T11:55:27.437Z] #2 DONE 0.0s
+[2025-02-28T11:55:27.437Z] 
+[2025-02-28T11:55:27.437Z] #3 [internal] load metadata for jnj.artifactrepo.jnj.com/nginxinc/nginx-unprivileged:1.24-alpine
+[2025-02-28T11:55:27.437Z] #3 DONE 0.1s
+[2025-02-28T11:55:27.775Z] 
+[2025-02-28T11:55:27.775Z] #4 [internal] load .dockerignore
+[2025-02-28T11:55:27.775Z] #4 transferring context: 2B done
+[2025-02-28T11:55:27.775Z] #4 DONE 0.0s
+[2025-02-28T11:55:27.775Z] 
+[2025-02-28T11:55:27.775Z] #5 [1/4] FROM jnj.artifactrepo.jnj.com/nginxinc/nginx-unprivileged:1.24-alpine@sha256:2c203600ca6257c503caa61c1e08d05a67f75e7d0c85b1be9c10d8c1d0780d91
+[2025-02-28T11:55:27.775Z] #5 DONE 0.0s
+[2025-02-28T11:55:27.775Z] 
+[2025-02-28T11:55:27.775Z] #6 [internal] load build context
+[2025-02-28T11:55:27.775Z] #6 transferring context: 6.02MB 0.1s done
+[2025-02-28T11:55:27.775Z] #6 DONE 0.1s
+[2025-02-28T11:55:27.775Z] 
+[2025-02-28T11:55:27.775Z] #7 [2/4] RUN rm /etc/nginx/conf.d/default.conf
+[2025-02-28T11:55:27.775Z] #7 CACHED
+[2025-02-28T11:55:27.775Z] 
+[2025-02-28T11:55:27.775Z] #8 [3/4] RUN echo 'server {     listen 0.0.0.0:3000;     server_name localhost;     location / {         root /usr/share/nginx/html;         index index.html;         try_files $uri $uri/ /index.html;     } }' > /etc/nginx/conf.d/default.conf
+[2025-02-28T11:55:27.775Z] #8 CACHED
+[2025-02-28T11:55:27.775Z] 
+[2025-02-28T11:55:27.775Z] #9 [4/4] COPY build/ /usr/share/nginx/html/
+[2025-02-28T11:55:40.937Z] #9 DONE 12.4s
