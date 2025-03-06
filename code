@@ -1,290 +1,446 @@
-Read yaml from files in the workspace or text.
-<1s
-java.lang.Exception: Manifest building failed when processing source [common-manifest] of type [simple]
-above error got in Manifest Load stages 
-please check my manifest-advanced.yaml is correct or not 
-"""
-# Pipeline details across environments (defaults)
-common:
-  pipelineType: app-dev
-  debug: true
-  helm:
-    chartRepo: javz-helm-charts
-    chartName: rise-visualization-mf
+[2025-03-06T06:59:31.804Z] [Pipeline] echo
+[2025-03-06T06:59:31.804Z] [1;34mDid not find config file, injecting JPM default(s):
+[2025-03-06T06:59:31.804Z] .hadolint.yaml[0m
+[2025-03-06T06:59:31.804Z] [Pipeline] }
+[2025-03-06T06:59:31.805Z] 
+[2025-03-06T06:59:31.822Z] [Pipeline] // ansiColor
+[2025-03-06T06:59:31.841Z] [Pipeline] libraryResource
+[2025-03-06T06:59:31.846Z] [Pipeline] writeFile
+[2025-03-06T06:59:31.863Z] [Pipeline] isUnix
+[2025-03-06T06:59:31.867Z] [Pipeline] isUnix
+[2025-03-06T06:59:31.891Z] [Pipeline] ansiColor
+[2025-03-06T06:59:31.891Z] [Pipeline] {
+[2025-03-06T06:59:31.892Z] 
+[2025-03-06T06:59:31.907Z] [Pipeline] echo
+[2025-03-06T06:59:31.907Z] [1;35mExecuting and capturing output/status ->
+[2025-03-06T06:59:31.907Z]     #!/bin/bash
+[2025-03-06T06:59:31.907Z]         set +x
+[2025-03-06T06:59:31.907Z]         { { ( find * -type f -wholename "_scm_container/*/Dockerfile" ) } > >(tee stdout.log ); } 2> >(tee stderr.log)[0m
+[2025-03-06T06:59:31.907Z] [Pipeline] }
+[2025-03-06T06:59:31.907Z] 
+[2025-03-06T06:59:31.918Z] [Pipeline] // ansiColor
+[2025-03-06T06:59:31.936Z] [Pipeline] isUnix
+[2025-03-06T06:59:31.940Z] [Pipeline] sh
+[2025-03-06T06:59:32.510Z] _scm_container/visualization-ms/Dockerfile
+[2025-03-06T06:59:32.517Z] [Pipeline] fileExists
+[2025-03-06T06:59:32.533Z] [Pipeline] readFile
+[2025-03-06T06:59:32.548Z] [Pipeline] fileExists
+[2025-03-06T06:59:32.564Z] [Pipeline] readFile
+[2025-03-06T06:59:32.579Z] [Pipeline] isUnix
+[2025-03-06T06:59:32.583Z] [Pipeline] sh
+[2025-03-06T06:59:32.847Z] + rm -f stdout.log stderr.log
+[2025-03-06T06:59:32.854Z] [Pipeline] isUnix
+[2025-03-06T06:59:32.876Z] [Pipeline] ansiColor
+[2025-03-06T06:59:32.876Z] [Pipeline] {
+[2025-03-06T06:59:32.876Z] 
+[2025-03-06T06:59:32.892Z] [Pipeline] echo
+[2025-03-06T06:59:32.892Z] [1;34mLinting files:
+[2025-03-06T06:59:32.892Z] ---
+[2025-03-06T06:59:32.892Z] - "_scm_container/visualization-ms/Dockerfile"
+[2025-03-06T06:59:32.892Z] [0m
+[2025-03-06T06:59:32.892Z] [Pipeline] }
+[2025-03-06T06:59:32.893Z] 
+[2025-03-06T06:59:32.904Z] [Pipeline] // ansiColor
+[2025-03-06T06:59:32.960Z] [Pipeline] isUnix
+[2025-03-06T06:59:32.965Z] [Pipeline] isUnix
+[2025-03-06T06:59:32.982Z] [Pipeline] ansiColor
+[2025-03-06T06:59:32.982Z] [Pipeline] {
+[2025-03-06T06:59:32.983Z] 
+[2025-03-06T06:59:32.998Z] [Pipeline] echo
+[2025-03-06T06:59:32.998Z] [1;35mExecuting and capturing output/status ->
+[2025-03-06T06:59:32.998Z]     #!/bin/bash
+[2025-03-06T06:59:32.998Z]         set +x
+[2025-03-06T06:59:32.998Z]         { { ( hadolint _scm_container/visualization-ms/Dockerfile ) } > >(tee stdout.log ); } 2> >(tee stderr.log)[0m
+[2025-03-06T06:59:32.998Z] [Pipeline] }
+[2025-03-06T06:59:32.998Z] 
+[2025-03-06T06:59:33.009Z] [Pipeline] // ansiColor
+[2025-03-06T06:59:33.027Z] [Pipeline] isUnix
+[2025-03-06T06:59:33.031Z] [Pipeline] sh
+[2025-03-06T06:59:33.296Z] _scm_container/visualization-ms/Dockerfile:7 DL3059 [92minfo[0m: Multiple consecutive `RUN` instructions. Consider consolidation.
+[2025-03-06T06:59:33.296Z] _scm_container/visualization-ms/Dockerfile:7 SC2016 [92minfo[0m: Expressions don't expand in single quotes, use double quotes for that.
+[2025-03-06T06:59:33.304Z] [Pipeline] fileExists
+[2025-03-06T06:59:33.319Z] [Pipeline] readFile
+[2025-03-06T06:59:33.335Z] [Pipeline] fileExists
+[2025-03-06T06:59:33.351Z] [Pipeline] readFile
+[2025-03-06T06:59:33.366Z] [Pipeline] isUnix
+[2025-03-06T06:59:33.370Z] [Pipeline] sh
+[2025-03-06T06:59:33.634Z] + rm -f stdout.log stderr.log
+[2025-03-06T06:59:33.641Z] [Pipeline] isUnix
+[2025-03-06T06:59:33.657Z] [Pipeline] writeFile
+[2025-03-06T06:59:33.679Z] [Pipeline] ansiColor
+[2025-03-06T06:59:33.679Z] [Pipeline] {
+[2025-03-06T06:59:33.680Z] 
+[2025-03-06T06:59:33.695Z] [Pipeline] echo
+[2025-03-06T06:59:33.695Z] [1;35mPreserving assets with config::
+[2025-03-06T06:59:33.695Z] ---
+[2025-03-06T06:59:33.695Z] - assetType: "archiveArtifacts"
+[2025-03-06T06:59:33.695Z]   artifacts: "*std*.txt"
+[2025-03-06T06:59:33.695Z]   compress: false
+[2025-03-06T06:59:33.695Z] [0m
+[2025-03-06T06:59:33.696Z] [Pipeline] }
+[2025-03-06T06:59:33.696Z] 
+[2025-03-06T06:59:33.707Z] [Pipeline] // ansiColor
+[2025-03-06T06:59:33.728Z] [Pipeline] findFiles
+[2025-03-06T06:59:33.746Z] [Pipeline] ansiColor
+[2025-03-06T06:59:33.747Z] [Pipeline] {
+[2025-03-06T06:59:33.747Z] 
+[2025-03-06T06:59:33.762Z] [Pipeline] echo
+[2025-03-06T06:59:33.762Z] [1;35mFiles to be archived: [docker._scm_container-visualization-ms-Dockerfile.stdOut.txt][0m
+[2025-03-06T06:59:33.762Z] [Pipeline] }
+[2025-03-06T06:59:33.763Z] 
+[2025-03-06T06:59:33.774Z] [Pipeline] // ansiColor
+[2025-03-06T06:59:33.793Z] [Pipeline] archiveArtifacts
+[2025-03-06T06:59:33.796Z] Archiving artifacts
+[2025-03-06T06:59:33.807Z] Recording fingerprints
+[2025-03-06T06:59:33.819Z] [Pipeline] }
+[2025-03-06T06:59:33.822Z] $ docker stop --time=1 02c6914647fd6108ddbf7146e897a0ab5a9a77b37374b5b2bf80c5780e6c5c95
+[2025-03-06T06:59:35.071Z] $ docker rm -f --volumes 02c6914647fd6108ddbf7146e897a0ab5a9a77b37374b5b2bf80c5780e6c5c95
+[2025-03-06T06:59:35.131Z] [Pipeline] // withDockerContainer
+[2025-03-06T06:59:35.145Z] [Pipeline] }
+[2025-03-06T06:59:35.159Z] [Pipeline] // withEnv
+[2025-03-06T06:59:35.177Z] [Pipeline] isUnix
+[2025-03-06T06:59:35.181Z] [Pipeline] sh
+[2025-03-06T06:59:35.444Z] + rm -r /tmp/tmp.47NJJ5XIUa
+[2025-03-06T06:59:35.451Z] [Pipeline] deleteDir
+[2025-03-06T06:59:46.490Z] [Pipeline] }
+[2025-03-06T06:59:46.501Z] [Pipeline] // dir
+[2025-03-06T06:59:46.523Z] [Pipeline] ansiColor
+[2025-03-06T06:59:46.524Z] [Pipeline] {
+[2025-03-06T06:59:46.524Z] 
+[2025-03-06T06:59:46.539Z] [Pipeline] echo
+[2025-03-06T06:59:46.539Z] [1;34mBuilding 'visualization-ms' on 'docker' labeled worker.[0m
+[2025-03-06T06:59:46.540Z] [Pipeline] }
+[2025-03-06T06:59:46.540Z] 
+[2025-03-06T06:59:46.551Z] [Pipeline] // ansiColor
+[2025-03-06T06:59:46.577Z] [Pipeline] ansiColor
+[2025-03-06T06:59:46.578Z] [Pipeline] {
+[2025-03-06T06:59:46.578Z] 
+[2025-03-06T06:59:46.593Z] [Pipeline] echo
+[2025-03-06T06:59:46.594Z] [1;35mLabel: docker was requested and found in [worker, docker]. Using existing node.[0m
+[2025-03-06T06:59:46.594Z] [Pipeline] }
+[2025-03-06T06:59:46.594Z] 
+[2025-03-06T06:59:46.605Z] [Pipeline] // ansiColor
+[2025-03-06T06:59:46.626Z] [Pipeline] ansiColor
+[2025-03-06T06:59:46.627Z] [Pipeline] {
+[2025-03-06T06:59:46.627Z] 
+[2025-03-06T06:59:46.642Z] [Pipeline] echo
+[2025-03-06T06:59:46.642Z] [1;34mNode hostname: javz-dev-jenkins-eat-k8s-jenkins-persistent-docker-worker-jwn8n[0m
+[2025-03-06T06:59:46.643Z] [Pipeline] }
+[2025-03-06T06:59:46.643Z] 
+[2025-03-06T06:59:46.654Z] [Pipeline] // ansiColor
+[2025-03-06T06:59:46.678Z] [Pipeline] isUnix
+[2025-03-06T06:59:46.682Z] [Pipeline] sh
+[2025-03-06T06:59:46.946Z] + mktemp -d
+[2025-03-06T06:59:46.954Z] [Pipeline] fileExists
+[2025-03-06T06:59:46.971Z] [Pipeline] withEnv
+[2025-03-06T06:59:46.971Z] [Pipeline] {
+[2025-03-06T06:59:46.995Z] [Pipeline] withCredentials
+[2025-03-06T06:59:47.000Z] Masking supported pattern matches of $DOCKER_PASSWORD
+[2025-03-06T06:59:47.007Z] [Pipeline] {
+[2025-03-06T06:59:47.026Z] [Pipeline] retry
+[2025-03-06T06:59:47.027Z] [Pipeline] {
+[2025-03-06T06:59:47.047Z] [Pipeline] isUnix
+[2025-03-06T06:59:47.057Z] [Pipeline] maskPasswords
+[2025-03-06T06:59:47.069Z] [Pipeline] {
+[2025-03-06T06:59:47.091Z] [Pipeline] isUnix
+[2025-03-06T06:59:47.095Z] [Pipeline] sh
+[2025-03-06T06:59:47.359Z] + docker login -u sa-itsus-javz-devusr -p **** https://jnj.artifactrepo.jnj.com
+[2025-03-06T06:59:47.359Z] WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+[2025-03-06T06:59:47.359Z] WARNING! Your password will be stored unencrypted in /tmp/tmp.nQYMZrkWzj/config.json.
+[2025-03-06T06:59:47.359Z] Configure a credential helper to remove this warning. See
+[2025-03-06T06:59:47.359Z] https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+[2025-03-06T06:59:47.359Z] 
+[2025-03-06T06:59:47.359Z] Login Succeeded
+[2025-03-06T06:59:47.362Z] [Pipeline] }
+[2025-03-06T06:59:47.375Z] [Pipeline] // maskPasswords
+[2025-03-06T06:59:47.388Z] [Pipeline] }
+[2025-03-06T06:59:47.401Z] [Pipeline] // retry
+[2025-03-06T06:59:47.415Z] [Pipeline] }
+[2025-03-06T06:59:47.429Z] [Pipeline] // withCredentials
+[2025-03-06T06:59:47.451Z] [Pipeline] withCredentials
+[2025-03-06T06:59:47.456Z] Masking supported pattern matches of $DOCKER_PASSWORD
+[2025-03-06T06:59:47.463Z] [Pipeline] {
+[2025-03-06T06:59:47.482Z] [Pipeline] retry
+[2025-03-06T06:59:47.482Z] [Pipeline] {
+[2025-03-06T06:59:47.502Z] [Pipeline] isUnix
+[2025-03-06T06:59:47.508Z] [Pipeline] maskPasswords
+[2025-03-06T06:59:47.520Z] [Pipeline] {
+[2025-03-06T06:59:47.543Z] [Pipeline] isUnix
+[2025-03-06T06:59:47.547Z] [Pipeline] sh
+[2025-03-06T06:59:47.811Z] + docker login -u sa-itsus-javz-devusr -p **** https://javz-docker.artifactrepo.jnj.com
+[2025-03-06T06:59:47.811Z] WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+[2025-03-06T06:59:47.811Z] WARNING! Your password will be stored unencrypted in /tmp/tmp.nQYMZrkWzj/config.json.
+[2025-03-06T06:59:47.811Z] Configure a credential helper to remove this warning. See
+[2025-03-06T06:59:47.811Z] https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+[2025-03-06T06:59:47.811Z] 
+[2025-03-06T06:59:47.811Z] Login Succeeded
+[2025-03-06T06:59:47.814Z] [Pipeline] }
+[2025-03-06T06:59:47.827Z] [Pipeline] // maskPasswords
+[2025-03-06T06:59:47.840Z] [Pipeline] }
+[2025-03-06T06:59:47.854Z] [Pipeline] // retry
+[2025-03-06T06:59:47.868Z] [Pipeline] }
+[2025-03-06T06:59:47.881Z] [Pipeline] // withCredentials
+[2025-03-06T06:59:47.903Z] [Pipeline] withCredentials
+[2025-03-06T06:59:47.907Z] Masking supported pattern matches of $DOCKER_PASSWORD
+[2025-03-06T06:59:47.914Z] [Pipeline] {
+[2025-03-06T06:59:47.933Z] [Pipeline] retry
+[2025-03-06T06:59:47.933Z] [Pipeline] {
+[2025-03-06T06:59:47.953Z] [Pipeline] isUnix
+[2025-03-06T06:59:47.960Z] [Pipeline] maskPasswords
+[2025-03-06T06:59:47.972Z] [Pipeline] {
+[2025-03-06T06:59:47.994Z] [Pipeline] isUnix
+[2025-03-06T06:59:47.999Z] [Pipeline] sh
+[2025-03-06T06:59:48.262Z] + docker login -u sa-itsus-javz-devusr -p **** https://jnj-docker.artifactrepo.jnj.com
+[2025-03-06T06:59:48.262Z] WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+[2025-03-06T06:59:48.262Z] WARNING! Your password will be stored unencrypted in /tmp/tmp.nQYMZrkWzj/config.json.
+[2025-03-06T06:59:48.262Z] Configure a credential helper to remove this warning. See
+[2025-03-06T06:59:48.262Z] https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+[2025-03-06T06:59:48.262Z] 
+[2025-03-06T06:59:48.262Z] Login Succeeded
+[2025-03-06T06:59:48.265Z] [Pipeline] }
+[2025-03-06T06:59:48.278Z] [Pipeline] // maskPasswords
+[2025-03-06T06:59:48.291Z] [Pipeline] }
+[2025-03-06T06:59:48.304Z] [Pipeline] // retry
+[2025-03-06T06:59:48.319Z] [Pipeline] }
+[2025-03-06T06:59:48.333Z] [Pipeline] // withCredentials
+[2025-03-06T06:59:48.360Z] [Pipeline] dir
+[2025-03-06T06:59:48.360Z] Running in /home/jenkins/agent/workspace/rise-visualization-mf-development-pipelines-feature-2Fe2eDevelop/docker-build-temp
+[2025-03-06T06:59:48.361Z] [Pipeline] {
+[2025-03-06T06:59:48.377Z] [Pipeline] isUnix
+[2025-03-06T06:59:48.381Z] [Pipeline] sh
+[2025-03-06T06:59:48.645Z] + ls -A .
+[2025-03-06T06:59:48.645Z] + [  ]
+[2025-03-06T06:59:48.656Z] [Pipeline] ansiColor
+[2025-03-06T06:59:48.657Z] [Pipeline] {
+[2025-03-06T06:59:48.657Z] 
+[2025-03-06T06:59:48.673Z] [Pipeline] echo
+[2025-03-06T06:59:48.674Z] [1;35mUnstashing docker-image-project[0m
+[2025-03-06T06:59:48.674Z] [Pipeline] }
+[2025-03-06T06:59:48.674Z] 
+[2025-03-06T06:59:48.685Z] [Pipeline] // ansiColor
+[2025-03-06T06:59:48.703Z] [Pipeline] unstash
+[2025-03-06T07:00:00.548Z] [Pipeline] ansiColor
+[2025-03-06T07:00:00.548Z] [Pipeline] {
+[2025-03-06T07:00:00.549Z] 
+[2025-03-06T07:00:00.566Z] [Pipeline] echo
+[2025-03-06T07:00:00.566Z] [1;35mat class.method: dockerImage.buildScmContainerImage line: dockerImage.groovy:453[0m
+[2025-03-06T07:00:00.566Z] [Pipeline] }
+[2025-03-06T07:00:00.567Z] 
+[2025-03-06T07:00:00.579Z] [Pipeline] // ansiColor
+[2025-03-06T07:00:00.600Z] [Pipeline] ansiColor
+[2025-03-06T07:00:00.600Z] [Pipeline] {
+[2025-03-06T07:00:00.600Z] 
+[2025-03-06T07:00:00.617Z] [Pipeline] echo
+[2025-03-06T07:00:00.617Z] [1;34mStarting scm container build of [visualization-ms][0m
+[2025-03-06T07:00:00.617Z] [Pipeline] }
+[2025-03-06T07:00:00.617Z] 
+[2025-03-06T07:00:00.629Z] [Pipeline] // ansiColor
+[2025-03-06T07:00:00.649Z] [Pipeline] readYaml
+[2025-03-06T07:00:00.679Z] [Pipeline] ansiColor
+[2025-03-06T07:00:00.679Z] [Pipeline] {
+[2025-03-06T07:00:00.679Z] 
+[2025-03-06T07:00:00.703Z] [Pipeline] echo
+[2025-03-06T07:00:00.703Z] [1;35mBeginning build for container with spec::
+[2025-03-06T07:00:00.703Z] ---
+[2025-03-06T07:00:00.703Z] name: "visualization-mf"
+[2025-03-06T07:00:00.703Z] tagStrategies:
+[2025-03-06T07:00:00.703Z]   dev:
+[2025-03-06T07:00:00.703Z]     branches:
+[2025-03-06T07:00:00.703Z]     - "develop"
+[2025-03-06T07:00:00.703Z]     - "feature/*"
+[2025-03-06T07:00:00.703Z]     tags:
+[2025-03-06T07:00:00.703Z]     - "${Major}.${Minor}.${Patch}-beta.${CommitsSinceVersionSource}"
+[2025-03-06T07:00:00.703Z]   prerelease:
+[2025-03-06T07:00:00.703Z]     tags:
+[2025-03-06T07:00:00.703Z]     - "${Major}.${Minor}.${Patch}-${PreReleaseTag}"
+[2025-03-06T07:00:00.703Z]   release:
+[2025-03-06T07:00:00.703Z]     tags:
+[2025-03-06T07:00:00.703Z]     - "${Major}.${Minor}.${Patch}"
+[2025-03-06T07:00:00.703Z]     - "${Major}.${Minor}"
+[2025-03-06T07:00:00.703Z]     - "${Major}"
+[2025-03-06T07:00:00.703Z]     - "latest"
+[2025-03-06T07:00:00.703Z] useDockerCache: true
+[2025-03-06T07:00:00.703Z] overrideImageSource: false
+[2025-03-06T07:00:00.703Z] build: true
+[2025-03-06T07:00:00.703Z] artifactoryRepository: "javz-docker"
+[2025-03-06T07:00:00.703Z] [0m
+[2025-03-06T07:00:00.703Z] [Pipeline] }
+[2025-03-06T07:00:00.703Z] 
+[2025-03-06T07:00:00.723Z] [Pipeline] // ansiColor
+[2025-03-06T07:00:00.752Z] [Pipeline] withCredentials
+[2025-03-06T07:00:00.763Z] [Pipeline] {
+[2025-03-06T07:00:00.792Z] [Pipeline] fileExists
+[2025-03-06T07:00:00.812Z] [Pipeline] ansiColor
+[2025-03-06T07:00:00.813Z] [Pipeline] {
+[2025-03-06T07:00:00.813Z] 
+[2025-03-06T07:00:00.830Z] [Pipeline] echo
+[2025-03-06T07:00:00.830Z] [1;35mGetting tags[0m
+[2025-03-06T07:00:00.830Z] [Pipeline] }
+[2025-03-06T07:00:00.830Z] 
+[2025-03-06T07:00:00.843Z] [Pipeline] // ansiColor
+[2025-03-06T07:00:00.892Z] [Pipeline] ansiColor
+[2025-03-06T07:00:00.892Z] [Pipeline] {
+[2025-03-06T07:00:00.892Z] 
+[2025-03-06T07:00:00.909Z] [Pipeline] echo
+[2025-03-06T07:00:00.909Z] [1;34mTags for image [visualization-mf] determined as: [0.2.0-beta.51][0m
+[2025-03-06T07:00:00.910Z] [Pipeline] }
+[2025-03-06T07:00:00.910Z] 
+[2025-03-06T07:00:00.922Z] [Pipeline] // ansiColor
+[2025-03-06T07:00:00.941Z] [Pipeline] fileExists
+[2025-03-06T07:00:00.964Z] [Pipeline] ansiColor
+[2025-03-06T07:00:00.965Z] [Pipeline] {
+[2025-03-06T07:00:00.965Z] 
+[2025-03-06T07:00:00.981Z] [Pipeline] echo
+[2025-03-06T07:00:00.982Z] [1;35mLogging into docker with javz-docker.artifactrepo.jnj.com, sourcecode-bitbucket[0m
+[2025-03-06T07:00:00.982Z] [Pipeline] }
+[2025-03-06T07:00:00.982Z] 
+[2025-03-06T07:00:00.994Z] [Pipeline] // ansiColor
+[2025-03-06T07:00:01.026Z] [Pipeline] ansiColor
+[2025-03-06T07:00:01.027Z] [Pipeline] {
+[2025-03-06T07:00:01.027Z] 
+[2025-03-06T07:00:01.046Z] [Pipeline] echo
+[2025-03-06T07:00:01.047Z] [1;35mat class.method: artifactory.getArtifactoryServer line: artifactory.groovy:1662[0m
+[2025-03-06T07:00:01.047Z] [Pipeline] }
+[2025-03-06T07:00:01.047Z] 
+[2025-03-06T07:00:01.060Z] [Pipeline] // ansiColor
+[2025-03-06T07:00:01.094Z] [Pipeline] newArtifactoryServer
+[2025-03-06T07:00:01.102Z] [Pipeline] isUnix
+[2025-03-06T07:00:01.128Z] [Pipeline] ansiColor
+[2025-03-06T07:00:01.128Z] [Pipeline] {
+[2025-03-06T07:00:01.129Z] 
+[2025-03-06T07:00:01.148Z] [Pipeline] echo
+[2025-03-06T07:00:01.148Z] [1;34mBuilding docker image [visualization-mf] for tag: [0.2.0-beta.51][0m
+[2025-03-06T07:00:01.148Z] [Pipeline] }
+[2025-03-06T07:00:01.149Z] 
+[2025-03-06T07:00:01.162Z] [Pipeline] // ansiColor
+[2025-03-06T07:00:01.210Z] [Pipeline] ansiColor
+[2025-03-06T07:00:01.210Z] [Pipeline] {
+[2025-03-06T07:00:01.211Z] 
+[2025-03-06T07:00:01.229Z] [Pipeline] echo
+[2025-03-06T07:00:01.230Z] [1;35mNo auth required... Running closure[0m
+[2025-03-06T07:00:01.230Z] [Pipeline] }
+[2025-03-06T07:00:01.230Z] 
+[2025-03-06T07:00:01.243Z] [Pipeline] // ansiColor
+[2025-03-06T07:00:01.292Z] [Pipeline] isUnix
+[2025-03-06T07:00:01.296Z] [Pipeline] sh
+[2025-03-06T07:00:01.560Z] + docker info
+[2025-03-06T07:00:01.580Z] [Pipeline] withEnv
+[2025-03-06T07:00:01.580Z] [Pipeline] {
+[2025-03-06T07:00:01.605Z] [Pipeline] ansiColor
+[2025-03-06T07:00:01.606Z] [Pipeline] {
+[2025-03-06T07:00:01.606Z] 
+[2025-03-06T07:00:01.626Z] [Pipeline] echo
+[2025-03-06T07:00:01.626Z] [1;34mUsing build command: [docker  build   -t "javz-docker.artifactrepo.jnj.com/visualization-mf:0.2.0-beta.51" -f "_scm_container/visualization-ms/Dockerfile" --iidfile="visualization-mf-imageId.txt" .][0m
+[2025-03-06T07:00:01.626Z] [Pipeline] }
+[2025-03-06T07:00:01.627Z] 
+[2025-03-06T07:00:01.639Z] [Pipeline] // ansiColor
+[2025-03-06T07:00:01.659Z] [Pipeline] isUnix
+[2025-03-06T07:00:01.664Z] [Pipeline] sh
+[2025-03-06T07:00:01.928Z] + docker build -t javz-docker.artifactrepo.jnj.com/visualization-mf:0.2.0-beta.51 -f _scm_container/visualization-ms/Dockerfile --iidfile=visualization-mf-imageId.txt .
+[2025-03-06T07:00:02.487Z] #0 building with "default" instance using docker driver
+[2025-03-06T07:00:02.487Z] 
+[2025-03-06T07:00:02.487Z] #1 [internal] load build definition from Dockerfile
+[2025-03-06T07:00:02.487Z] #1 transferring dockerfile: 879B done
+[2025-03-06T07:00:02.487Z] #1 DONE 0.1s
+[2025-03-06T07:00:02.487Z] 
+[2025-03-06T07:00:02.487Z] #2 [auth] nginxinc/nginx-unprivileged:pull token for jnj.artifactrepo.jnj.com
+[2025-03-06T07:00:02.487Z] #2 DONE 0.0s
+[2025-03-06T07:00:02.487Z] 
+[2025-03-06T07:00:02.487Z] #3 [internal] load metadata for jnj.artifactrepo.jnj.com/nginxinc/nginx-unprivileged:1.24-alpine
+[2025-03-06T07:00:02.487Z] #3 DONE 0.2s
+[2025-03-06T07:00:02.487Z] 
+[2025-03-06T07:00:02.487Z] #4 [internal] load .dockerignore
+[2025-03-06T07:00:02.487Z] #4 transferring context: 2B done
+[2025-03-06T07:00:02.487Z] #4 DONE 0.0s
+[2025-03-06T07:00:02.487Z] 
+[2025-03-06T07:00:02.487Z] #5 [internal] load build context
+[2025-03-06T07:00:02.487Z] #5 transferring context: 4.74MB 0.0s done
+[2025-03-06T07:00:02.487Z] #5 DONE 0.1s
+[2025-03-06T07:00:02.487Z] 
+[2025-03-06T07:00:02.487Z] #6 [1/5] FROM jnj.artifactrepo.jnj.com/nginxinc/nginx-unprivileged:1.24-alpine@sha256:2c203600ca6257c503caa61c1e08d05a67f75e7d0c85b1be9c10d8c1d0780d91
+[2025-03-06T07:00:02.487Z] #6 resolve jnj.artifactrepo.jnj.com/nginxinc/nginx-unprivileged:1.24-alpine@sha256:2c203600ca6257c503caa61c1e08d05a67f75e7d0c85b1be9c10d8c1d0780d91 0.0s done
+[2025-03-06T07:00:02.487Z] #6 sha256:2e651a440d72adbf66b317dd318c738865eb1b2a6e75338fa78c9177104c8ee8 14.06kB / 14.06kB done
+[2025-03-06T07:00:02.487Z] #6 sha256:619be1103602d98e1963557998c954c892b3872986c27365e9f651f5bc27cab8 2.10MB / 3.40MB 0.1s
+[2025-03-06T07:00:02.487Z] #6 sha256:e4d4f8d1d7527830fca4f91cb4dffbd2495d9334f1538910e04484e091e15016 1.05MB / 1.76MB 0.1s
+[2025-03-06T07:00:02.487Z] #6 sha256:7005d392b5ec30053c358023f6eda58a3c47576142de159ff881f56fa5e8d089 628B / 628B 0.1s done
+[2025-03-06T07:00:02.487Z] #6 sha256:9917908f1b95cd6a0c42a86e0fda24c8c42cf5294bedc41b604621fe6cd79965 961B / 961B 0.1s done
+[2025-03-06T07:00:02.487Z] #6 sha256:2c203600ca6257c503caa61c1e08d05a67f75e7d0c85b1be9c10d8c1d0780d91 2.62kB / 2.62kB done
+[2025-03-06T07:00:02.487Z] #6 sha256:639eedf48a667e74b83c32c6fd77795dd11c90d68d8b97c4b483e61b1d95d029 2.80kB / 2.80kB 0.0s done
+[2025-03-06T07:00:02.742Z] #6 sha256:619be1103602d98e1963557998c954c892b3872986c27365e9f651f5bc27cab8 3.40MB / 3.40MB 0.1s done
+[2025-03-06T07:00:02.742Z] #6 sha256:e4d4f8d1d7527830fca4f91cb4dffbd2495d9334f1538910e04484e091e15016 1.76MB / 1.76MB 0.1s done
+[2025-03-06T07:00:02.742Z] #6 extracting sha256:619be1103602d98e1963557998c954c892b3872986c27365e9f651f5bc27cab8 0.1s done
+[2025-03-06T07:00:02.742Z] #6 sha256:9bc0c689ff271ad8a38652d2785a5d718f2e11f7df4fc687bedd37ac98052161 1.21kB / 1.21kB 0.1s done
+[2025-03-06T07:00:02.742Z] #6 sha256:68f7cb6dabe975a0602f8740be40f0003cbede09ecf02fe41b65bf9aae76c198 1.40kB / 1.40kB 0.1s done
+[2025-03-06T07:00:02.742Z] #6 sha256:b0e7d939f5a0a2056410d065182881a1805a1f380982c4043e7d80ca72fa394f 397B / 397B 0.1s done
+[2025-03-06T07:00:02.742Z] #6 sha256:c12d7d4ccdec9d4663a421cb0da441a5be1961af296ce5a3c42ba6e425884dc2 4.19MB / 12.64MB 0.2s
+[2025-03-06T07:00:02.742Z] #6 extracting sha256:e4d4f8d1d7527830fca4f91cb4dffbd2495d9334f1538910e04484e091e15016
+[2025-03-06T07:00:02.742Z] #6 sha256:c12d7d4ccdec9d4663a421cb0da441a5be1961af296ce5a3c42ba6e425884dc2 12.64MB / 12.64MB 0.3s done
+[2025-03-06T07:00:02.742Z] #6 extracting sha256:e4d4f8d1d7527830fca4f91cb4dffbd2495d9334f1538910e04484e091e15016 0.1s done
+[2025-03-06T07:00:02.997Z] #6 extracting sha256:639eedf48a667e74b83c32c6fd77795dd11c90d68d8b97c4b483e61b1d95d029 done
+[2025-03-06T07:00:02.997Z] #6 extracting sha256:7005d392b5ec30053c358023f6eda58a3c47576142de159ff881f56fa5e8d089
+[2025-03-06T07:00:02.997Z] #6 extracting sha256:7005d392b5ec30053c358023f6eda58a3c47576142de159ff881f56fa5e8d089 done
+[2025-03-06T07:00:02.997Z] #6 extracting sha256:9917908f1b95cd6a0c42a86e0fda24c8c42cf5294bedc41b604621fe6cd79965 done
+[2025-03-06T07:00:02.997Z] #6 extracting sha256:b0e7d939f5a0a2056410d065182881a1805a1f380982c4043e7d80ca72fa394f done
+[2025-03-06T07:00:02.997Z] #6 extracting sha256:9bc0c689ff271ad8a38652d2785a5d718f2e11f7df4fc687bedd37ac98052161 done
+[2025-03-06T07:00:02.997Z] #6 extracting sha256:68f7cb6dabe975a0602f8740be40f0003cbede09ecf02fe41b65bf9aae76c198 done
+[2025-03-06T07:00:02.997Z] #6 extracting sha256:c12d7d4ccdec9d4663a421cb0da441a5be1961af296ce5a3c42ba6e425884dc2
+[2025-03-06T07:00:03.557Z] #6 extracting sha256:c12d7d4ccdec9d4663a421cb0da441a5be1961af296ce5a3c42ba6e425884dc2 0.2s done
+[2025-03-06T07:00:04.116Z] #6 DONE 1.7s
+[2025-03-06T07:00:04.370Z] 
+[2025-03-06T07:00:04.370Z] #7 [2/5] RUN rm /etc/nginx/conf.d/default.conf
+[2025-03-06T07:00:19.191Z] #7 DONE 13.2s
+[2025-03-06T07:00:19.191Z] 
+[2025-03-06T07:00:19.191Z] #8 [3/5] RUN echo 'server {     listen 0.0.0.0:3000;     server_name localhost;     location / {         root /usr/share/nginx/html;         index index.html;         try_files $uri $uri/ /index.html;     } }' > /etc/nginx/conf.d/default.conf
+[2025-03-06T07:00:19.191Z] #8 DONE 0.2s
+[2025-03-06T07:00:19.191Z] 
+[2025-03-06T07:00:19.191Z] #9 [4/5] RUN echo "Verifying build directory..." &&     ls -l /usr/share/nginx/html/ &&     test -d /usr/share/nginx/html/build
+[2025-03-06T07:00:19.191Z] #9 0.281 Verifying build directory...
+[2025-03-06T07:00:19.191Z] #9 0.281 total 8
+[2025-03-06T07:00:19.191Z] #9 0.281 -rw-r--r--    1 root     root           497 Jun 17  2023 50x.html
+[2025-03-06T07:00:19.191Z] #9 0.281 -rw-r--r--    1 root     root           615 Jun 17  2023 index.html
+[2025-03-06T07:00:19.191Z] #9 ERROR: process "/bin/sh -c echo \"Verifying build directory...\" &&     ls -l /usr/share/nginx/html/ &&     test -d /usr/share/nginx/html/build" did not complete successfully: exit code: 1
+[2025-03-06T07:00:19.191Z] ------
+[2025-03-06T07:00:19.191Z]  > [4/5] RUN echo "Verifying build directory..." &&     ls -l /usr/share/nginx/html/ &&     test -d /usr/share/nginx/html/build:
+[2025-03-06T07:00:19.191Z] 0.281 Verifying build directory...
+[2025-03-06T07:00:19.191Z] 0.281 total 8
+[2025-03-06T07:00:19.191Z] 0.281 -rw-r--r--    1 root     root           497 Jun 17  2023 50x.html
+[2025-03-06T07:00:19.191Z] 0.281 -rw-r--r--    1 root     root           615 Jun 17  2023 index.html
+[2025-03-06T07:00:19.191Z] ------
+[2025-03-06T07:00:19.191Z] Dockerfile:18
+[2025-03-06T07:00:19.191Z] --------------------
+[2025-03-06T07:00:19.191Z]   17 |     # Add before COPY command
+[2025-03-06T07:00:19.191Z]   18 | >>> RUN echo "Verifying build directory..." && \
+[2025-03-06T07:00:19.191Z]   19 | >>>     ls -l /usr/share/nginx/html/ && \
+[2025-03-06T07:00:19.191Z]   20 | >>>     test -d /usr/share/nginx/html/build
+[2025-03-06T07:00:19.191Z]   21 |     
+[2025-03-06T07:00:19.191Z] --------------------
+[2025-03-06T07:00:19.191Z] ERROR: failed to solve: process "/bin/sh -c echo \"Verifying build directory...\" &&     ls -l /usr/share/nginx/html/ &&     test -d /usr/share/nginx/html/build" did not complete successfully: exit code: 1
+[2025-03-06T07:00:19.195Z] [Pipeline] }
+[2025-03-06T07:00:19.207Z] [Pipeline] // withEnv
+[2025-03-06T07:00:19.222Z] [Pipeline] }
+[2025-03-06T07:00:19.235Z] [Pipeline] // withCredentials
+[2025-03-06T07:00:19.253Z] [Pipeline] deleteDir
+[2025-03-06T07:00:32.760Z] [Pipeline] }
+[2025-03-06T07:00:32.773Z] [Pipeline] // dir
+[2025-03-06T07:00:32.787Z] [Pipeline] }
+[2025-03-06T07:00:32.802Z] [Pipeline] // withEnv
+[2025-03-06T07:00:32.822Z] [Pipeline] isUnix
+[2025-03-06T07:00:32.827Z] [Pipeline] sh
+[2025-03-06T07:00:33.090Z] + rm -r /tmp/tmp.nQYMZrkWzj
+[2025-03-06T07:00:33.101Z] [Pipeline] ansiColor
+[2025-03-06T07:00:33.101Z] [Pipeline] {
+[2025-03-06T07:00:33.102Z] 
+[2025-03-06T07:00:33.117Z] [Pipeline] echo
+[2025-03-06T07:00:33.118Z] [1;35mat class.method: commonStage.execute line: commonStage.groovy:260[0m
+[2025-03-06T07:00:33.118Z] [Pipeline] }
+[2025-03-06T07:00:33.118Z] 
+[2025-03-06T07:00:33.130Z] [Pipeline] // ansiColor
+[2025-03-06T07:00:33.149Z] [Pipeline] ansiColor
+[2025-03-06T07:00:33.150Z] [Pipeline] {
+[2025-03-06T07:00:33.150Z] 
+[2025-03-06T07:00:33.165Z] [Pipeline] echo
+[2025-03-06T07:00:33.165Z] [1;31mpublish stage execution failed.[0m
 
-  versionFileUpdates:
-    - type: yaml
-      file: _scm_helm/Chart.yaml
-      path: version
-    - type: yaml
-      file: _scm_helm/values.yaml
-      path: image.tag
-  assembleForPackage:
-    type: npm
-    enabled: true
-    credentialsId: jnj-eat-artifactory-build
-    dir: project
-    installCommand: npm install
-    persistStash: true
-  versionCalculation:
-    enabled: true
-    type: gitversion
-
-  unitTest:
-    enabled: false
-
-  lint:
-    enabled: false
-
-  staticAnalysis:
-    enabled: false
-    type: multi
-    stages:
-      sonar:
-        enabled: false
-        type: sonar
-        shortLivedAnalysis: false
-        longLivedAnalysis: false
-        shortLivedBuildResults:
-          BLOCKER:
-            FAILURE: 0
-          CRITICAL:
-            FAILURE: 50
-          IGNORE:
-            MAJOR: true
-            MINOR: true
-            INFO: true
-          QUALITY_GATE:
-            ERROR: FAILURE
-            WARN: SUCCESS
-        longLivedBuildResults:
-          BLOCKER:
-            FAILURE: 0
-          CRITICAL:
-            FAILURE: 50
-          IGNORE:
-            MAJOR: true
-            MINOR: true
-            INFO: true
-          QUALITY_GATE:
-            ERROR: UNSTABLE
-            WARN: SUCCESS
-
-  package:
-    enabled: false
-    type: multi
-    stages:
-      Helm:
-        type: helm
-        enabled: false
-        chartRepo: javz-helm-charts
-        chartName: rise-visualization-mf
-        versionFileUpdates:
-          - type: yaml
-            file: _scm_helm/Chart.yaml
-            path: version
-          - type: yaml
-            file: _scm_helm/values.yaml
-            path: image.tag
-      tar-package:
-        type: tar.gz
-        enabled: false
-        name: visualization-mf
-        packageDir: ./
-
-  publish:
-    enabled: false
-    type: "multi"
-    stages:
-      artifactory-spec:
-        enabled: false
-        type: artifactory-spec
-        target: javz-docker/visualization-mf/
-        fileName: visualization-mf-*.tar.gz
-      Helm:
-        enabled: false
-        type: helm
-        chartRepo: javz-helm-charts
-        chartName: rise-visualization-mf
-      Docker:
-        enabled: false
-        type: docker
-        credsList:
-          - registry: https://jnj.artifactrepo.jnj.com
-            credentialsId: jnj-eat-artifactory
-          - registry: https://javz-docker.artifactrepo.jnj.com
-            credentialsId: sourcecode-bitbucket
-
-  buildAnalysis:
-    enabled: false
-    xrayFailBuild: false
-
-  buildAnnouncements:
-    enabled: true
-    destinations:
-      team-emails:
-        type: email
-        format: buildstate
-        recipients: [DL-RISE-Monitoring@its.jnj.com]
-        startEnabled: false
-        successEnabled: true
-        unstableEnabled: true
-        failureEnabled: true
-        jobTriggers: []
-
-  deploy:
-    enabled: true
-    type: "multi"
-    parallel: "false"
-    stages:
-      # appDeployment section deploys the published helm chart to kubernetes cluster
-      appDeployment:
-        enabled: false
-        type: helm
-        name: rise-visualization-mf
-        createNamespace: true
-        chartRepoCredentialsId: "sourcecode-bitbucket"
-        atomic: true
-        kubernetesConfig:
-          type: eks
-          name: itx-bvx-rise-test
-          region: us-east-1
-          credentialsId: "itx-bvx-eatjenkinsadminapi"
-
-  resolveArtifacts:
-    enabled: false
-
-environments:
-
-  
-  DEV:
-    cmdb:
-      appid: APP000010043717
-      deploymentEnvironment: development
-    versionCalculation:
-      patternType: jnj-developer-branch
-    unitTest:
-      enabled: false
-      dir: "project"
-      type: npm
-      coverageReportFile: jest/coverage/lcov.info
-    lint:
-      enabled: true
-      dir: "project"
-      type: npm
-    staticAnalysis:
-      enabled: true
-      type: multi
-      stages:
-        sonar:
-          enabled: true
-          type: sonar
-          shortLivedAnalysis: false
-          longLivedAnalysis: true
-          shortLivedBuildResults:
-            BLOCKER:
-              FAILURE: 0
-            CRITICAL:
-              FAILURE: 50
-            IGNORE:
-              MAJOR: true
-              MINOR: true
-              INFO: true
-            QUALITY_GATE:
-              ERROR: FAILURE
-              WARN: UNSTABLE
-          longLivedBuildResults:
-            BLOCKER:
-              FAILURE: 0
-            CRITICAL:
-              FAILURE: 50
-            IGNORE:
-              MAJOR: true
-              MINOR: true
-              INFO: true
-            QUALITY_GATE:
-              ERROR: UNSTABLE
-              WARN: SUCCESS
-    assembleForPackage:
-      enabled: true
-      type: npm
-      installCommand: "npm install --include=dev" //Force install devDependencies      
-      command: npm run build:dev
-    package:
-      enabled: true
-      type: multi
-      stages:
-        Helm:
-          enabled: true
-          type: helm
-        tar-package:
-          type: tar.gz
-          enabled: true
-    publish:
-      enabled: true
-      type: multi
-      stages:
-        artifactory-spec:
-          enabled: true
-          type: artifactory-spec      
-        Helm:
-          enabled: true
-          type: helm
-        Docker:
-          enabled: true
-          type: docker
-          tagStrategy: dev
-          prerelease:
-            tagStrategy: prerelease
-          release:
-            tagStrategy: release
-    deploy:
-      enabled: true
-      type: multi
-      stages:
-        appDeployment:
-          enabled: true
-          type: helm
-          name: rise-visualization-mf
-          namespace: rise-dev
-          configFiles:
-            - repo: https://sourcecode.jnj.com/scm/asx-javz/visualization-mf.git
-              repoCredentialsId: "sourcecode-bitbucket"
-              files:
-                - file: _scm_config/dev.values.yaml
-                  type: plaintext
-                - file: _scm_config/common.values.yaml
-                  type: plaintext
-          dryRun: false
-          kubernetesConfig:
-            type: eks
-            region: us-east-1
-            credentialsId: "itx-bvx-eatjenkinsadminapi"
-            name: itx-bvx-rise-test
-          atomic: false
-  
-  
-  
-
-"""
-following is my manifest-sourses.yaml
-"""
-version: "1.0"
-sources:
-  - name: common-manifest
-    location:
-      locationType: project
-      file: manifest-advanced.yaml
-    manifest:
-      type: simple
-      path: common
-      required: true
-  - name: environment
-    location:
-      locationType: project
-      file: manifest-advanced.yaml
-    manifest:
-      type: by-environment
-      path: environments
-      required: true
-"""
+Now i guess build folder is created but now publish failed with new error 
+i am sharing pipeline.log
+could you please check once with my shared configuration. please check error. help me
