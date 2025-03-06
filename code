@@ -398,106 +398,106 @@ now my pipeline passed 1. Checkout 2. Manifest Load 3. SetupValidate 4.Lint 5.Ve
 but my 9. Deploy stage is failed
 follwoing is error from pipeline.log help me to passed the deploy stage 
 """
-<pre><code>java.lang.Exception: An error has occurred while deploying helm chart.
-[2025-03-06T11:21:47.262Z]   at helm.deploy(helm.groovy:777)
-[2025-03-06T11:21:47.262Z]   at deploy.execute(deploy.groovy:41)
-[2025-03-06T11:21:47.262Z]   at commonStage.execute(commonStage.groovy:234)
-[2025-03-06T11:21:47.262Z]   at jlib.newStage(jlib.groovy:545)
-[2025-03-06T11:21:47.262Z]   at commonStage.execute(commonStage.groovy:114)
-[2025-03-06T11:21:47.262Z]   at debug.withLogLevel(debug.groovy:14)
-[2025-03-06T11:21:47.262Z]   at commonStage.execute(commonStage.groovy:94)
-[2025-03-06T11:21:47.262Z]   at commonStage.execute(commonStage.groovy:-1)
-[2025-03-06T11:21:47.262Z]   at commonStage.execute(commonStage.groovy:217)
-[2025-03-06T11:21:47.262Z]   at commonStage.execute(commonStage.groovy:190)
-[2025-03-06T11:21:47.262Z] Caused by: java.lang.Exception: An error has occurred while deploying helm chart [rise-visualization-mf].
-[2025-03-06T11:21:47.262Z]   at helm.deploy(helm.groovy:765)
-[2025-03-06T11:21:47.262Z]   at commonStage.withDirAndCleanup(commonStage.groovy:463)
-[2025-03-06T11:21:47.262Z] Caused by: java.lang.Exception: history.go:56: 2025-03-06 11:15:39.501898438 +0000 UTC m=+0.795882398 [debug] getting history for release rise-visualization-mf
-[2025-03-06T11:21:47.262Z] upgrade.go:164: 2025-03-06 11:15:39.519519951 +0000 UTC m=+0.813503914 [debug] preparing upgrade for rise-visualization-mf
-[2025-03-06T11:21:47.262Z] upgrade.go:172: 2025-03-06 11:</code></pre>
-[2025-03-06T11:21:47.262Z] <p><strong>Manifest configuration</strong>&#58;</p>
-[2025-03-06T11:21:47.262Z] <pre><code>---
-[2025-03-06T11:21:47.262Z] enabled: true
-[2025-03-06T11:21:47.262Z] type: "helm"
-[2025-03-06T11:21:47.262Z] name: "rise-visualization-mf"
-[2025-03-06T11:21:47.262Z] createNamespace: true
-[2025-03-06T11:21:47.262Z] chartRepoCredentialsId: "sourcecode-bitbucket"
-[2025-03-06T11:21:47.262Z] atomic: false
-[2025-03-06T11:21:47.262Z] kubernetesConfig:
-[2025-03-06T11:21:47.262Z]   type: "eks"
-[2025-03-06T11:21:47.262Z]   name: "itx-bvx-rise-test"
-[2025-03-06T11:21:47.262Z]   region: "us-east-1"
-[2025-03-06T11:21:47.262Z]   credentialsId: "itx-bvx-eatjenkinsadminapi"
-[2025-03-06T11:21:47.262Z]   auth: {}
-[2025-03-06T11:21:47.262Z] namespace: "rise-dev"
-[2025-03-06T11:21:47.262Z] configFiles:
-[2025-03-06T11:21:47.262Z] - repo: "https://sourcecode.jnj.com/scm/asx-javz/visualization-mf.git"
-[2025-03-06T11:21:47.262Z]   repoCredentialsId: "sourcecode-bitbucket"
-[2025-03-06T11:21:47.262Z]   files:
-[2025-03-06T11:21:47.262Z]   - file: "_scm_config/dev.values.yaml"
-[2025-03-06T11:21:47.262Z]     type: "plaintext"
-[2025-03-06T11:21:47.262Z]   - file: "_scm_config/common.values.yaml"
-[2025-03-06T11:21:47.262Z]     type: "plaintext"
-[2025-03-06T11:21:47.262Z] dryRun: false
-[2025-03-06T11:21:47.262Z] </code></pre>
-[2025-03-06T11:21:47.262Z] , additionalResources=[{link=https://sourcecode.jnj.com/pages/ASX-NAGH/jpm_shared_lib/develop/browse/docs/#/user-guide/jpm-faqs/build-failed-now-what, text=FAQ guide on general jenkins build debugging practices}, {link=https://sourcecode.jnj.com/pages/ASX-NAGH/jpm_shared_lib/develop/browse/docs/#/user-guide/jpm-faq, text=All JPM FAQ guides}], _resourceFile=org/jnj/buildResultResources/commonStage.yaml, _resultName=pipeline-main-exception}, {title=Create Pull Request, image=gear2.svg, description=For project <strong>asx-javz&ndash;visualization-mf:feature/e2eVisualizeDevelop</strong> &#40;<a href="https://sourcecode.jnj.com/projects/ASX-JAVZ/repos/visualization-mf/browse?at=refs%2Fheads%2Ffeature%2Fe2eVisualizeDevelop">bitbucket link</a>&#41;&#58;
-[2025-03-06T11:21:47.262Z] <a href="https://sourcecode.jnj.com/projects/ASX-JAVZ/repos/visualization-mf/compare/commits?sourceBranch=refs/heads/feature/e2eVisualizeDevelop">Click here to create a Pull Request</a>.
-[2025-03-06T11:21:47.262Z] , weight=0, _resourceFile=org/jnj/buildResultResources/scmlib.yaml, _resultName=create-pull-request}, {title=CMDB Information, image=document.svg, description=<ul>
-[2025-03-06T11:21:47.262Z]   <li><strong>App ID</strong>&#58; <code>APP000010043717</code></li>
-[2025-03-06T11:21:47.262Z]   <li><strong>CI</strong>&#58; <code>CI000000019942139</code></li>
-[2025-03-06T11:21:47.262Z]   <li><strong>Name</strong>&#58; <code>RISE-PREDEV</code></li>
-[2025-03-06T11:21:47.262Z]   <li><strong>Description</strong>&#58; <code>Reliable Intelligence and Smart Engineering</code></li>
-[2025-03-06T11:21:47.262Z]   <li><strong>Environment</strong>&#58; <code>Development</code></li>
-[2025-03-06T11:21:47.262Z]   <li><strong>Sector</strong>&#58; <code>Corporate</code></li>
-[2025-03-06T11:21:47.263Z]   <li><strong>TAO</strong>&#58; <code>Manoj Joshi (1027074)</code></li>
-[2025-03-06T11:21:47.263Z] </ul>
-[2025-03-06T11:21:47.263Z] , weight=0, _resourceFile=org/jnj/buildResultResources/iris.yaml, _resultName=cmdb-info}, {title=Snyk Container Scan Summary, image=notepad.svg, type=html, description=<p>Docker image scan list:</p>
-[2025-03-06T11:21:47.263Z] <ul>
-[2025-03-06T11:21:47.263Z]   
-[2025-03-06T11:21:47.263Z]     <li><code>javz-docker.artifactrepo.jnj.com/visualization-mf:0.2.0-beta.58</code></li>
-[2025-03-06T11:21:47.263Z]   
-[2025-03-06T11:21:47.263Z] </ul>
-[2025-03-06T11:21:47.263Z] 
-[2025-03-06T11:21:47.263Z]   <p>
-[2025-03-06T11:21:47.263Z]     
-[2025-03-06T11:21:47.263Z]       Scan status: <span style="color: green; font-weight: bold;">No vulnerabilities found</span>
-[2025-03-06T11:21:47.263Z]     
-[2025-03-06T11:21:47.263Z]     
-[2025-03-06T11:21:47.263Z]       <br>Snyk Overall Risk Score: <strong>0</strong>
-[2025-03-06T11:21:47.263Z]     
-[2025-03-06T11:21:47.263Z]     <br>Artifactory Status:&nbsp;
-[2025-03-06T11:21:47.263Z]     
-[2025-03-06T11:21:47.263Z]       Image is available to download - no CVE violations detected
-[2025-03-06T11:21:47.263Z]     
-[2025-03-06T11:21:47.263Z]     <br>Summary of scan:
-[2025-03-06T11:21:47.263Z]   </p>
-[2025-03-06T11:21:47.263Z]   <ul>
-[2025-03-06T11:21:47.263Z]     <li><strong>GxP/SOX: </strong>false</li>
-[2025-03-06T11:21:47.263Z]     <li><strong>CVE violation condition: </strong>Snyk risk score >= 800</li>
-[2025-03-06T11:21:47.263Z]     <li><strong>CVE violations: </strong>0 (Exceptions: 0)</li>
-[2025-03-06T11:21:47.263Z]     <li><strong>License violations: </strong>0 (Exceptions: 0)</li>
-[2025-03-06T11:21:47.263Z]   </ul>
-[2025-03-06T11:21:47.263Z]   
-[2025-03-06T11:21:47.263Z] 
-[2025-03-06T11:21:47.263Z] , weight=0, _resourceFile=org/jnj/buildResultResources/snyk.yaml, _resultName=docker-scan-summary}]
-[2025-03-06T11:21:47.286Z] [Pipeline] echo
-[2025-03-06T11:21:47.286Z] [Error calling https://artifactrepo.jnj.com/artifactory/api/storage/javz-docker/visualization-mf/0.2.0-beta.58/manifest.json (GET), see log for more information, ========   Stack trace start ==================
-[2025-03-06T11:21:47.286Z] java.lang.Exception: history.go:56: 2025-03-06 11:15:39.501898438 +0000 UTC m=+0.795882398 [debug] getting history for release rise-visualization-mf
-[2025-03-06T11:21:47.286Z] upgrade.go:164: 2025-03-06 11:15:39.519519951 +0000 UTC m=+0.813503914 [debug] preparing upgrade for rise-visualization-mf
-[2025-03-06T11:21:47.286Z] upgrade.go:172: 2025-03-06 11:15:39.702922732 +0000 UTC m=+0.996906704 [debug] performing update for rise-visualization-mf
-[2025-03-06T11:21:47.286Z] upgrade.go:375: 2025-03-06 11:15:39.812949526 +0000 UTC m=+1.106933510 [debug] creating upgraded release for rise-visualization-mf
-[2025-03-06T11:21:47.286Z] client.go:393: 2025-03-06 11:15:39.843430108 +0000 UTC m=+1.137414062 [debug] checking 4 resources for changes
-[2025-03-06T11:21:47.286Z] client.go:693: 2025-03-06 11:15:39.864657142 +0000 UTC m=+1.158641105 [debug] Patch Service "rise-visualization-mf" in namespace rise-dev
-[2025-03-06T11:21:47.286Z] client.go:693: 2025-03-06 11:15:39.896515186 +0000 UTC m=+1.190499150 [debug] Patch Deployment "rise-visualization-mf" in namespace rise-dev
-[2025-03-06T11:21:47.286Z] W0306 11:15:39.939434      78 warnings.go:70] [workloadlabelcheck] J&J Out Of Compliance Alert: provide missing labels: {"application-id"}
-[2025-03-06T11:21:47.286Z] client.go:684: 2025-03-06 11:15:39.954755401 +0000 UTC m=+1.248739374 [debug] Looks like there are no changes for HorizontalPodAutoscaler "rise-visualization-mf-hpa"
-[2025-03-06T11:21:47.286Z] client.go:684: 2025-03-06 11:15:39.984870547 +0000 UTC m=+1.278854534 [debug] Looks like there are no changes for Ingress "visualization-mf"
-[2025-03-06T11:21:47.286Z] upgrade.go:447: 2025-03-06 11:15:39.995099232 +0000 UTC m=+1.289083195 [debug] waiting for release rise-visualization-mf resources (created: 0 updated: 4  deleted: 0)
-[2025-03-06T11:21:47.286Z] wait.go:50: 2025-03-06 11:15:39.99512023 +0000 UTC m=+1.289104183 [debug] beginning wait for 4 resources with timeout of 5m0s
-[2025-03-06T11:21:47.286Z] ready.go:452: 2025-03-06 11:15:40.050024841 +0000 UTC m=+1.344008803 [debug] ReplicaSet is not ready: rise-dev/rise-visualization-mf-9fc74667d. observedGeneration (0) does not match spec generation (1).
-[2025-03-06T11:21:47.286Z] ready.go:303: 2025-03-06 11:15:42.034570103 +0000 UTC m=+3.328554065 [debug] Deployment is not ready: rise-dev/rise-visualization-mf. 0 out of 1 expected pods are ready
-[2025-03-06T11:21:47.286Z] ready.go:303: 2025-03-06 11:15:44.038459622 +0000 UTC m=+5.332443580 [debug] Deployment is not ready: rise-dev/rise-visualization-mf. 0 out of 1 expected pods are ready
-[2025-03-06T11:21:47.286Z] ready.go:303: 2025-03-06 11:15:46.023050573 +0000 UTC m=+7.317034545 [debug] Deployment is not ready: rise-dev/rise-visualization-mf. 0 out of 1 expected pods are ready
-[2025-03-06T11:21:47.286Z] ready.go:303: 2025-03-06 11:15:48.033499411 +0000 UTC m=+9.327483373 [debug] Deployment is not ready: rise-dev/rise-visualization-mf. 0 out of 1 expected pods are ready
+[2025-03-06T12:04:05.005Z] [Pipeline] echo
+[2025-03-06T12:04:05.005Z] [{from=SUCCESS, to=SUCCESS, reason=Due to SonarQube analysis results & thresholds, please see log for more information}, {from=SUCCESS, to=SUCCESS, reason=Due to SonarQube analysis quality gate status, please see log for more information}]
+[2025-03-06T12:04:05.043Z] [Pipeline] echo
+[2025-03-06T12:04:05.044Z] [{title=Pipeline Stage Exception, image=error.svg, weight=9001, description=<p>During the <strong>deploy</strong> stage the following uncaught <strong>java.lang.Exception</strong> exception occurred&#58;</p>
+[2025-03-06T12:04:05.044Z] <pre><code>java.lang.Exception: An error has occurred while deploying helm chart.
+[2025-03-06T12:04:05.044Z]   at helm.deploy(helm.groovy:777)
+[2025-03-06T12:04:05.044Z]   at deploy.execute(deploy.groovy:41)
+[2025-03-06T12:04:05.044Z]   at commonStage.execute(commonStage.groovy:234)
+[2025-03-06T12:04:05.044Z]   at jlib.newStage(jlib.groovy:545)
+[2025-03-06T12:04:05.044Z]   at commonStage.execute(commonStage.groovy:114)
+[2025-03-06T12:04:05.044Z]   at debug.withLogLevel(debug.groovy:14)
+[2025-03-06T12:04:05.044Z]   at commonStage.execute(commonStage.groovy:94)
+[2025-03-06T12:04:05.044Z]   at commonStage.execute(commonStage.groovy:-1)
+[2025-03-06T12:04:05.044Z]   at commonStage.execute(commonStage.groovy:217)
+[2025-03-06T12:04:05.044Z]   at commonStage.execute(commonStage.groovy:190)
+[2025-03-06T12:04:05.044Z] Caused by: java.lang.Exception: An error has occurred while deploying helm chart [rise-visualization-mf].
+[2025-03-06T12:04:05.044Z]   at helm.deploy(helm.groovy:765)
+[2025-03-06T12:04:05.044Z]   at commonStage.withDirAndCleanup(commonStage.groovy:463)
+[2025-03-06T12:04:05.044Z] Caused by: java.lang.Exception: history.go:56: 2025-03-06 11:58:24.289655718 +0000 UTC m=+0.773008585 [debug] getting history for release rise-visualization-mf
+[2025-03-06T12:04:05.044Z] upgrade.go:164: 2025-03-06 11:58:24.309441988 +0000 UTC m=+0.792794856 [debug] preparing upgrade for rise-visualization-mf
+[2025-03-06T12:04:05.044Z] upgrade.go:172: 2025-03-06 11:</code></pre>
+[2025-03-06T12:04:05.044Z] <p><strong>Manifest configuration</strong>&#58;</p>
+[2025-03-06T12:04:05.044Z] <pre><code>---
+[2025-03-06T12:04:05.044Z] enabled: true
+[2025-03-06T12:04:05.044Z] type: "helm"
+[2025-03-06T12:04:05.044Z] name: "rise-visualization-mf"
+[2025-03-06T12:04:05.044Z] createNamespace: true
+[2025-03-06T12:04:05.044Z] chartRepoCredentialsId: "sourcecode-bitbucket"
+[2025-03-06T12:04:05.044Z] atomic: false
+[2025-03-06T12:04:05.044Z] kubernetesConfig:
+[2025-03-06T12:04:05.044Z]   type: "eks"
+[2025-03-06T12:04:05.044Z]   name: "itx-bvx-rise-test"
+[2025-03-06T12:04:05.044Z]   region: "us-east-1"
+[2025-03-06T12:04:05.044Z]   credentialsId: "itx-bvx-eatjenkinsadminapi"
+[2025-03-06T12:04:05.044Z]   auth: {}
+[2025-03-06T12:04:05.044Z] namespace: "rise-dev"
+[2025-03-06T12:04:05.044Z] configFiles:
+[2025-03-06T12:04:05.044Z] - repo: "https://sourcecode.jnj.com/scm/asx-javz/visualization-mf.git"
+[2025-03-06T12:04:05.044Z]   repoCredentialsId: "sourcecode-bitbucket"
+[2025-03-06T12:04:05.044Z]   files:
+[2025-03-06T12:04:05.044Z]   - file: "_scm_config/dev.values.yaml"
+[2025-03-06T12:04:05.044Z]     type: "plaintext"
+[2025-03-06T12:04:05.044Z]   - file: "_scm_config/common.values.yaml"
+[2025-03-06T12:04:05.044Z]     type: "plaintext"
+[2025-03-06T12:04:05.044Z] dryRun: false
+[2025-03-06T12:04:05.044Z] </code></pre>
+[2025-03-06T12:04:05.044Z] , additionalResources=[{link=https://sourcecode.jnj.com/pages/ASX-NAGH/jpm_shared_lib/develop/browse/docs/#/user-guide/jpm-faqs/build-failed-now-what, text=FAQ guide on general jenkins build debugging practices}, {link=https://sourcecode.jnj.com/pages/ASX-NAGH/jpm_shared_lib/develop/browse/docs/#/user-guide/jpm-faq, text=All JPM FAQ guides}], _resourceFile=org/jnj/buildResultResources/commonStage.yaml, _resultName=pipeline-main-exception}, {title=Create Pull Request, image=gear2.svg, description=For project <strong>asx-javz&ndash;visualization-mf:feature/e2eVisualizeDevelop</strong> &#40;<a href="https://sourcecode.jnj.com/projects/ASX-JAVZ/repos/visualization-mf/browse?at=refs%2Fheads%2Ffeature%2Fe2eVisualizeDevelop">bitbucket link</a>&#41;&#58;
+[2025-03-06T12:04:05.044Z] <a href="https://sourcecode.jnj.com/projects/ASX-JAVZ/repos/visualization-mf/compare/commits?sourceBranch=refs/heads/feature/e2eVisualizeDevelop">Click here to create a Pull Request</a>.
+[2025-03-06T12:04:05.044Z] , weight=0, _resourceFile=org/jnj/buildResultResources/scmlib.yaml, _resultName=create-pull-request}, {title=CMDB Information, image=document.svg, description=<ul>
+[2025-03-06T12:04:05.044Z]   <li><strong>App ID</strong>&#58; <code>APP000010043717</code></li>
+[2025-03-06T12:04:05.044Z]   <li><strong>CI</strong>&#58; <code>CI000000019942139</code></li>
+[2025-03-06T12:04:05.044Z]   <li><strong>Name</strong>&#58; <code>RISE-PREDEV</code></li>
+[2025-03-06T12:04:05.044Z]   <li><strong>Description</strong>&#58; <code>Reliable Intelligence and Smart Engineering</code></li>
+[2025-03-06T12:04:05.044Z]   <li><strong>Environment</strong>&#58; <code>Development</code></li>
+[2025-03-06T12:04:05.044Z]   <li><strong>Sector</strong>&#58; <code>Corporate</code></li>
+[2025-03-06T12:04:05.044Z]   <li><strong>TAO</strong>&#58; <code>Manoj Joshi (1027074)</code></li>
+[2025-03-06T12:04:05.044Z] </ul>
+[2025-03-06T12:04:05.044Z] , weight=0, _resourceFile=org/jnj/buildResultResources/iris.yaml, _resultName=cmdb-info}, {title=Snyk Container Scan Summary, image=notepad.svg, type=html, description=<p>Docker image scan list:</p>
+[2025-03-06T12:04:05.044Z] <ul>
+[2025-03-06T12:04:05.044Z]   
+[2025-03-06T12:04:05.044Z]     <li><code>javz-docker.artifactrepo.jnj.com/visualization-mf:0.2.0-beta.59</code></li>
+[2025-03-06T12:04:05.044Z]   
+[2025-03-06T12:04:05.044Z] </ul>
+[2025-03-06T12:04:05.044Z] 
+[2025-03-06T12:04:05.044Z]   <p>
+[2025-03-06T12:04:05.044Z]     
+[2025-03-06T12:04:05.044Z]       Scan status: <span style="color: green; font-weight: bold;">No vulnerabilities found</span>
+[2025-03-06T12:04:05.044Z]     
+[2025-03-06T12:04:05.044Z]     
+[2025-03-06T12:04:05.044Z]       <br>Snyk Overall Risk Score: <strong>0</strong>
+[2025-03-06T12:04:05.044Z]     
+[2025-03-06T12:04:05.044Z]     <br>Artifactory Status:&nbsp;
+[2025-03-06T12:04:05.044Z]     
+[2025-03-06T12:04:05.044Z]       Image is available to download - no CVE violations detected
+[2025-03-06T12:04:05.044Z]     
+[2025-03-06T12:04:05.044Z]     <br>Summary of scan:
+[2025-03-06T12:04:05.044Z]   </p>
+[2025-03-06T12:04:05.044Z]   <ul>
+[2025-03-06T12:04:05.044Z]     <li><strong>GxP/SOX: </strong>false</li>
+[2025-03-06T12:04:05.044Z]     <li><strong>CVE violation condition: </strong>Snyk risk score >= 800</li>
+[2025-03-06T12:04:05.044Z]     <li><strong>CVE violations: </strong>0 (Exceptions: 0)</li>
+[2025-03-06T12:04:05.044Z]     <li><strong>License violations: </strong>0 (Exceptions: 0)</li>
+[2025-03-06T12:04:05.044Z]   </ul>
+[2025-03-06T12:04:05.044Z]   
+[2025-03-06T12:04:05.044Z] 
+[2025-03-06T12:04:05.044Z] , weight=0, _resourceFile=org/jnj/buildResultResources/snyk.yaml, _resultName=docker-scan-summary}]
+[2025-03-06T12:04:05.066Z] [Pipeline] echo
+[2025-03-06T12:04:05.066Z] [Error calling https://artifactrepo.jnj.com/artifactory/api/storage/javz-docker/visualization-mf/0.2.0-beta.59/manifest.json (GET), see log for more information, ========   Stack trace start ==================
+[2025-03-06T12:04:05.066Z] java.lang.Exception: history.go:56: 2025-03-06 11:58:24.289655718 +0000 UTC m=+0.773008585 [debug] getting history for release rise-visualization-mf
+[2025-03-06T12:04:05.066Z] upgrade.go:164: 2025-03-06 11:58:24.309441988 +0000 UTC m=+0.792794856 [debug] preparing upgrade for rise-visualization-mf
+[2025-03-06T12:04:05.066Z] upgrade.go:172: 2025-03-06 11:58:24.519401804 +0000 UTC m=+1.002754678 [debug] performing update for rise-visualization-mf
+[2025-03-06T12:04:05.066Z] upgrade.go:375: 2025-03-06 11:58:24.62962325 +0000 UTC m=+1.112976123 [debug] creating upgraded release for rise-visualization-mf
+[2025-03-06T12:04:05.066Z] client.go:393: 2025-03-06 11:58:24.661013848 +0000 UTC m=+1.144366714 [debug] checking 4 resources for changes
+[2025-03-06T12:04:05.066Z] client.go:693: 2025-03-06 11:58:24.676293993 +0000 UTC m=+1.159646890 [debug] Patch Service "rise-visualization-mf" in namespace rise-dev
+[2025-03-06T12:04:05.066Z] client.go:693: 2025-03-06 11:58:24.718960172 +0000 UTC m=+1.202313046 [debug] Patch Deployment "rise-visualization-mf" in namespace rise-dev
+[2025-03-06T12:04:05.066Z] W0306 11:58:24.772156      75 warnings.go:70] [workloadlabelcheck] J&J Out Of Compliance Alert: provide missing labels: {"application-id"}
+[2025-03-06T12:04:05.066Z] client.go:684: 2025-03-06 11:58:24.806191059 +0000 UTC m=+1.289543933 [debug] Looks like there are no changes for HorizontalPodAutoscaler "rise-visualization-mf-hpa"
+[2025-03-06T12:04:05.066Z] client.go:684: 2025-03-06 11:58:24.840341822 +0000 UTC m=+1.323694697 [debug] Looks like there are no changes for Ingress "visualization-mf"
+[2025-03-06T12:04:05.066Z] upgrade.go:447: 2025-03-06 11:58:24.847956319 +0000 UTC m=+1.331309194 [debug] waiting for release rise-visualization-mf resources (created: 0 updated: 4  deleted: 0)
+[2025-03-06T12:04:05.066Z] wait.go:50: 2025-03-06 11:58:24.84797596 +0000 UTC m=+1.331328853 [debug] beginning wait for 4 resources with timeout of 5m0s
+[2025-03-06T12:04:05.066Z] ready.go:452: 2025-03-06 11:58:24.899274996 +0000 UTC m=+1.382627871 [debug] ReplicaSet is not ready: rise-dev/rise-visualization-mf-f5468945. observedGeneration (0) does not match spec generation (1).
 """
-
+if i want to change any file then please give me whole modified file.
