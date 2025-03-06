@@ -285,7 +285,7 @@ environments:
       enabled: true
       type: npm
       installCommand: "npm install --include=dev"      
-      ommand: npm run build:dev
+      command: npm run build:dev
     package:
       enabled: true
       type: multi
@@ -341,97 +341,135 @@ environments:
   
 """
 following are pipeline.log 
-[3/5] RUN echo 'server {     listen 0.0.0.0:3000;     server_name localhost;     location / {         root /usr/share/nginx/html;         index index.html;         try_files $uri $uri/ /index.html;     } }' > /etc/nginx/conf.d/default.conf
-[2025-03-06T10:10:29.368Z] #7 CACHED
-[2025-03-06T10:10:29.368Z] 
-[2025-03-06T10:10:29.368Z] #8 [4/5] RUN echo "Verifying build directory..." &&     ls -l /usr/share/nginx/html/ &&     test -d /usr/share/nginx/html/build
-[2025-03-06T10:10:29.368Z] #8 CACHED
-[2025-03-06T10:10:29.368Z] 
-[2025-03-06T10:10:29.368Z] #9 [5/5] COPY build/ /usr/share/nginx/html/
-[2025-03-06T10:10:29.368Z] #9 ERROR: failed to calculate checksum of ref a2c116bb-ebd8-4147-bbad-73e7a19e2aed::sfbfn776lzte29kerp0atehdp: "/build": not found
-[2025-03-06T10:10:29.368Z] 
-[2025-03-06T10:10:29.368Z] #10 [1/5] FROM jnj.artifactrepo.jnj.com/nginxinc/nginx-unprivileged:1.24-alpine@sha256:2c203600ca6257c503caa61c1e08d05a67f75e7d0c85b1be9c10d8c1d0780d91
-[2025-03-06T10:10:29.368Z] #10 resolve jnj.artifactrepo.jnj.com/nginxinc/nginx-unprivileged:1.24-alpine@sha256:2c203600ca6257c503caa61c1e08d05a67f75e7d0c85b1be9c10d8c1d0780d91 0.0s done
-[2025-03-06T10:10:29.368Z] #10 sha256:2c203600ca6257c503caa61c1e08d05a67f75e7d0c85b1be9c10d8c1d0780d91 2.62kB / 2.62kB done
-[2025-03-06T10:10:29.368Z] #10 sha256:2e651a440d72adbf66b317dd318c738865eb1b2a6e75338fa78c9177104c8ee8 14.06kB / 14.06kB done
-[2025-03-06T10:10:29.368Z] #10 CANCELED
-[2025-03-06T10:10:29.368Z] ------
-[2025-03-06T10:10:29.368Z]  > [5/5] COPY build/ /usr/share/nginx/html/:
-[2025-03-06T10:10:29.368Z] ------
-[2025-03-06T10:10:29.368Z] Dockerfile:22
-[2025-03-06T10:10:29.368Z] --------------------
-[2025-03-06T10:10:29.368Z]   20 |     
-[2025-03-06T10:10:29.368Z]   21 |     # Copy the contents of the build folder to the Nginx web server directory
-[2025-03-06T10:10:29.368Z]   22 | >>> COPY build/ /usr/share/nginx/html/
-[2025-03-06T10:10:29.368Z]   23 |     
-[2025-03-06T10:10:29.368Z]   24 |     # Expose port 3000
-[2025-03-06T10:10:29.368Z] --------------------
-[2025-03-06T10:10:29.368Z] ERROR: failed to solve: failed to compute cache key: failed to calculate checksum of ref a2c116bb-ebd8-4147-bbad-73e7a19e2aed::sfbfn776lzte29kerp0atehdp: "/build": not found
-[2025-03-06T10:10:29.397Z] [Pipeline] }
-[2025-03-06T10:10:29.460Z] [Pipeline] // withEnv
-[2025-03-06T10:10:29.486Z] [Pipeline] }
-[2025-03-06T10:10:29.549Z] [Pipeline] // withCredentials
-[2025-03-06T10:10:29.574Z] [Pipeline] deleteDir
-[2025-03-06T10:10:49.845Z] [Pipeline] }
-[2025-03-06T10:10:49.903Z] [Pipeline] // dir
-[2025-03-06T10:10:49.923Z] [Pipeline] }
-[2025-03-06T10:10:49.982Z] [Pipeline] // withEnv
-[2025-03-06T10:10:50.007Z] [Pipeline] isUnix
-[2025-03-06T10:10:50.018Z] [Pipeline] sh
-[2025-03-06T10:10:50.285Z] + rm -r /tmp/tmp.kw3d8TZZ3Y
-[2025-03-06T10:10:50.320Z] [Pipeline] ansiColor
-[2025-03-06T10:10:50.322Z] [Pipeline] {
-[2025-03-06T10:10:50.324Z] 
-[2025-03-06T10:10:50.367Z] [Pipeline] echo
-[2025-03-06T10:10:50.370Z] [1;35mat class.method: commonStage.execute line: commonStage.groovy:260[0m
-[2025-03-06T10:10:50.372Z] [Pipeline] }
-[2025-03-06T10:10:50.374Z] 
-[2025-03-06T10:10:50.430Z] [Pipeline] // ansiColor
-[2025-03-06T10:10:50.465Z] [Pipeline] ansiColor
-[2025-03-06T10:10:50.468Z] [Pipeline] {
-[2025-03-06T10:10:50.470Z] 
-[2025-03-06T10:10:50.519Z] [Pipeline] echo
-[2025-03-06T10:10:50.521Z] [1;31mpublish stage execution failed.[0m
-[2025-03-06T10:10:50.524Z] [Pipeline] }
-[2025-03-06T10:10:50.527Z] 
-[2025-03-06T10:10:50.593Z] [Pipeline] // ansiColor
-[2025-03-06T10:10:50.730Z] [Pipeline] libraryResource
-[2025-03-06T10:10:50.744Z] [Pipeline] readYaml
-[2025-03-06T10:10:50.827Z] [Pipeline] libraryResource
-[2025-03-06T10:10:50.916Z] [Pipeline] ansiColor
-[2025-03-06T10:10:50.919Z] [Pipeline] {
-[2025-03-06T10:10:50.922Z] 
-[2025-03-06T10:10:50.969Z] [Pipeline] echo
-[2025-03-06T10:10:50.972Z] [1;31mMulti-Stage publish/Docker execution failed.[0m
-[2025-03-06T10:10:50.974Z] [Pipeline] }
-[2025-03-06T10:10:50.977Z] 
-[2025-03-06T10:10:51.033Z] [Pipeline] // ansiColor
-[2025-03-06T10:10:51.062Z] [Pipeline] ansiColor
-[2025-03-06T10:10:51.065Z] [Pipeline] {
-[2025-03-06T10:10:51.067Z] 
-[2025-03-06T10:10:51.117Z] [Pipeline] echo
-[2025-03-06T10:10:51.119Z] [1;35mat class.method: commonStage.execute line: commonStage.groovy:222[0m
-[2025-03-06T10:10:51.122Z] [Pipeline] }
-[2025-03-06T10:10:51.124Z] 
-[2025-03-06T10:10:51.180Z] [Pipeline] // ansiColor
-[2025-03-06T10:10:51.274Z] [Pipeline] ansiColor
-[2025-03-06T10:10:51.276Z] [Pipeline] {
-[2025-03-06T10:10:51.279Z] 
-[2025-03-06T10:10:51.324Z] [Pipeline] echo
-[2025-03-06T10:10:51.327Z] [1;31m========   Stack trace start ==================
-[2025-03-06T10:10:51.327Z] java.lang.Exception: error building scmContainerImage [visualization-ms]
-[2025-03-06T10:10:51.327Z]   at dockerImage.buildProjectImages(dockerImage.groovy:426)
-[2025-03-06T10:10:51.327Z]   at dockerImage.buildProjectImages(dockerImage.groovy:391)
-[2025-03-06T10:10:51.327Z]   at ensure.dockerNode(ensure.groovy:82)
-[2025-03-06T10:10:51.327Z]   at dockerImage.buildProjectImages(dockerImage.groovy:300)
-[2025-03-06T10:10:51.327Z]   at publish.execute(publish.groovy:64)
-[2025-03-06T10:10:51.327Z]   at commonStage.execute(commonStage.groovy:234)
-[2025-03-06T10:10:51.327Z]   at jlib.newStage(jlib.groovy:545)
-[2025-03-06T10:10:51.327Z]   at commonStage.execute(commonStage.groovy:114)
-[2025-03-06T10:10:51.327Z]   at debug.withLogLevel(debug.groovy:14)
-[2025-03-06T10:10:51.327Z]   at commonStage.execute(commonStage.groovy:94)
-[2025-03-06T10:10:51.327Z]   at commonStage.execute(commonStage.groovy:-1)
-[2025-03-06T10:10:51.327Z]   at commonStage.execute(commonStage.groovy:217)
-[2025-03-06T10:10:51.327Z]   at commonStage.execute(commonStage.groovy:190)
-[2025-03-06T10:10:51.327Z] Caused by: hudson.AbortException: script returned exit code 1
-help me to find out the solution why my publish stage in jenkins pipeline is got failed. and how to able dockerfile to copy build
+
+[2025-03-06T10:48:40.414Z] [Pipeline] echo
+[2025-03-06T10:48:40.414Z] [1;34mUsing build command: [docker  build   -t "javz-docker.artifactrepo.jnj.com/visualization-mf:0.2.0-beta.56" -f "_scm_container/visualization-ms/Dockerfile" --iidfile="visualization-mf-imageId.txt" .][0m
+[2025-03-06T10:48:40.415Z] [Pipeline] }
+[2025-03-06T10:48:40.415Z] 
+[2025-03-06T10:48:40.427Z] [Pipeline] // ansiColor
+[2025-03-06T10:48:40.445Z] [Pipeline] isUnix
+[2025-03-06T10:48:40.450Z] [Pipeline] sh
+[2025-03-06T10:48:40.712Z] + docker build -t javz-docker.artifactrepo.jnj.com/visualization-mf:0.2.0-beta.56 -f _scm_container/visualization-ms/Dockerfile --iidfile=visualization-mf-imageId.txt .
+[2025-03-06T10:48:41.270Z] #0 building with "default" instance using docker driver
+[2025-03-06T10:48:41.270Z] 
+[2025-03-06T10:48:41.270Z] #1 [internal] load build definition from Dockerfile
+[2025-03-06T10:48:41.270Z] #1 transferring dockerfile: 853B done
+[2025-03-06T10:48:41.270Z] #1 DONE 0.0s
+[2025-03-06T10:48:41.270Z] 
+[2025-03-06T10:48:41.270Z] #2 [internal] load metadata for jnj.artifactrepo.jnj.com/nginxinc/nginx-unprivileged:1.24-alpine
+[2025-03-06T10:48:41.827Z] #2 ...
+[2025-03-06T10:48:41.827Z] 
+[2025-03-06T10:48:41.827Z] #3 [auth] nginxinc/nginx-unprivileged:pull token for jnj.artifactrepo.jnj.com
+[2025-03-06T10:48:41.827Z] #3 DONE 0.0s
+[2025-03-06T10:48:41.827Z] 
+[2025-03-06T10:48:41.827Z] #2 [internal] load metadata for jnj.artifactrepo.jnj.com/nginxinc/nginx-unprivileged:1.24-alpine
+[2025-03-06T10:48:43.184Z] #2 DONE 2.2s
+[2025-03-06T10:48:43.438Z] 
+[2025-03-06T10:48:43.438Z] #4 [internal] load .dockerignore
+[2025-03-06T10:48:43.438Z] #4 transferring context: 2B done
+[2025-03-06T10:48:43.438Z] #4 DONE 0.1s
+[2025-03-06T10:48:43.438Z] 
+[2025-03-06T10:48:43.438Z] #5 [1/5] FROM jnj.artifactrepo.jnj.com/nginxinc/nginx-unprivileged:1.24-alpine@sha256:2c203600ca6257c503caa61c1e08d05a67f75e7d0c85b1be9c10d8c1d0780d91
+[2025-03-06T10:48:43.438Z] #5 DONE 0.0s
+[2025-03-06T10:48:43.438Z] 
+[2025-03-06T10:48:43.438Z] #6 [2/5] RUN rm /etc/nginx/conf.d/default.conf
+[2025-03-06T10:48:43.438Z] #6 CACHED
+[2025-03-06T10:48:43.438Z] 
+[2025-03-06T10:48:43.438Z] #7 [3/5] RUN echo 'server {     listen 0.0.0.0:3000;     server_name localhost;     location / {         root /usr/share/nginx/html;         index index.html;         try_files $uri $uri/ /index.html;     } }' > /etc/nginx/conf.d/default.conf
+[2025-03-06T10:48:43.438Z] #7 CACHED
+[2025-03-06T10:48:43.438Z] 
+[2025-03-06T10:48:43.438Z] #8 [internal] load build context
+[2025-03-06T10:48:43.438Z] #8 transferring context: 4.74MB 0.0s done
+[2025-03-06T10:48:43.692Z] #8 DONE 0.2s
+[2025-03-06T10:48:43.692Z] 
+[2025-03-06T10:48:43.692Z] #9 [4/5] RUN echo "Verifying build directory..." &&     ls -l /usr/share/nginx/html/ &&     test -d /usr/share/nginx/html/build
+[2025-03-06T10:48:43.692Z] #9 0.334 Verifying build directory...
+[2025-03-06T10:48:43.946Z] #9 0.334 total 8
+[2025-03-06T10:48:43.946Z] #9 0.334 -rw-r--r--    1 root     root           497 Jun 17  2023 50x.html
+[2025-03-06T10:48:43.946Z] #9 0.334 -rw-r--r--    1 root     root           615 Jun 17  2023 index.html
+[2025-03-06T10:48:58.757Z] #9 ERROR: process "/bin/sh -c echo \"Verifying build directory...\" &&     ls -l /usr/share/nginx/html/ &&     test -d /usr/share/nginx/html/build" did not complete successfully: exit code: 1
+[2025-03-06T10:48:58.757Z] ------
+[2025-03-06T10:48:58.757Z]  > [4/5] RUN echo "Verifying build directory..." &&     ls -l /usr/share/nginx/html/ &&     test -d /usr/share/nginx/html/build:
+[2025-03-06T10:48:58.757Z] 0.334 Verifying build directory...
+[2025-03-06T10:48:58.757Z] 0.334 total 8
+[2025-03-06T10:48:58.757Z] 0.334 -rw-r--r--    1 root     root           497 Jun 17  2023 50x.html
+[2025-03-06T10:48:58.757Z] 0.334 -rw-r--r--    1 root     root           615 Jun 17  2023 index.html
+[2025-03-06T10:48:58.758Z] ------
+[2025-03-06T10:48:58.758Z] Dockerfile:17
+[2025-03-06T10:48:58.758Z] --------------------
+[2025-03-06T10:48:58.758Z]   16 |     
+[2025-03-06T10:48:58.758Z]   17 | >>> RUN echo "Verifying build directory..." && \
+[2025-03-06T10:48:58.758Z]   18 | >>>     ls -l /usr/share/nginx/html/ && \
+[2025-03-06T10:48:58.758Z]   19 | >>>     test -d /usr/share/nginx/html/build
+[2025-03-06T10:48:58.758Z]   20 |     
+[2025-03-06T10:48:58.758Z] --------------------
+[2025-03-06T10:48:58.758Z] ERROR: failed to solve: process "/bin/sh -c echo \"Verifying build directory...\" &&     ls -l /usr/share/nginx/html/ &&     test -d /usr/share/nginx/html/build" did not complete successfully: exit code: 1
+[2025-03-06T10:48:58.761Z] [Pipeline] }
+[2025-03-06T10:48:58.773Z] [Pipeline] // withEnv
+[2025-03-06T10:48:58.787Z] [Pipeline] }
+[2025-03-06T10:48:58.801Z] [Pipeline] // withCredentials
+[2025-03-06T10:48:58.819Z] [Pipeline] deleteDir
+[2025-03-06T10:49:12.577Z] [Pipeline] }
+[2025-03-06T10:49:12.589Z] [Pipeline] // dir
+[2025-03-06T10:49:12.604Z] [Pipeline] }
+[2025-03-06T10:49:12.617Z] [Pipeline] // withEnv
+[2025-03-06T10:49:12.636Z] [Pipeline] isUnix
+[2025-03-06T10:49:12.640Z] [Pipeline] sh
+[2025-03-06T10:49:12.902Z] + rm -r /tmp/tmp.jWr7vO0sji
+[2025-03-06T10:49:12.913Z] [Pipeline] ansiColor
+[2025-03-06T10:49:12.913Z] [Pipeline] {
+[2025-03-06T10:49:12.913Z] 
+[2025-03-06T10:49:12.931Z] [Pipeline] echo
+[2025-03-06T10:49:12.931Z] [1;35mat class.method: commonStage.execute line: commonStage.groovy:260[0m
+[2025-03-06T10:49:12.931Z] [Pipeline] }
+[2025-03-06T10:49:12.931Z] 
+[2025-03-06T10:49:12.945Z] [Pipeline] // ansiColor
+[2025-03-06T10:49:12.965Z] [Pipeline] ansiColor
+[2025-03-06T10:49:12.965Z] [Pipeline] {
+[2025-03-06T10:49:12.965Z] 
+[2025-03-06T10:49:12.981Z] [Pipeline] echo
+[2025-03-06T10:49:12.982Z] [1;31mpublish stage execution failed.[0m
+[2025-03-06T10:49:12.982Z] [Pipeline] }
+[2025-03-06T10:49:12.982Z] 
+[2025-03-06T10:49:12.994Z] [Pipeline] // ansiColor
+[2025-03-06T10:49:13.078Z] [Pipeline] libraryResource
+[2025-03-06T10:49:13.084Z] [Pipeline] readYaml
+[2025-03-06T10:49:13.118Z] [Pipeline] libraryResource
+[2025-03-06T10:49:13.192Z] [Pipeline] ansiColor
+[2025-03-06T10:49:13.192Z] [Pipeline] {
+[2025-03-06T10:49:13.192Z] 
+[2025-03-06T10:49:13.208Z] [Pipeline] echo
+[2025-03-06T10:49:13.209Z] [1;31mMulti-Stage publish/Docker execution failed.[0m
+[2025-03-06T10:49:13.209Z] [Pipeline] }
+[2025-03-06T10:49:13.209Z] 
+[2025-03-06T10:49:13.221Z] [Pipeline] // ansiColor
+[2025-03-06T10:49:13.241Z] [Pipeline] ansiColor
+[2025-03-06T10:49:13.241Z] [Pipeline] {
+[2025-03-06T10:49:13.241Z] 
+[2025-03-06T10:49:13.257Z] [Pipeline] echo
+[2025-03-06T10:49:13.257Z] [1;35mat class.method: commonStage.execute line: commonStage.groovy:222[0m
+[2025-03-06T10:49:13.257Z] [Pipeline] }
+[2025-03-06T10:49:13.258Z] 
+[2025-03-06T10:49:13.270Z] [Pipeline] // ansiColor
+[2025-03-06T10:49:13.354Z] [Pipeline] ansiColor
+[2025-03-06T10:49:13.355Z] [Pipeline] {
+[2025-03-06T10:49:13.355Z] 
+[2025-03-06T10:49:13.371Z] [Pipeline] echo
+[2025-03-06T10:49:13.371Z] [1;31m========   Stack trace start ==================
+[2025-03-06T10:49:13.371Z] java.lang.Exception: error building scmContainerImage [visualization-ms]
+[2025-03-06T10:49:13.371Z]   at dockerImage.buildProjectImages(dockerImage.groovy:426)
+[2025-03-06T10:49:13.371Z]   at dockerImage.buildProjectImages(dockerImage.groovy:391)
+[2025-03-06T10:49:13.371Z]   at ensure.dockerNode(ensure.groovy:82)
+[2025-03-06T10:49:13.371Z]   at dockerImage.buildProjectImages(dockerImage.groovy:300)
+[2025-03-06T10:49:13.371Z]   at publish.execute(publish.groovy:64)
+[2025-03-06T10:49:13.371Z]   at commonStage.execute(commonStage.groovy:234)
+[2025-03-06T10:49:13.371Z]   at jlib.newStage(jlib.groovy:545)
+[2025-03-06T10:49:13.371Z]   at commonStage.execute(commonStage.groovy:114)
+[2025-03-06T10:49:13.371Z]   at debug.withLogLevel(debug.groovy:14)
+[2025-03-06T10:49:13.371Z]   at commonStage.execute(commonStage.groovy:94)
+[2025-03-06T10:49:13.371Z]   at commonStage.execute(commonStage.groovy:-1)
+[2025-03-06T10:49:13.371Z]   at commonStage.execute(commonStage.groovy:217)
+[2025-03-06T10:49:13.371Z]   at commonStage.execute(commonStage.groovy:190)
+[2025-03-06T10:49:13.371Z] Caused by: hudson.AbortException: script returned exit code 1
+[2025-03-06T10:49:13.371Z] ========   Stack trace end ==================[0m
+help me to find out the solution why my publish stage in jenkins pipeline is got failed. 
