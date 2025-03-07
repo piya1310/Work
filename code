@@ -1,4 +1,4 @@
-i am trying to run jenkins pipeline following is my 
+i am trying to run jenkins pipeline but getting error following is my pipeline.log
 i am getting following error in final stage i.e Deploy stage in jenkins pipeline
 [2025-03-06T12:04:03.169Z] [1;31m========Stack trace start ==================
 [2025-03-06T12:04:03.169Z] java.lang.Exception: An error has occurred while deploying helm chart.
