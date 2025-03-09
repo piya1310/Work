@@ -1,0 +1,10 @@
+PS C:\Users\PJadha29\Documents\updated e2e\visualization-mf> helm get manifest rise-visualization-mf -n rise-predev
+helm : The term 'helm' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of 
+the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ helm get manifest rise-visualization-mf -n rise-predev
++ ~~~~
+    + CategoryInfo          : ObjectNotFound: (helm:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\PJadha29\Documents\updated e2e\visualization-mf>
