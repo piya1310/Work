@@ -1,4 +1,331 @@
-following is my manifest-advanced.yaml
+ [Pipeline] // ansiColor
+ [Pipeline] properties
+ [Pipeline] node
+ Running on Jenkins in /var/jenkins_home/workspace/ines_feature_e2eVisualizeDevelop
+ [Pipeline] {
+ [Pipeline] sh
+ + grep -o '^[0-9]*$'
+ + sort -n
+ + ls /var/jenkins_home/jobs/rise-visualization-mf/jobs/development-pipelines/branches/feature-e2eV.40nbic.alizeDevelop/builds
+ + head -n -3
+ [Pipeline] sh
+ + wc -l build_dirs
+ + cut '-d ' -f1
+ [Pipeline] sh
+ [Pipeline] sh
+ [Pipeline] sh
+ [Pipeline] sh
+ + rm -f build_dirs
+ [Pipeline] }
+ [Pipeline] // node
+ [Pipeline] ansiColor
+ [Pipeline] {
+ 
+ [Pipeline] echo
+ [1;35mat class.method: commonStage.execute line: commonStage.groovy:46[0m
+ [Pipeline] }
+ 
+ [Pipeline] // ansiColor
+ [Pipeline] ansiColor
+ [Pipeline] {
+ 
+ [Pipeline] echo
+ [1;34mArchive is disabled, skipping project Archive stage[0m
+ [Pipeline] }
+ 
+ [Pipeline] // ansiColor
+ [Pipeline] libraryResource
+ [Pipeline] libraryResource
+ [Pipeline] readYaml
+ [Pipeline] ansiColor
+ [Pipeline] {
+ 
+ [Pipeline] echo
+ [1;35m5 build result resource definitions to attach[0m
+ [Pipeline] }
+ 
+ [Pipeline] // ansiColor
+ [Pipeline] createSummary
+ [Pipeline] createSummary
+ [Pipeline] createSummary
+ [Pipeline] createSummary
+[Pipeline] createSummary
+[Pipeline] End of Pipeline
+Also:   org.jenkinsci.plugins.workflow.actions.ErrorAction$ErrorId: 0931679b-a1a8-4fd3-80a6-287db9d7c8fa
+java.lang.Exception: history.go:56: 2025-03-07 14:06:34.943247395 +0000 UTC m=+0.875377073 [debug] getting history for release rise-visualization-mf
+upgrade.go:164: 2025-03-07 14:06:35.000556745 +0000 UTC m=+0.932686433 [debug] preparing upgrade for rise-visualization-mf
+upgrade.go:172: 2025-03-07 14:06:35.33553504 +0000 UTC m=+1.267664738 [debug] performing update for rise-visualization-mf
+upgrade.go:375: 2025-03-07 14:06:35.455354077 +0000 UTC m=+1.387483774 [debug] creating upgraded release for rise-visualization-mf
+client.go:393: 2025-03-07 14:06:35.572296683 +0000 UTC m=+1.504426343 [debug] checking 4 resources for changes
+client.go:693: 2025-03-07 14:06:35.601983824 +0000 UTC m=+1.534113521 [debug] Patch Service "rise-visualization-mf" in namespace rise-predev
+client.go:693: 2025-03-07 14:06:35.641076196 +0000 UTC m=+1.573205915 [debug] Patch Deployment "rise-visualization-mf" in namespace rise-predev
+client.go:684: 2025-03-07 14:06:35.707576181 +0000 UTC m=+1.639705871 [debug] Looks like there are no changes for HorizontalPodAutoscaler "rise-visualization-mf-hpa"
+client.go:693: 2025-03-07 14:06:35.746112408 +0000 UTC m=+1.678242103 [debug] Patch Ingress "visualization-mf" in namespace rise-predev
+client.go:425: 2025-03-07 14:06:35.770984695 +0000 UTC m=+1.703114370 [debug] error updating the resource "visualization-mf":
+	 cannot patch "visualization-mf" with kind Ingress: admission webhook "validate.nginx.ingress.kubernetes.io" denied the request: host "dev.visualization-mf.rise.apps.jnj.com" and path "/?(.*)" is already defined in ingress rise-dev/visualization-mf
+upgrade.go:487: 2025-03-07 14:06:35.931378813 +0000 UTC m=+1.863508492 [debug] warning: Upgrade "rise-visualization-mf" failed: cannot patch "visualization-mf" with kind Ingress: admission webhook "validate.nginx.ingress.kubernetes.io" denied the request: host "dev.visualization-mf.rise.apps.jnj.com" and path "/?(.*)" is already defined in ingress rise-dev/visualization-mf
+Error: UPGRADE FAILED: cannot patch "visualization-mf" with kind Ingress: admission webhook "validate.nginx.ingress.kubernetes.io" denied the request: host "dev.visualization-mf.rise.apps.jnj.com" and path "/?(.*)" is already defined in ingress rise-dev/visualization-mf
+helm.go:86: 2025-03-07 14:06:36.051662224 +0000 UTC m=+1.983791895 [debug] cannot patch "visualization-mf" with kind Ingress: admission webhook "validate.nginx.ingress.kubernetes.io" denied the request: host "dev.visualization-mf.rise.apps.jnj.com" and path "/?(.*)" is already defined in ingress rise-dev/visualization-mf
+helm.sh/helm/v3/pkg/kube.(*Client).Update
+	helm.sh/helm/v3/pkg/kube/client.go:438
+helm.sh/helm/v3/pkg/action.(*Upgrade).releasingUpgrade
+	helm.sh/helm/v3/pkg/action/upgrade.go:429
+runtime.goexit
+	runtime/asm_amd64.s:1695
+UPGRADE FAILED
+main.newUpgradeCmd.func2
+	helm.sh/helm/v3/cmd/helm/upgrade.go:243
+github.com/spf13/cobra.(*Command).execute
+	github.com/spf13/cobra@v1.8.1/command.go:985
+github.com/spf13/cobra.(*Command).ExecuteC
+	github.com/spf13/cobra@v1.8.1/command.go:1117
+github.com/spf13/cobra.(*Command).Execute
+	github.com/spf13/cobra@v1.8.1/command.go:1041
+main.main
+	helm.sh/helm/v3/cmd/helm/helm.go:85
+runtime.main
+	runtime/proc.go:271
+runtime.goexit
+	runtime/asm_amd64.s:1695
+
+	at k8s.runScript(k8s.groovy:539)
+	at ___cps.transform___(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.base/java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:83)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:105)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallConstructor(CallSiteArray.java:59)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:238)
+	at com.cloudbees.groovy.cps.sandbox.DefaultInvoker.constructorCall(DefaultInvoker.java:25)
+	at org.jenkinsci.plugins.workflow.cps.LoggingInvoker.constructorCall(LoggingInvoker.java:110)
+	at com.cloudbees.groovy.cps.impl.FunctionCallBlock$ContinuationImpl.dispatchOrArg(FunctionCallBlock.java:100)
+	at com.cloudbees.groovy.cps.impl.FunctionCallBlock$ContinuationImpl.fixArg(FunctionCallBlock.java:85)
+	at jdk.internal.reflect.GeneratedMethodAccessor256.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at com.cloudbees.groovy.cps.impl.ContinuationPtr$ContinuationImpl.receive(ContinuationPtr.java:72)
+	at com.cloudbees.groovy.cps.impl.PropertyishBlock$ContinuationImpl.get(PropertyishBlock.java:75)
+	at com.cloudbees.groovy.cps.LValueBlock$GetAdapter.receive(LValueBlock.java:30)
+	at com.cloudbees.groovy.cps.impl.PropertyishBlock$ContinuationImpl.fixName(PropertyishBlock.java:65)
+	at jdk.internal.reflect.GeneratedMethodAccessor385.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at com.cloudbees.groovy.cps.impl.ContinuationPtr$ContinuationImpl.receive(ContinuationPtr.java:72)
+	at com.cloudbees.groovy.cps.impl.ConstantBlock.eval(ConstantBlock.java:21)
+Caused: java.lang.Exception: An error has occurred while deploying helm chart [rise-visualization-mf].
+	at helm.deploy(helm.groovy:765)
+	at commonStage.withDirAndCleanup(commonStage.groovy:463)
+	at ___cps.transform___(Native Method)
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor6350.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.base/java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:83)
+	at org.codehaus.groovy.reflection.CachedConstructor.doConstructorInvoke(CachedConstructor.java:77)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrap.callConstructor(ConstructorSite.java:84)
+Caused: java.lang.Exception: An error has occurred while deploying helm chart.
+	at helm.deploy(helm.groovy:777)
+	at deploy.execute(deploy.groovy:41)
+	at commonStage.execute(commonStage.groovy:234)
+	at jlib.newStage(jlib.groovy:545)
+	at commonStage.execute(commonStage.groovy:114)
+	at debug.withLogLevel(debug.groovy:14)
+	at commonStage.execute(commonStage.groovy:94)
+	at commonStage.execute(commonStage.groovy)
+	at commonStage.execute(commonStage.groovy:217)
+	at com.cloudbees.groovy.cps.CpsDefaultGroovyMethods.callClosureForMapEntryAndCounter(CpsDefaultGroovyMethods:5377)
+	at com.cloudbees.groovy.cps.CpsDefaultGroovyMethods.eachWithIndex(CpsDefaultGroovyMethods:2250)
+	at commonStage.execute(commonStage.groovy:190)
+	at ___cps.transform___(Native Method)
+	at java.base/jdk.internal.reflect.GeneratedConstructorAccessor6350.newInstance(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.base/java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:83)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:105)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallConstructor(CallSiteArray.java:59)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:238)
+	at com.cloudbees.groovy.cps.sandbox.DefaultInvoker.constructorCall(DefaultInvoker.java:25)
+	at org.jenkinsci.plugins.workflow.cps.LoggingInvoker.constructorCall(LoggingInvoker.java:110)
+	at com.cloudbees.groovy.cps.impl.FunctionCallBlock$ContinuationImpl.dispatchOrArg(FunctionCallBlock.java:100)
+	at com.cloudbees.groovy.cps.impl.FunctionCallBlock$ContinuationImpl.fixArg(FunctionCallBlock.java:85)
+	at jdk.internal.reflect.GeneratedMethodAccessor256.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at com.cloudbees.groovy.cps.impl.ContinuationPtr$ContinuationImpl.receive(ContinuationPtr.java:72)
+	at com.cloudbees.groovy.cps.impl.LocalVariableBlock$LocalVariable.get(LocalVariableBlock.java:39)
+ 	at com.cloudbees.groovy.cps.LValueBlock$GetAdapter.receive(LValueBlock.java:30)
+ 	at com.cloudbees.groovy.cps.impl.LocalVariableBlock.evalLValue(LocalVariableBlock.java:28)
+ 	at com.cloudbees.groovy.cps.LValueBlock$BlockImpl.eval(LValueBlock.java:55)
+ 	at com.cloudbees.groovy.cps.LValueBlock.eval(LValueBlock.java:16)
+ 	at com.cloudbees.groovy.cps.Next.step(Next.java:83)
+ 	at com.cloudbees.groovy.cps.Continuable$1.call(Continuable.java:152)
+ 	at com.cloudbees.groovy.cps.Continuable$1.call(Continuable.java:146)
+ 	at org.codehaus.groovy.runtime.GroovyCategorySupport$ThreadCategoryInfo.use(GroovyCategorySupport.java:136)
+ 	at org.codehaus.groovy.runtime.GroovyCategorySupport.use(GroovyCategorySupport.java:275)
+ 	at com.cloudbees.groovy.cps.Continuable.run0(Continuable.java:146)
+ 	at org.jenkinsci.plugins.workflow.cps.SandboxContinuable.access$001(SandboxContinuable.java:18)
+ 	at org.jenkinsci.plugins.workflow.cps.SandboxContinuable.run0(SandboxContinuable.java:51)
+ 	at org.jenkinsci.plugins.workflow.cps.CpsThread.runNextChunk(CpsThread.java:187)
+ 	at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup.run(CpsThreadGroup.java:423)
+ 	at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup$2.call(CpsThreadGroup.java:331)
+ 	at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup$2.call(CpsThreadGroup.java:295)
+ 	at org.jenkinsci.plugins.workflow.cps.CpsVmExecutorService$2.call(CpsVmExecutorService.java:97)
+ 	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+ 	at hudson.remoting.SingleLaneExecutorService$1.run(SingleLaneExecutorService.java:139)
+ 	at jenkins.util.ContextResettingExecutorService$1.run(ContextResettingExecutorService.java:28)
+ 	at jenkins.security.ImpersonatingExecutorService$1.run(ImpersonatingExecutorService.java:68)
+ 	at jenkins.util.ErrorLoggingExecutorService.lambda$wrap$0(ErrorLoggingExecutorService.java:51)
+ 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+ 	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+ 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+ 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+ 	at java.base/java.lang.Thread.run(Unknown Source)
+ Finished: FAILURE
+
+above error i am getting in deploy stage. I am trying to run my jenkins pipeline. following is my configuration files
+_scm_config\dev.values.yaml
+"""
+visualizationmf:
+  NODE_ENV: "dev"
+  DNS_ELB: "a05dab6048b6d42ffa524680ee08e099-0fbeb73369d9e547.elb.us-east-1.amazonaws.com"
+  NAMESPACE: "rise-predev"
+  HOST: "dev.visualization-mf.rise.apps.jnj.com"
+  SECRET: "dev-visualization-mf-rise-apps-jnj-com"
+  REQUESTS_CPU: "200m"
+  REQUESTS_MEMORY: "2500Mi"
+  LIMITS_CPU: "400m"
+  LIMITS_MEMORY: "4000Mi"
+ingress:
+  enabled: true
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: dev.visualization-mf.rise.apps.jnj.com
+      paths: []
+  tls: []"""
+_scm_container\visualization-mf\Dockerfile
+"""
+FROM jnj.artifactrepo.jnj.com/nginxinc/nginx-unprivileged:1.24-alpine
+
+# Remove the default Nginx configuration
+RUN rm /etc/nginx/conf.d/default.conf
+
+# Inline Nginx configuration that listens on 0.0.0.0:3000
+RUN echo 'server { \
+    listen 0.0.0.0:3000; \
+    server_name localhost; \
+    location / { \
+        root /usr/share/nginx/html; \
+        index index.html; \
+        try_files $uri $uri/ /index.html; \
+    } \
+}' > /etc/nginx/conf.d/default.conf
+
+
+# Copy the contents of the build folder to the Nginx web server directory
+COPY build/ /usr/share/nginx/html/
+
+# Expose port 3000
+EXPOSE 3000
+
+# Start Nginx and your React application on port 3000
+CMD ["nginx", "-g", "daemon off;"]
+"""
+_scm_helm\templates\deployment.yaml
+"""
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "jnj-rise.fullname" . }}
+  labels:
+    application-id: APP000010043717
+    {{- include "jnj-rise.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "jnj-rise.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "jnj-rise.selectorLabels" . | nindent 8 }}
+    spec:
+    {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      serviceAccountName: {{ include "jnj-rise.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          # envFrom
+          env:
+            - name: PORT
+              value: '3000'
+            - name: NODE_ENV
+              value: "{{ .Values.visualizationmf.NODE_ENV }}"
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          resources:
+            requests: 
+              cpu: "{{ .Values.visualizationmf.REQUESTS_CPU }}"
+              memory: "{{ .Values.visualizationmf.REQUESTS_MEMORY }}"
+            limits:
+              cpu: "{{ .Values.visualizationmf.LIMITS_CPU }}"
+              memory: "{{ .Values.visualizationmf.LIMITS_MEMORY }}"
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+
+"""
+_scm_helm\templates\ingress.yaml
+"""
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    external-dns.alpha.kubernetes.io/alias: "true"
+    cert-manager.io/cluster-issuer: sectigo
+    nginx.ingress.kubernetes.io/use-regex: "true"
+  name: visualization-mf
+  namespace: "{{ .Values.visualizationmf.NAMESPACE }}"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "{{ .Values.visualizationmf.HOST }}"
+    http:
+      paths:
+        - backend:
+            service:
+              name: rise-visualization-mf
+              port:
+                number: 80
+          path: /?(.*)
+          pathType: Prefix
+          
+  tls:
+  - hosts:
+    - "{{ .Values.visualizationmf.HOST }}"
+    secretName: "{{ .Values.visualizationmf.SECRET }}"
+"""
+manifest-advanced.yaml
 """
 # Pipeline details across environments (defaults)
 common:
@@ -242,7 +569,7 @@ environments:
           enabled: true
           type: helm
           name: rise-visualization-mf
-          namespace: rise-dev
+          namespace: rise-predev
           configFiles:
             - repo: https://sourcecode.jnj.com/scm/asx-javz/visualization-mf.git
               repoCredentialsId: "sourcecode-bitbucket"
@@ -257,640 +584,6 @@ environments:
             region: us-east-1
             credentialsId: "itx-bvx-eatjenkinsadminapi"
             name: itx-bvx-rise-test
-          atomic: false 
-
+          atomic: false
 """
-follwoing is my  _scm_container\visualization-mf\Dockerfile
-"""
-FROM jnj.artifactrepo.jnj.com/nginxinc/nginx-unprivileged:1.24-alpine
-
-# Remove the default Nginx configuration
-RUN rm /etc/nginx/conf.d/default.conf
-
-# Inline Nginx configuration that listens on 0.0.0.0:3000
-RUN echo 'server { \
-    listen 0.0.0.0:3000; \
-    server_name localhost; \
-    location / { \
-        root /usr/share/nginx/html; \
-        index index.html; \
-        try_files $uri $uri/ /index.html; \
-    } \
-}' > /etc/nginx/conf.d/default.conf
-
-
-# Copy the contents of the build folder to the Nginx web server directory
-COPY build/ /usr/share/nginx/html/
-
-# Expose port 3000
-EXPOSE 3000
-
-# Start Nginx and your React application on port 3000
-CMD ["nginx", "-g", "daemon off;"]"""
-following is my _scm_helm\templates\deployment.yaml
-"""
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: {{ include "jnj-rise.fullname" . }}
-  labels:
-    {{- include "jnj-rise.labels" . | nindent 4 }}
-spec:
-  replicas: {{ .Values.replicaCount }}
-  selector:
-    matchLabels:
-      {{- include "jnj-rise.selectorLabels" . | nindent 6 }}
-  template:
-    metadata:
-      labels:
-        {{- include "jnj-rise.selectorLabels" . | nindent 8 }}
-    spec:
-    {{- with .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-    {{- end }}
-      serviceAccountName: {{ include "jnj-rise.serviceAccountName" . }}
-      securityContext:
-        {{- toYaml .Values.podSecurityContext | nindent 8 }}
-      containers:
-        - name: {{ .Chart.Name }}
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          # envFrom
-          env:
-            - name: PORT
-              value: '3000'
-            - name: NODE_ENV
-              value: "{{ .Values.visualizationmf.NODE_ENV }}"
-          ports:
-            - name: http
-              containerPort: 3000
-              protocol: TCP
-          resources:
-            requests: 
-              cpu: "{{ .Values.visualizationmf.REQUESTS_CPU }}"
-              memory: "{{ .Values.visualizationmf.REQUESTS_MEMORY }}"
-            limits:
-              cpu: "{{ .Values.visualizationmf.LIMITS_CPU }}"
-              memory: "{{ .Values.visualizationmf.LIMITS_MEMORY }}"
-      {{- with .Values.nodeSelector }}
-      nodeSelector:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-    {{- with .Values.affinity }}
-      affinity:
-        {{- toYaml . | nindent 8 }}
-    {{- end }}
-    {{- with .Values.tolerations }}
-      tolerations:
-        {{- toYaml . | nindent 8 }}
-    {{- end }}
-
-"""
-following is my _scm_helm\templates\ingress.yaml
-"""
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  annotations:
-    external-dns.alpha.kubernetes.io/alias: "true"
-    cert-manager.io/cluster-issuer: sectigo
-    nginx.ingress.kubernetes.io/use-regex: "true"
-  name: visualization-mf
-  namespace: "{{ .Values.visualizationmf.NAMESPACE }}"
-spec:
-  ingressClassName: nginx
-  rules:
-  - host: "{{ .Values.visualizationmf.HOST }}"
-    http:
-      paths:
-        - backend:
-            service:
-              name: rise-visualization-mf
-              port:
-                number: 80
-          path: /?(.*)
-          pathType: Prefix
-          
-  tls:
-  - hosts:
-    - "{{ .Values.visualizationmf.HOST }}"
-    secretName: "{{ .Values.visualizationmf.SECRET }}"
-"""
-following is my _scm_helm\values.yaml
-"""
-# Default values for jnj-rise.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
-replicaCount: 1
-image:
-  repository: javz-docker.artifactrepo.jnj.com/visualization-mf
-  pullPolicy: IfNotPresent
-  tag: 1.0.0
-imagePullSecrets:
-- name: javz-docker-artifactory
-nameOverride: ""
-fullnameOverride: ""
-serviceAccount:
-  # Specifies whether a service account should be created
-  create: false
-  # Annotations to add to the service account
-  annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name:
-podSecurityContext: {}
-# fsGroup: 2000
-
-securityContext: {}
-# capabilities:
-#   drop:
-#   - ALL
-# readOnlyRootFilesystem: true
-# runAsNonRoot: true
-# runAsUser: 1000
-
-service:
-  type: ClusterIP
-  port: 80
-
-"""
-folowing are my pipeline.log . where i am getting error but how to resolve it
-"""
-+ docker login -u sa-itsus-javz-devusr -p **** https://jnj-docker.artifactrepo.jnj.com
-[2025-03-07T11:06:14.534Z] WARNING! Using --password via the CLI is insecure. Use --password-stdin.
-[2025-03-07T11:06:14.534Z] WARNING! Your password will be stored unencrypted in /tmp/tmp.TWmVtt7zSO/config.json.
-[2025-03-07T11:06:14.534Z] Configure a credential helper to remove this warning. See
-[2025-03-07T11:06:14.534Z] https://docs.docker.com/engine/reference/commandline/login/#credentials-store
-[2025-03-07T11:06:14.534Z] 
-[2025-03-07T11:06:14.534Z] Login Succeeded
-[2025-03-07T11:06:14.537Z] [Pipeline] }
-[2025-03-07T11:06:14.556Z] [Pipeline] // maskPasswords
-[2025-03-07T11:06:14.576Z] [Pipeline] }
-[2025-03-07T11:06:14.596Z] [Pipeline] // retry
-[2025-03-07T11:06:14.638Z] [Pipeline] }
-[2025-03-07T11:06:14.663Z] [Pipeline] // withCredentials
-[2025-03-07T11:06:14.689Z] [Pipeline] isUnix
-[2025-03-07T11:06:14.695Z] [Pipeline] withEnv
-[2025-03-07T11:06:14.695Z] [Pipeline] {
-[2025-03-07T11:06:14.718Z] [Pipeline] sh
-[2025-03-07T11:06:14.995Z] + docker inspect -f . jnj.artifactrepo.jnj.com/jpm/semver:6
-[2025-03-07T11:06:14.995Z] .
-[2025-03-07T11:06:14.998Z] [Pipeline] }
-[2025-03-07T11:06:15.017Z] [Pipeline] // withEnv
-[2025-03-07T11:06:15.045Z] [Pipeline] withDockerContainer
-[2025-03-07T11:06:15.069Z] persistent-docker-worker-0 seems to be running inside container 4d5c19ea0b13406dbee8ffdeb6b0118c6d7353a9376eb75810e52bf985b20eac
-[2025-03-07T11:06:15.121Z] but /home/jenkins/agent/workspace/rise-visualization-mf-development-pipelines-feature-2Fe2eVisualizeDevelop could not be found among []
-[2025-03-07T11:06:15.121Z] but /home/jenkins/agent/workspace/rise-visualization-mf-development-pipelines-feature-2Fe2eVisualizeDevelop@tmp could not be found among []
-[2025-03-07T11:06:15.136Z] $ docker run -t -d -u 1000:1000 -w /home/jenkins/agent/workspace/rise-visualization-mf-development-pipelines-feature-2Fe2eVisualizeDevelop -v /home/jenkins/agent/workspace/rise-visualization-mf-development-pipelines-feature-2Fe2eVisualizeDevelop:/home/jenkins/agent/workspace/rise-visualization-mf-development-pipelines-feature-2Fe2eVisualizeDevelop:rw,z -v /home/jenkins/agent/workspace/rise-visualization-mf-development-pipelines-feature-2Fe2eVisualizeDevelop@tmp:/home/jenkins/agent/workspace/rise-visualization-mf-development-pipelines-feature-2Fe2eVisualizeDevelop@tmp:rw,z -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** jnj.artifactrepo.jnj.com/jpm/semver:6 cat
-[2025-03-07T11:06:15.449Z] $ docker top dbaee90f112d7c853f80dfd769845176c28a72342c6a9ad47e5766c33ef90121 -eo pid,comm
-[2025-03-07T11:06:15.523Z] [Pipeline] {
-[2025-03-07T11:06:15.551Z] [Pipeline] libraryResource
-[2025-03-07T11:06:15.620Z] [Pipeline] isUnix
-[2025-03-07T11:06:15.624Z] [Pipeline] isUnix
-[2025-03-07T11:06:15.649Z] [Pipeline] ansiColor
-[2025-03-07T11:06:15.649Z] [Pipeline] {
-[2025-03-07T11:06:15.649Z] 
-[2025-03-07T11:06:15.672Z] [Pipeline] echo
-[2025-03-07T11:06:15.672Z] [1;35mExecuting and capturing output/status ->
-[2025-03-07T11:06:15.672Z]     #!/bin/bash
-[2025-03-07T11:06:15.672Z]         set +x
-[2025-03-07T11:06:15.672Z]         { { ( semver --range ">=25.0.3" "`semver -c 25.0.3`" ) } > >(tee stdout.log ); } 2> >(tee stderr.log)[0m
-[2025-03-07T11:06:15.672Z] [Pipeline] }
-[2025-03-07T11:06:15.672Z] 
-[2025-03-07T11:06:15.690Z] [Pipeline] // ansiColor
-[2025-03-07T11:06:15.713Z] [Pipeline] isUnix
-[2025-03-07T11:06:15.718Z] [Pipeline] sh
-[2025-03-07T11:06:15.984Z] 25.0.3
-[2025-03-07T11:06:15.992Z] [Pipeline] fileExists
-[2025-03-07T11:06:16.014Z] [Pipeline] readFile
-[2025-03-07T11:06:16.037Z] [Pipeline] fileExists
-[2025-03-07T11:06:16.059Z] [Pipeline] readFile
-[2025-03-07T11:06:16.082Z] [Pipeline] isUnix
-[2025-03-07T11:06:16.086Z] [Pipeline] sh
-[2025-03-07T11:06:16.351Z] + rm -f stdout.log stderr.log
-[2025-03-07T11:06:16.359Z] [Pipeline] isUnix
-[2025-03-07T11:06:16.378Z] [Pipeline] }
-[2025-03-07T11:06:16.380Z] $ docker stop --time=1 dbaee90f112d7c853f80dfd769845176c28a72342c6a9ad47e5766c33ef90121
-[2025-03-07T11:06:17.648Z] $ docker rm -f --volumes dbaee90f112d7c853f80dfd769845176c28a72342c6a9ad47e5766c33ef90121
-[2025-03-07T11:06:17.715Z] [Pipeline] // withDockerContainer
-[2025-03-07T11:06:17.737Z] [Pipeline] }
-[2025-03-07T11:06:17.758Z] [Pipeline] // withEnv
-[2025-03-07T11:06:17.784Z] [Pipeline] isUnix
-[2025-03-07T11:06:17.788Z] [Pipeline] sh
-[2025-03-07T11:06:18.053Z] + rm -r /tmp/tmp.TWmVtt7zSO
-[2025-03-07T11:06:18.060Z] [Pipeline] }
-[2025-03-07T11:06:18.078Z] [Pipeline] // ws
-[2025-03-07T11:06:18.099Z] [Pipeline] }
-[2025-03-07T11:06:18.120Z] [Pipeline] // node
-[2025-03-07T11:06:18.156Z] [Pipeline] libraryResource
-[2025-03-07T11:06:18.297Z] [Pipeline] ansiColor
-[2025-03-07T11:06:18.297Z] [Pipeline] {
-[2025-03-07T11:06:18.297Z] 
-[2025-03-07T11:06:18.321Z] [Pipeline] echo
-[2025-03-07T11:06:18.322Z] [1;35mLabel: worker was requested but not found in [], acquiring a new node.[0m
-[2025-03-07T11:06:18.322Z] [Pipeline] }
-[2025-03-07T11:06:18.322Z] 
-[2025-03-07T11:06:18.341Z] [Pipeline] // ansiColor
-[2025-03-07T11:06:18.374Z] [Pipeline] node
-[2025-03-07T11:06:18.377Z] Running on persistent-docker-worker-0 in /home/jenkins/agent/workspace/rise-visualization-mf/development-pipelines/feature%2Fe2eVisualizeDevelop
-[2025-03-07T11:06:18.405Z] [Pipeline] {
-[2025-03-07T11:06:18.441Z] [Pipeline] pwd
-[2025-03-07T11:06:18.475Z] [Pipeline] isUnix
-[2025-03-07T11:06:18.515Z] [Pipeline] ws
-[2025-03-07T11:06:18.515Z] Running in /home/jenkins/agent/workspace/rise-visualization-mf-development-pipelines-feature-2Fe2eVisualizeDevelop
-[2025-03-07T11:06:18.515Z] [Pipeline] {
-[2025-03-07T11:06:18.571Z] [Pipeline] libraryResource
-[2025-03-07T11:06:18.694Z] [Pipeline] ansiColor
-[2025-03-07T11:06:18.694Z] [Pipeline] {
-[2025-03-07T11:06:18.695Z] 
-[2025-03-07T11:06:18.721Z] [Pipeline] echo
-[2025-03-07T11:06:18.722Z] [1;34mNode hostname: javz-dev-jenkins-eat-k8s-jenkins-persistent-docker-worker-fr78r[0m
-[2025-03-07T11:06:18.722Z] [Pipeline] }
-[2025-03-07T11:06:18.722Z] 
-[2025-03-07T11:06:18.742Z] [Pipeline] // ansiColor
-[2025-03-07T11:06:18.775Z] [Pipeline] dir
-[2025-03-07T11:06:18.775Z] Running in /home/jenkins/agent/workspace/rise-visualization-mf-development-pipelines-feature-2Fe2eVisualizeDevelop/tmp
-[2025-03-07T11:06:18.775Z] [Pipeline] {
-[2025-03-07T11:06:18.812Z] [Pipeline] deleteDir
-[2025-03-07T11:06:18.839Z] [Pipeline] ansiColor
-[2025-03-07T11:06:18.839Z] [Pipeline] {
-[2025-03-07T11:06:18.839Z] 
-[2025-03-07T11:06:18.863Z] [Pipeline] echo
-[2025-03-07T11:06:18.864Z] [1;34marchiving current state of jobVars in job manifest[0m
-[2025-03-07T11:06:18.864Z] [Pipeline] }
-[2025-03-07T11:06:18.864Z] 
-[2025-03-07T11:06:18.883Z] [Pipeline] // ansiColor
-[2025-03-07T11:06:18.914Z] [Pipeline] writeFile
-[2025-03-07T11:06:18.951Z] [Pipeline] archiveArtifacts
-[2025-03-07T11:06:18.954Z] Archiving artifacts
-[2025-03-07T11:06:18.992Z] [Pipeline] deleteDir
-[2025-03-07T11:06:19.024Z] [Pipeline] }
-[2025-03-07T11:06:19.057Z] [Pipeline] // dir
-[2025-03-07T11:06:19.081Z] [Pipeline] }
-[2025-03-07T11:06:19.102Z] [Pipeline] // ws
-[2025-03-07T11:06:19.133Z] [Pipeline] }
-[2025-03-07T11:06:19.155Z] [Pipeline] // node
-[2025-03-07T11:06:19.188Z] [Pipeline] ansiColor
-[2025-03-07T11:06:19.188Z] [Pipeline] {
-[2025-03-07T11:06:19.188Z] 
-[2025-03-07T11:06:19.212Z] [Pipeline] echo
-[2025-03-07T11:06:19.212Z] [1;35mUpdating pipeline properties:
-[2025-03-07T11:06:19.212Z] ---
-[2025-03-07T11:06:19.212Z] - arguments:
-[2025-03-07T11:06:19.212Z]     abortPrevious: false
-[2025-03-07T11:06:19.212Z]   klass: null
-[2025-03-07T11:06:19.212Z]   symbol: "disableConcurrentBuilds"
-[2025-03-07T11:06:19.212Z]   model: null
-[2025-03-07T11:06:19.212Z]   interpolatedStrings: []
-[2025-03-07T11:06:19.212Z] - arguments: {}
-[2025-03-07T11:06:19.212Z]   klass: null
-[2025-03-07T11:06:19.212Z]   symbol: "disableResume"
-[2025-03-07T11:06:19.212Z]   model: null
-[2025-03-07T11:06:19.212Z]   interpolatedStrings: []
-[2025-03-07T11:06:19.212Z] - $class: "BuildDiscarderProperty"
-[2025-03-07T11:06:19.212Z]   strategy:
-[2025-03-07T11:06:19.212Z]     $class: "LogRotator"
-[2025-03-07T11:06:19.212Z]     artifactDaysToKeepStr: ""
-[2025-03-07T11:06:19.212Z]     artifactNumToKeepStr: ""
-[2025-03-07T11:06:19.212Z]     daysToKeepStr: ""
-[2025-03-07T11:06:19.212Z]     numToKeepStr: "10"
-[2025-03-07T11:06:19.212Z] - arguments:
-[2025-03-07T11:06:19.212Z]     <anonymous>:
-[2025-03-07T11:06:19.212Z]     - arguments:
-[2025-03-07T11:06:19.212Z]         defaultValue: false
-[2025-03-07T11:06:19.212Z]         description: "execute the [Assemble for Test] phase"
-[2025-03-07T11:06:19.212Z]         name: "assembleForTest"
-[2025-03-07T11:06:19.212Z]       klass: null
-[2025-03-07T11:06:19.212Z]       symbol: "booleanParam"
-[2025-03-07T11:06:19.212Z]       model: null
-[2025-03-07T11:06:19.212Z]       interpolatedStrings:
-[2025-03-07T11:06:19.212Z]       - "execute the [Assemble for Test] phase"
-[2025-03-07T11:06:19.212Z]     - arguments:
-[2025-03-07T11:06:19.212Z]         defaultValue: true
-[2025-03-07T11:06:19.212Z]         description: "execute the [Lint] phase"
-[2025-03-07T11:06:19.212Z]         name: "lint"
-[2025-03-07T11:06:19.212Z]       klass: null
-[2025-03-07T11:06:19.212Z]       symbol: "booleanParam"
-[2025-03-07T11:06:19.212Z]       model: null
-[2025-03-07T11:06:19.212Z]       interpolatedStrings:
-[2025-03-07T11:06:19.212Z]       - "execute the [Lint] phase"
-[2025-03-07T11:06:19.212Z]     - arguments:
-[2025-03-07T11:06:19.212Z]         defaultValue: false
-[2025-03-07T11:06:19.212Z]         description: "execute the [Unit Test] phase"
-[2025-03-07T11:06:19.212Z]         name: "unitTest"
-[2025-03-07T11:06:19.212Z]       klass: null
-[2025-03-07T11:06:19.212Z]       symbol: "booleanParam"
-[2025-03-07T11:06:19.212Z]       model: null
-[2025-03-07T11:06:19.212Z]       interpolatedStrings:
-[2025-03-07T11:06:19.212Z]       - "execute the [Unit Test] phase"
-[2025-03-07T11:06:19.212Z]     - arguments:
-[2025-03-07T11:06:19.212Z]         defaultValue: false
-[2025-03-07T11:06:19.212Z]         description: "execute the [Dependency Analysis] phase"
-[2025-03-07T11:06:19.212Z]         name: "dependencyAnalysis"
-[2025-03-07T11:06:19.212Z]       klass: null
-[2025-03-07T11:06:19.212Z]       symbol: "booleanParam"
-[2025-03-07T11:06:19.212Z]       model: null
-[2025-03-07T11:06:19.212Z]       interpolatedStrings:
-[2025-03-07T11:06:19.212Z]       - "execute the [Dependency Analysis] phase"
-[2025-03-07T11:06:19.212Z]     - arguments:
-[2025-03-07T11:06:19.212Z]         defaultValue: true
-[2025-03-07T11:06:19.212Z]         description: "execute the [Static Analysis] phase"
-[2025-03-07T11:06:19.212Z]         name: "staticAnalysis"
-[2025-03-07T11:06:19.212Z]       klass: null
-[2025-03-07T11:06:19.212Z]       symbol: "booleanParam"
-[2025-03-07T11:06:19.212Z]       model: null
-[2025-03-07T11:06:19.212Z]       interpolatedStrings:
-[2025-03-07T11:06:19.212Z]       - "execute the [Static Analysis] phase"
-[2025-03-07T11:06:19.212Z]     - arguments:
-[2025-03-07T11:06:19.212Z]         defaultValue: false
-[2025-03-07T11:06:19.212Z]         description: "execute the [Software Composition Analysis] phase"
-[2025-03-07T11:06:19.212Z]         name: "scaAnalysis"
-[2025-03-07T11:06:19.212Z]       klass: null
-[2025-03-07T11:06:19.212Z]       symbol: "booleanParam"
-[2025-03-07T11:06:19.212Z]       model: null
-[2025-03-07T11:06:19.212Z]       interpolatedStrings:
-[2025-03-07T11:06:19.212Z]       - "execute the [Software Composition Analysis] phase"
-[2025-03-07T11:06:19.212Z]     - arguments:
-[2025-03-07T11:06:19.212Z]         defaultValue: false
-[2025-03-07T11:06:19.212Z]         description: "set to true to execute a prerelease"
-[2025-03-07T11:06:19.212Z]         name: "executePrerelease"
-[2025-03-07T11:06:19.212Z]       klass: null
-[2025-03-07T11:06:19.212Z]       symbol: "booleanParam"
-[2025-03-07T11:06:19.212Z]       model: null
-[2025-03-07T11:06:19.212Z]       interpolatedStrings: []
-[2025-03-07T11:06:19.212Z]     - arguments:
-[2025-03-07T11:06:19.212Z]         defaultValue: false
-[2025-03-07T11:06:19.212Z]         description: "set to true to execute a release"
-[2025-03-07T11:06:19.212Z]         name: "executeRelease"
-[2025-03-07T11:06:19.212Z]       klass: null
-[2025-03-07T11:06:19.212Z]       symbol: "booleanParam"
-[2025-03-07T11:06:19.212Z]       model: null
-[2025-03-07T11:06:19.212Z]       interpolatedStrings: []
-[2025-03-07T11:06:19.212Z]     - arguments:
-[2025-03-07T11:06:19.212Z]         defaultValue: ""
-[2025-03-07T11:06:19.212Z]         description: "set this value to explicitly set the value of the release or\
-[2025-03-07T11:06:19.212Z]           \ prerelease"
-[2025-03-07T11:06:19.212Z]         name: "versionOverride"
-[2025-03-07T11:06:19.212Z]       klass: null
-[2025-03-07T11:06:19.212Z]       symbol: "stringParam"
-[2025-03-07T11:06:19.212Z]       model: null
-[2025-03-07T11:06:19.212Z]       interpolatedStrings: []
-[2025-03-07T11:06:19.212Z]     - arguments:
-[2025-03-07T11:06:19.212Z]         defaultValue: true
-[2025-03-07T11:06:19.212Z]         description: "execute the [Assemble for Package] phase"
-[2025-03-07T11:06:19.212Z]         name: "assembleForPackage"
-[2025-03-07T11:06:19.212Z]       klass: null
-[2025-03-07T11:06:19.212Z]       symbol: "booleanParam"
-[2025-03-07T11:06:19.212Z]       model: null
-[2025-03-07T11:06:19.212Z]       interpolatedStrings:
-[2025-03-07T11:06:19.212Z]       - "execute the [Assemble for Package] phase"
-[2025-03-07T11:06:19.212Z]     - arguments:
-[2025-03-07T11:06:19.212Z]         defaultValue: false
-[2025-03-07T11:06:19.212Z]         description: "execute the [Resolve Artifacts] phase"
-[2025-03-07T11:06:19.212Z]         name: "resolveArtifacts"
-[2025-03-07T11:06:19.212Z]       klass: null
-[2025-03-07T11:06:19.212Z]       symbol: "booleanParam"
-[2025-03-07T11:06:19.212Z]       model: null
-[2025-03-07T11:06:19.212Z]       interpolatedStrings:
-[2025-03-07T11:06:19.212Z]       - "execute the [Resolve Artifacts] phase"
-[2025-03-07T11:06:19.212Z]     - arguments:
-[2025-03-07T11:06:19.212Z]         defaultValue: true
-[2025-03-07T11:06:19.212Z]         description: "execute the [Package] phase"
-[2025-03-07T11:06:19.212Z]         name: "package"
-[2025-03-07T11:06:19.212Z]       klass: null
-[2025-03-07T11:06:19.212Z]       symbol: "booleanParam"
-[2025-03-07T11:06:19.212Z]       model: null
-[2025-03-07T11:06:19.212Z]       interpolatedStrings:
-[2025-03-07T11:06:19.212Z]       - "execute the [Package] phase"
-[2025-03-07T11:06:19.212Z]     - arguments:
-[2025-03-07T11:06:19.212Z]         defaultValue: true
-[2025-03-07T11:06:19.212Z]         description: "execute the [Publish] phase"
-[2025-03-07T11:06:19.212Z]         name: "publish"
-[2025-03-07T11:06:19.212Z]       klass: null
-[2025-03-07T11:06:19.212Z]       symbol: "booleanParam"
-[2025-03-07T11:06:19.212Z]       model: null
-[2025-03-07T11:06:19.212Z]       interpolatedStrings:
-[2025-03-07T11:06:19.212Z]       - "execute the [Publish] phase"
-[2025-03-07T11:06:19.212Z]     - arguments:
-[2025-03-07T11:06:19.212Z]         defaultValue: false
-[2025-03-07T11:06:19.212Z]         description: "execute the [Build Analysis] phase"
-[2025-03-07T11:06:19.212Z]         name: "buildAnalysis"
-[2025-03-07T11:06:19.212Z]       klass: null
-[2025-03-07T11:06:19.212Z]       symbol: "booleanParam"
-[2025-03-07T11:06:19.212Z]       model: null
-[2025-03-07T11:06:19.212Z]       interpolatedStrings:
-[2025-03-07T11:06:19.212Z]       - "execute the [Build Analysis] phase"
-[2025-03-07T11:06:19.212Z]     - arguments:
-[2025-03-07T11:06:19.212Z]         defaultValue: true
-[2025-03-07T11:06:19.212Z]         description: "execute the [Deploy] phase"
-[2025-03-07T11:06:19.212Z]         name: "deploy"
-[2025-03-07T11:06:19.212Z]       klass: null
-[2025-03-07T11:06:19.212Z]       symbol: "booleanParam"
-[2025-03-07T11:06:19.212Z]       model: null
-[2025-03-07T11:06:19.212Z]       interpolatedStrings:
-[2025-03-07T11:06:19.212Z]       - "execute the [Deploy] phase"
-[2025-03-07T11:06:19.212Z]     - arguments:
-[2025-03-07T11:06:19.212Z]         defaultValue: false
-[2025-03-07T11:06:19.212Z]         description: "execute the [Post Deploy] phase"
-[2025-03-07T11:06:19.212Z]         name: "postDeploy"
-[2025-03-07T11:06:19.212Z]       klass: null
-[2025-03-07T11:06:19.212Z]       symbol: "booleanParam"
-[2025-03-07T11:06:19.212Z]       model: null
-[2025-03-07T11:06:19.212Z]       interpolatedStrings:
-[2025-03-07T11:06:19.212Z]       - "execute the [Post Deploy] phase"
-[2025-03-07T11:06:19.212Z]     - arguments:
-[2025-03-07T11:06:19.212Z]         defaultValue: false
-[2025-03-07T11:06:19.212Z]         description: "execute the [Integration Test] phase"
-[2025-03-07T11:06:19.212Z]         name: "integrationTest"
-[2025-03-07T11:06:19.212Z]       klass: null
-[2025-03-07T11:06:19.212Z]       symbol: "booleanParam"
-[2025-03-07T11:06:19.212Z]       model: null
-[2025-03-07T11:06:19.212Z]       interpolatedStrings:
-[2025-03-07T11:06:19.212Z]       - "execute the [Integration Test] phase"
-[2025-03-07T11:06:19.212Z]     - arguments:
-[2025-03-07T11:06:19.212Z]         defaultValue: false
-[2025-03-07T11:06:19.212Z]         description: "execute the [Regression Test] phase"
-[2025-03-07T11:06:19.212Z]         name: "regressionTest"
-[2025-03-07T11:06:19.212Z]       klass: null
-[2025-03-07T11:06:19.212Z]       symbol: "booleanParam"
-[2025-03-07T11:06:19.212Z]       model: null
-[2025-03-07T11:06:19.212Z]       interpolatedStrings:
-[2025-03-07T11:06:19.212Z]       - "execute the [Regression Test] phase"
-[2025-03-07T11:06:19.212Z]     - arguments:
-[2025-03-07T11:06:19.212Z]         defaultValue: false
-[2025-03-07T11:06:19.212Z]         description: "execute the [Performance Test] phase"
-[2025-03-07T11:06:19.212Z]         name: "performanceTest"
-[2025-03-07T11:06:19.212Z]       klass: null
-[2025-03-07T11:06:19.212Z]       symbol: "booleanParam"
-[2025-03-07T11:06:19.212Z]       model: null
-[2025-03-07T11:06:19.212Z]       interpolatedStrings:
-[2025-03-07T11:06:19.212Z]       - "execute the [Performance Test] phase"
-[2025-03-07T11:06:19.212Z]     - arguments:
-[2025-03-07T11:06:19.212Z]         defaultValue: false
-[2025-03-07T11:06:19.212Z]         description: "execute the [Dynamic Analysis] phase"
-[2025-03-07T11:06:19.212Z]         name: "dynamicAnalysis"
-[2025-03-07T11:06:19.212Z]       klass: null
-[2025-03-07T11:06:19.212Z]       symbol: "booleanParam"
-[2025-03-07T11:06:19.212Z]       model: null
-[2025-03-07T11:06:19.212Z]       interpolatedStrings:
-[2025-03-07T11:06:19.212Z]       - "execute the [Dynamic Analysis] phase"
-[2025-03-07T11:06:19.212Z]     - arguments:
-[2025-03-07T11:06:19.212Z]         defaultValue: false
-[2025-03-07T11:06:19.212Z]         description: "execute the [Dynamic Analysis] phase"
-[2025-03-07T11:06:19.212Z]         name: "postDeploymentDynamicAnalysis"
-[2025-03-07T11:06:19.212Z]       klass: null
-[2025-03-07T11:06:19.212Z]       symbol: "booleanParam"
-[2025-03-07T11:06:19.212Z]       model: null
-[2025-03-07T11:06:19.212Z]       interpolatedStrings:
-[2025-03-07T11:06:19.212Z]       - "execute the [Dynamic Analysis] phase"
-[2025-03-07T11:06:19.212Z]     - arguments:
-[2025-03-07T11:06:19.212Z]         defaultValue: false
-[2025-03-07T11:06:19.212Z]         description: "execute the [Published Archived Artifacts] phase"
-[2025-03-07T11:06:19.212Z]         name: "archive"
-[2025-03-07T11:06:19.212Z]       klass: null
-[2025-03-07T11:06:19.212Z]       symbol: "booleanParam"
-[2025-03-07T11:06:19.212Z]       model: null
-[2025-03-07T11:06:19.212Z]       interpolatedStrings:
-[2025-03-07T11:06:19.212Z]       - "execute the [Published Archived Artifacts] phase"
-[2025-03-07T11:06:19.212Z]   klass: null
-[2025-03-07T11:06:19.212Z]   symbol: "parameters"
-[2025-03-07T11:06:19.212Z]   model: null
-[2025-03-07T11:06:19.212Z]   interpolatedStrings:
-[2025-03-07T11:06:19.212Z]   - "execute the [Published Archived Artifacts] phase"
-[2025-03-07T11:06:19.212Z]   - "execute the [Assemble for Test] phase"
-[2025-03-07T11:06:19.212Z]   - "execute the [Dynamic Analysis] phase"
-[2025-03-07T11:06:19.212Z]   - "execute the [Build Analysis] phase"
-[2025-03-07T11:06:19.212Z]   - "execute the [Unit Test] phase"
-[2025-03-07T11:06:19.212Z]   - "execute the [Software Composition Analysis] phase"
-[2025-03-07T11:06:19.212Z]   - "execute the [Package] phase"
-[2025-03-07T11:06:19.212Z]   - "execute the [Resolve Artifacts] phase"
-[2025-03-07T11:06:19.212Z]   - "execute the [Regression Test] phase"
-[2025-03-07T11:06:19.212Z]   - "execute the [Post Deploy] phase"
-[2025-03-07T11:06:19.212Z]   - "execute the [Integration Test] phase"
-[2025-03-07T11:06:19.212Z]   - "execute the [Performance Test] phase"
-[2025-03-07T11:06:19.212Z]   - "execute the [Lint] phase"
-[2025-03-07T11:06:19.212Z]   - "execute the [Static Analysis] phase"
-[2025-03-07T11:06:19.212Z]   - "execute the [Publish] phase"
-[2025-03-07T11:06:19.212Z]   - "execute the [Assemble for Package] phase"
-[2025-03-07T11:06:19.212Z]   - "execute the [Dependency Analysis] phase"
-[2025-03-07T11:06:19.212Z]   - "execute the [Deploy] phase"
-[2025-03-07T11:06:19.212Z] [0m
-[2025-03-07T11:06:19.212Z] [Pipeline] }
-[2025-03-07T11:06:19.213Z] 
-[2025-03-07T11:06:19.232Z] [Pipeline] // ansiColor
-[2025-03-07T11:06:19.262Z] [Pipeline] properties
-[2025-03-07T11:06:19.296Z] [Pipeline] node
-[2025-03-07T11:06:19.298Z] Running on Jenkins in /var/jenkins_home/workspace/ines_feature_e2eVisualizeDevelop
-[2025-03-07T11:06:19.327Z] [Pipeline] {
-[2025-03-07T11:06:19.370Z] [Pipeline] sh
-[2025-03-07T11:06:19.630Z] + sort -n
-[2025-03-07T11:06:19.630Z] + grep -o '^[0-9]*$'
-[2025-03-07T11:06:19.630Z] + ls /var/jenkins_home/jobs/rise-visualization-mf/jobs/development-pipelines/branches/feature-e2eV.40nbic.alizeDevelop/builds
-[2025-03-07T11:06:19.630Z] + head -n -3
-[2025-03-07T11:06:19.638Z] [Pipeline] sh
-[2025-03-07T11:06:19.897Z] + wc -l build_dirs
-[2025-03-07T11:06:19.897Z] + cut '-d ' -f1
-[2025-03-07T11:06:19.905Z] [Pipeline] sh
-[2025-03-07T11:06:20.170Z] [Pipeline] sh
-[2025-03-07T11:06:20.434Z] [Pipeline] sh
-[2025-03-07T11:06:20.698Z] [Pipeline] sh
-[2025-03-07T11:06:20.955Z] + rm -f build_dirs
-[2025-03-07T11:06:20.956Z] [Pipeline] }
-[2025-03-07T11:06:20.985Z] [Pipeline] // node
-[2025-03-07T11:06:21.045Z] [Pipeline] ansiColor
-[2025-03-07T11:06:21.045Z] [Pipeline] {
-[2025-03-07T11:06:21.046Z] 
-[2025-03-07T11:06:21.073Z] [Pipeline] echo
-[2025-03-07T11:06:21.074Z] [1;35mat class.method: commonStage.execute line: commonStage.groovy:46[0m
-[2025-03-07T11:06:21.074Z] [Pipeline] }
-[2025-03-07T11:06:21.074Z] 
-[2025-03-07T11:06:21.096Z] [Pipeline] // ansiColor
-[2025-03-07T11:06:21.149Z] [Pipeline] ansiColor
-[2025-03-07T11:06:21.150Z] [Pipeline] {
-[2025-03-07T11:06:21.150Z] 
-[2025-03-07T11:06:21.179Z] [Pipeline] echo
-[2025-03-07T11:06:21.179Z] [1;34mArchive is disabled, skipping project Archive stage[0m
-[2025-03-07T11:06:21.179Z] [Pipeline] }
-[2025-03-07T11:06:21.180Z] 
-[2025-03-07T11:06:21.199Z] [Pipeline] // ansiColor
-[2025-03-07T11:06:21.235Z] [Pipeline] libraryResource
-[2025-03-07T11:06:21.346Z] [Pipeline] libraryResource
-[2025-03-07T11:06:21.355Z] [Pipeline] readYaml
-[2025-03-07T11:06:21.413Z] [Pipeline] ansiColor
-[2025-03-07T11:06:21.413Z] [Pipeline] {
-[2025-03-07T11:06:21.414Z] 
-[2025-03-07T11:06:21.438Z] [Pipeline] echo
-[2025-03-07T11:06:21.438Z] [1;35m5 build result resource definitions to attach[0m
-[2025-03-07T11:06:21.438Z] [Pipeline] }
-[2025-03-07T11:06:21.438Z] 
-[2025-03-07T11:06:21.458Z] [Pipeline] // ansiColor
-[2025-03-07T11:06:21.497Z] [Pipeline] createSummary
-[2025-03-07T11:06:21.523Z] [Pipeline] createSummary
-[2025-03-07T11:06:21.549Z] [Pipeline] createSummary
-[2025-03-07T11:06:21.574Z] [Pipeline] createSummary
-[2025-03-07T11:06:21.600Z] [Pipeline] createSummary
-[2025-03-07T11:06:22.072Z] [Pipeline] End of Pipeline
-[2025-03-07T11:06:22.443Z] Also:   org.jenkinsci.plugins.workflow.actions.ErrorAction$ErrorId: e60bd4bd-db52-4f58-9c50-1dfafba2860b
-[2025-03-07T11:06:22.443Z] java.lang.Exception: history.go:56: 2025-03-07 11:00:14.593106606 +0000 UTC m=+0.776168967 [debug] getting history for release rise-visualization-mf
-[2025-03-07T11:06:22.443Z] upgrade.go:164: 2025-03-07 11:00:14.615754662 +0000 UTC m=+0.798817024 [debug] preparing upgrade for rise-visualization-mf
-[2025-03-07T11:06:22.443Z] upgrade.go:172: 2025-03-07 11:00:14.796075786 +0000 UTC m=+0.979138160 [debug] performing update for rise-visualization-mf
-[2025-03-07T11:06:22.443Z] upgrade.go:375: 2025-03-07 11:00:14.906469178 +0000 UTC m=+1.089531543 [debug] creating upgraded release for rise-visualization-mf
-[2025-03-07T11:06:22.443Z] client.go:393: 2025-03-07 11:00:14.937738201 +0000 UTC m=+1.120800558 [debug] checking 4 resources for changes
-[2025-03-07T11:06:22.443Z] client.go:693: 2025-03-07 11:00:14.956277403 +0000 UTC m=+1.139339766 [debug] Patch Service "rise-visualization-mf" in namespace rise-dev
-[2025-03-07T11:06:22.443Z] client.go:693: 2025-03-07 11:00:14.997886445 +0000 UTC m=+1.180948813 [debug] Patch Deployment "rise-visualization-mf" in namespace rise-dev
-[2025-03-07T11:06:22.443Z] W0307 11:00:15.056636      80 warnings.go:70] [workloadlabelcheck] J&J Out Of Compliance Alert: provide missing labels: {"application-id"}
-[2025-03-07T11:06:22.443Z] client.go:684: 2025-03-07 11:00:15.080893845 +0000 UTC m=+1.263956222 [debug] Looks like there are no changes for HorizontalPodAutoscaler "rise-visualization-mf-hpa"
-[2025-03-07T11:06:22.443Z] client.go:684: 2025-03-07 11:00:15.110390854 +0000 UTC m=+1.293453219 [debug] Looks like there are no changes for Ingress "visualization-mf"
-[2025-03-07T11:06:22.443Z] upgrade.go:447: 2025-03-07 11:00:15.118561497 +0000 UTC m=+1.301623862 [debug] waiting for release rise-visualization-mf resources (created: 0 updated: 4  deleted: 0)
-[2025-03-07T11:06:22.443Z] wait.go:50: 2025-03-07 11:00:15.118583137 +0000 UTC m=+1.301645532 [debug] beginning wait for 4 resources with timeout of 5m0s
-[2025-03-07T11:06:22.443Z] ready.go:297: 2025-03-07 11:00:15.15227542 +0000 UTC m=+1.335337785 [debug] Deployment is not ready: rise-dev/rise-visualization-mf. observedGeneration (3) does not match spec generation (4).
-[2025-03-07T11:06:22.443Z] ready.go:303: 2025-03-07 11:00:17.216077642 +0000 UTC m=+3.399140006 [debug] Deployment is not ready: rise-dev/rise-visualization-mf. 0 out of 1 expected pods are ready
-wait.go:87: 2025-03-07 11:05:15.120785981 +0000 UTC m=+301.303848346 [debug] Error received when checking status of resource rise-visualization-mf. Error: 'client rate limiter Wait returned an error: context deadline exceeded', Resource details: 'Resource: "/v1, Resource=services", GroupVersionKind: "/v1, Kind=Service"
-[2025-03-07T11:06:22.444Z] Name: "rise-visualization-mf", Namespace: "rise-dev"'
-[2025-03-07T11:06:22.444Z] wait.go:94: 2025-03-07 11:05:15.120825739 +0000 UTC m=+301.303888097 [debug] Retryable error? true
-[2025-03-07T11:06:22.444Z] wait.go:71: 2025-03-07 11:05:15.120834312 +0000 UTC m=+301.303896670 [debug] Retrying as current number of retries 0 less than max number of retries 30
-[2025-03-07T11:06:22.444Z] upgrade.go:487: 2025-03-07 11:05:15.144064112 +0000 UTC m=+301.327126477 [debug] warning: Upgrade "rise-visualization-mf" failed: context deadline exceeded
-[2025-03-07T11:06:22.444Z] Error: UPGRADE FAILED: context deadline exceeded
-[2025-03-07T11:06:22.444Z] helm.go:86: 2025-03-07 11:05:15.293650819 +0000 UTC m=+301.476713175 [debug] context deadline exceeded
-[2025-03-07T11:06:22.444Z] UPGRADE FAILED
-[2025-03-07T11:06:22.444Z] main.newUpgradeCmd.func2
-[2025-03-07T11:06:22.444Z] 	helm.sh/helm/v3/cmd/helm/upgrade.go:243
-[2025-03-07T11:06:22.444Z] github.com/spf13/cobra.(*Command).execute
-[2025-03-07T11:06:22.444Z] 	github.com/spf13/cobra@v1.8.1/command.go:985
-[2025-03-07T11:06:22.444Z] github.com/spf13/cobra.(*Command).ExecuteC
-[2025-03-07T11:06:22.444Z] 	github.com/spf13/cobra@v1.8.1/command.go:1117
-[2025-03-07T11:06:22.444Z] github.com/spf13/cobra.(*Command).Execute
-[2025-03-07T11:06:22.444Z] 	github.com/spf13/cobra@v1.8.1/command.go:1041
-[2025-03-07T11:06:22.444Z] main.main
-[2025-03-07T11:06:22.444Z] 	helm.sh/helm/v3/cmd/helm/helm.go:85
-[2025-03-07T11:06:22.444Z] runtime.main
-[2025-03-07T11:06:22.444Z] 	runtime/proc.go:271
-[2025-03-07T11:06:22.444Z] runtime.goexit
-[2025-03-07T11:06:22.444Z] 	runtime/asm_amd64.s:1695
-[2025-03-07T11:06:22.444Z] 
-[2025-03-07T11:06:22.444Z] 	at k8s.runScript(k8s.groovy:539)
-[2025-03-07T11:06:22.444Z] 	at ___cps.transform___(Native Method)
-[2025-03-07T11:06:22.444Z] 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-[2025-03-07T11:06:22.444Z] 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-[2025-03-07T11:06:22.444Z] 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-[2025-03-07T11:06:22.444Z] 	at java.base/java.lang.reflect.Constructor.newInstance(Unknown Source)
- Caused: java.lang.Exception: An error has occurred while deploying helm chart [rise-visualization-mf].
-[2025-03-07T11:06:22.444Z] 	at helm.deploy(helm.groovy:765)
-[2025-03-07T11:06:22.444Z] 	at commonStage.withDirAndCleanup(commonStage.groovy:463)
-[2025-03-07T11:06:22.444Z] 	at ___cps.transform___(Native Method)
-[2025-03-07T11:06:22.444Z] 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-[2025-03-07T11:06:22.444Z] 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-[2025-03-07T11:06:22.444Z] 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-[2025-03-07T11:06:22.444Z] 	at java.base/java.lang.reflect.Constructor.newInstance(Unknown Source)
-[2025-03-07T11:06:22.444Z] 	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:83)
-[2025-03-07T11:06:22.444Z] 	at org.codehaus.groovy.reflection.CachedConstructor.doConstructorInvoke(CachedConstructor.java:77)
-[2025-03-07T11:06:22.444Z] 	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrap.callConstructor(ConstructorSite.java:84)
-[2025-03-07T11:06:22.444Z] Caused: java.lang.Exception: An error has occurred while deploying helm chart.
-[2025-03-07T11:06:22.444Z] 	at helm.deploy(helm.groovy:777)
-[2025-03-07T11:06:22.444Z] 	at deploy.execute(deploy.groovy:41)
-[2025-03-07T11:06:22.445Z] 	at java.base/java.lang.Thread.run(Unknown Source)
-[2025-03-07T11:06:24.504Z] Finished: FAILURE
-
+how to resolve the pipeline.log error
