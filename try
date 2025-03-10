@@ -1,390 +1,831 @@
-modules/product/_test_/product.controller.spec.ts (41.936 s)
-  ● initializeProductController › Should route to createAssessment for failure message
+FAIL modules/product/_test_/product.routes.spec.ts
+  ● Test suite failed to run
+    Jest worker encountered 4 child process exceptions, exceeding retry limit
+      at ChildProcessWorker.initialize (../node_modules/jest-worker/build/workers/ChildProcessWorker.js:181:21)
+Test Suites: 1 failed, 20 passed, 21 total
 
-    Failed to connect to database: MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/ - DB URI mongodb://SIP-Dev-SystemAccount:pass@sip-dev-pl-0.eovja.mongodb.net/sip?connectTimeoutMS=15000&retryWrites=true&w=majority
+Tests:       76 passed, 76 total
 
-      17 |     return connection;
-      18 |   } catch (error) {
-    > 19 |     throw new Error(`Failed to connect to database: ${error} - DB URI ${uri}`);
-         |           ^
-      20 |   }
-      21 | };
-      22 |
+Snapshots:   0 total
 
-      at connectDatabase (lib/db.connection.ts:19:11)
+Time:        48.526 s
 
-  ● initializeProductController › Should route to createAssessment for failure message
+Ran all test suites.
+Node.js v18.19.1
 
-    Failed to connect to database: MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/ - DB URI mongodb://SIP-Dev-SystemAccount:pass@sip-dev-pl-0.eovja.mongodb.net/sip?connectTimeoutMS=15000&retryWrites=true&w=majority
-t/sip?connectTimeoutMS=15000&retryWrites=true&w=majority
+PASS src/modules/calculation_api/_test_/calculation.controller.spec.ts (5.546 s)
 
-      17 |     return connection;
-      18 |   } catch (error) {
-    > 19 |     throw new Error(`Failed to connect to database: ${error} - DB URI ${uri}`);
-         |           ^
-      20 |   }
-      21 | };
-      22 |
+(node:702) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
 
-      at connectDatabase (lib/db.connection.ts:19:11)
-above test case is got failed
-following is my file 
-""""
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+/home/jenkins/agent/workspace/FUX_website_-_rdx-sip-bs-ms_prod/node_modules/sequelize/lib/dialects/postgres/connection-manager.js:133
+
+                reject(new sequelizeErrors.ConnectionRefusedError(err));
+
+                       ^
+
+
+
+ConnectionRefusedError [SequelizeConnectionRefusedError]: connect ECONNREFUSED ::1:5432
+
+    at Client._connectionCallback (/home/jenkins/agent/workspace/FUX_website_-_rdx-sip-bs-ms_prod/node_modules/sequelize/src/dialects/postgres/connection-manager.js:184:24)
+
+    at Client._handleErrorWhileConnecting (/home/jenkins/agent/workspace/FUX_website_-_rdx-sip-bs-ms_prod/node_modules/pg/lib/client.js:326:19)
+
+    at Client._handleErrorEvent (/home/jenkins/agent/workspace/FUX_website_-_rdx-sip-bs-ms_prod/node_modules/pg/lib/client.js:336:19)
+
+    at Connection.emit (node:events:517:28)
+
+    at Socket.reportStreamError (/home/jenkins/agent/workspace/FUX_website_-_rdx-sip-bs-ms_prod/node_modules/pg/lib/connection.js:57:12)
+
+    at Socket.emit (node:events:517:28)
+
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+
+    at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+
+    at processTicksAndRejections (node:internal/process/task_queues:82:21) {
+
+  parent: Error: connect ECONNREFUSED ::1:5432
+
+      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) {
+
+    errno: -111,
+
+    code: 'ECONNREFUSED',
+
+    syscall: 'connect',
+
+    address: '::1',
+
+    port: 5432
+
+  },
+
+  original: Error: connect ECONNREFUSED ::1:5432
+
+      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) {
+
+    errno: -111,
+
+    code: 'ECONNREFUSED',
+
+    syscall: 'connect',
+
+    address: '::1',
+
+    port: 5432
+
+  }
+
+}
+
+
+
+Node.js v18.19.1
+
+(node:717) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+/home/jenkins/agent/workspace/FUX_website_-_rdx-sip-bs-ms_prod/node_modules/sequelize/lib/dialects/postgres/connection-manager.js:133
+
+                reject(new sequelizeErrors.ConnectionRefusedError(err));
+
+                       ^
+
+
+
+ConnectionRefusedError [SequelizeConnectionRefusedError]: connect ECONNREFUSED ::1:5432
+
+    at Client._connectionCallback (/home/jenkins/agent/workspace/FUX_website_-_rdx-sip-bs-ms_prod/node_modules/sequelize/src/dialects/postgres/connection-manager.js:184:24)
+
+    at Client._handleErrorWhileConnecting (/home/jenkins/agent/workspace/FUX_website_-_rdx-sip-bs-ms_prod/node_modules/pg/lib/client.js:326:19)
+
+    at Client._handleErrorEvent (/home/jenkins/agent/workspace/FUX_website_-_rdx-sip-bs-ms_prod/node_modules/pg/lib/client.js:336:19)
+
+    at Connection.emit (node:events:517:28)
+
+    at Socket.reportStreamError (/home/jenkins/agent/workspace/FUX_website_-_rdx-sip-bs-ms_prod/node_modules/pg/lib/connection.js:57:12)
+
+    at Socket.emit (node:events:517:28)
+
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+
+    at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+
+    at processTicksAndRejections (node:internal/process/task_queues:82:21) {
+
+  parent: Error: connect ECONNREFUSED ::1:5432
+
+      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) {
+
+    errno: -111,
+
+    code: 'ECONNREFUSED',
+
+    syscall: 'connect',
+
+    address: '::1',
+
+    port: 5432
+
+  },
+
+  original: Error: connect ECONNREFUSED ::1:5432
+
+      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16) {
+
+    errno: -111,
+
+    code: 'ECONNREFUSED',
+
+    syscall: 'connect',
+
+    address: '::1',
+
+    port: 5432
+
+  }
+
+}
+
+
+
+Node.js v18.19.1
+
+/home/jenkins/agent/workspace/FUX_website_-_rdx-sip-bs-ms_prod/src/lib/db.connection.ts:672
+
+    throw new Error(`Failed to connect to database: ${error} - DB URI ${uri}`);
+
+          ^
+
+
+
+Error: Failed to connect to database: MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/ - DB URI mongodb://SIP-Dev-SystemAccount:pass@sip-dev-pl-0.eovja.mongodb.net/sip?connectTimeoutMS=15000&retryWrites=true&w=majority
+
+    at connectDatabase (/home/jenkins/agent/workspace/FUX_website_-_rdx-sip-bs-ms_prod/src/lib/db.connection.ts:672:11)
+
+
+
+Node.js v18.19.1
+
+/home/jenkins/agent/workspace/FUX_website_-_rdx-sip-bs-ms_prod/src/lib/db.connection.ts:672
+
+    throw new Error(`Failed to connect to database: ${error} - DB URI ${uri}`);
+
+          ^
+
+
+
+Error: Failed to connect to database: MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/ - DB URI mongodb://SIP-Dev-SystemAccount:pass@sip-dev-pl-0.eovja.mongodb.net/sip?connectTimeoutMS=15000&retryWrites=true&w=majority
+
+    at connectDatabase (/home/jenkins/agent/workspace/FUX_website_-_rdx-sip-bs-ms_prod/src/lib/db.connection.ts:672:11)
+
+
+
+Node.js v18.19.1
+
+/home/jenkins/agent/workspace/FUX_website_-_rdx-sip-bs-ms_prod/src/lib/db.connection.ts:672
+
+    throw new Error(`Failed to connect to database: ${error} - DB URI ${uri}`);
+
+          ^
+
+
+
+Error: Failed to connect to database: MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/ - DB URI mongodb://SIP-Dev-SystemAccount:pass@sip-dev-pl-0.eovja.mongodb.net/sip?connectTimeoutMS=15000&retryWrites=true&w=majority
+
+    at connectDatabase (/home/jenkins/agent/workspace/FUX_website_-_rdx-sip-bs-ms_prod/src/lib/db.connection.ts:672:11)
+following is my modules/product/_test_/product.routes.spec.ts filr
+"""
 import { mockRequest, mockResponse } from "../../../utils/MockInterceptor.js";
-import { ProductMock } from "../../../mocks/Product.mock.js";
+import {ProductMock} from "../../../mocks/Product.mock.js";
 import ProductModel, { initializeProductModel } from "../product.model.js";
+import productRouter from "../product.routes.js";
+import CalculationsModel, { initializeCalculationModel } from "../../calculation_api/calculation.model.js";
+import FormulaModel, { initializeFormulaModel } from "../../formula/formula.model.js";
+import FormulaMock from "../../../mocks/Formula.mock.json";
+import ComponentSearchMock from "../../../mocks/ComponentSeach.mock.json";
 import initializeProductController from "../product.controller.js";
+import RawMaterialsModel, { initializeRawMaterialModel } from "../../raw_material_search/rm_search.model.js";
+import RawMaterialMock from "../../../mocks/RawMaterial.mock.json";
+import ProductSearchModel, { initializeComponentSearchModel } from "../../component_pc_search/component_search.model.js";
+import express from "express";
 
-const mockedProductModel = ProductModel  as jest.Mock;
+const mockedProductModel = ProductModel as jest.Mock;
 const mockedinitializeProductModel = initializeProductModel as jest.Mock;
+const mockedCalculationsModel = CalculationsModel as jest.Mock;
+const mockedinitializeCalculationModel = initializeCalculationModel as jest.Mock;
+const mockedFormulaModel = FormulaModel as jest.Mock;
+const mockedinitializeFormulaModel = initializeFormulaModel as jest.Mock;
+const mockedRawMaterialsModel = RawMaterialsModel as jest.Mock;
+const mockedinitializeRawMaterialModel = initializeRawMaterialModel as jest.Mock;
+const mockedProductSearchModel = ProductSearchModel as jest.Mock;
+const mockedinitializeComponentSearchModel = initializeComponentSearchModel as jest.Mock;
 
 jest.mock("p-limit", () => {
-  return 12;
+  return () => 12;
 });
+
+
 jest.mock("../product.model");
 jest.mock("../../calculation_api/calculation.model");
 jest.mock("../../formula/formula.model");
 jest.mock("../../raw_material_search/rm_search.model");
+jest.mock("../../component_pc_search/component_search.model");
 
-describe("initializeProductController", () => {
+describe('productRouter', () => {
   const res = mockResponse();
-  const req = mockRequest();
-  const next = jest.fn();
-  res.locals = {
-    user: {
-      unique_name: "ITEST123",
-      name: "ITEST123",
-    },
-  };
-  req.query = {
-    skip: 1,
-    sortOrder: -1,
-    type: "experiment",
-  };
-  req.params = {
-    id: "66f3b5d7d17ef901390cc805",
-    assessmentType: "experimental",
-    searchString: "test",
-  };
-  req.body = {
-    shortBrandCode: "JJB",
-    formula_number: "TAB2299983A-002",
-    type: "baseline",
-    name: "Poonam",
-    role: "Member",
-    mail: "PKadam04@kenvue.com",
-    assessmentType: "baseline",
-    productId: "66f2930877a89aa14b990958",
-    ...ProductMock[0].assessments.baseline,
-  };
-  req.header["x-consumer-userId"] = "ITEST236";
-
-  it("Should route to pagination for failure message", async () => {
-    mockedProductModel.mockReturnValue({});
-    mockedinitializeProductModel.mockReturnValue({});
-    const productController = await initializeProductController();
-    await productController.pagination(req, res, next);
-    expect(next).toHaveBeenCalled();
-  });
-
-  it("Should route to myProductPagination for failure message", async () => {
-    mockedProductModel.mockReturnValue({});
-    mockedinitializeProductModel.mockReturnValue({});
-    const productController = await initializeProductController();
-    await productController.myProductPagination(req, res, next);
-    expect(next).toHaveBeenCalled();
-  });
-
-  it("Should route to create for failure message", async () => {
-    mockedProductModel.mockReturnValue({});
-    mockedinitializeProductModel.mockReturnValue({});
-    const productController = await initializeProductController();
-    await productController.create(req, res, next);
-    expect(next).toHaveBeenCalled();
-  });
-
-  it("Should route to findById for failure message", async () => {
-    mockedProductModel.mockReturnValue({});
-    mockedinitializeProductModel.mockReturnValue({});
-    const productController = await initializeProductController();
-    await productController.findById(req, res, next);
-    expect(next).toHaveBeenCalled();
-  });
-
-  it("Should route to findByIdAndUpdate for failure message", async () => {
-    mockedProductModel.mockReturnValue({});
-    mockedinitializeProductModel.mockReturnValue({});
-    const productController = await initializeProductController();
-    await productController.findByIdAndUpdate(req, res, next);
-    expect(next).toHaveBeenCalled();
-  });
-
-  it("Should route to findByIdAndDelete for failure message", async () => {
-    mockedProductModel.mockReturnValue({});
-    mockedinitializeProductModel.mockReturnValue({});
-    const productController = await initializeProductController();
-    await productController.findByIdAndDelete(req, res, next);
-    expect(next).toHaveBeenCalled();
-  });
-
-  it("Should route to createAssessment for failure message", async () => {
-    mockedProductModel.mockReturnValue({});
-    mockedinitializeProductModel.mockReturnValue({});
-    const productController = await initializeProductController();
-    await productController.createAssessment(req, res, next);
-    expect(next).toHaveBeenCalled();
-  }, 30000);
-
-  it("Should route to createAssessment for failure message", async () => {
-    mockedProductModel.mockReturnValue({
-      aggregate: jest.fn().mockReturnThis(),
-      findOne: jest.fn().mockReturnThis(),
-      sort: jest.fn().mockReturnValue(ProductMock[0]),
-      find: jest.fn().mockReturnValue(ProductMock),
-      create: jest.fn().mockReturnValue(ProductMock),
-      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
-      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
-      exec: jest
-        .fn()
-        .mockResolvedValue([{ skip: "test" }])
-        .mockReturnValue([]),
-    });
-    mockedinitializeProductModel.mockReturnValue({
-      aggregate: jest.fn().mockReturnThis(),
-      findOne: jest.fn().mockReturnThis(),
-      sort: jest.fn().mockReturnValue(ProductMock[0]),
-      find: jest.fn().mockReturnValue(ProductMock),
-      create: jest.fn().mockReturnValue(ProductMock),
-      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
-      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
-      exec: jest
-        .fn()
-        .mockResolvedValue([{ skip: "test" }])
-        .mockReturnValue([]),
-    });
-    const productController = await initializeProductController();
-    await productController.createAssessment(req, res, next);
-    expect(res.status).toHaveBeenCalledWith(404);
-  }, 30000);
-
-  it("Should route to updateAssessmentById for failure message", async () => {
-    mockedProductModel.mockReturnValue({});
-    mockedinitializeProductModel.mockReturnValue({});
-    const productController = await initializeProductController();
-    await productController.updateAssessmentById(req, res, next);
-    expect(next).toHaveBeenCalled();
-  });
-
-  it("Should route to updateAssessmentById for failure message", async () => {
-    mockedProductModel.mockReturnValue({
-      aggregate: jest.fn().mockReturnThis(),
-      findOne: jest.fn().mockReturnThis(),
-      sort: jest.fn().mockReturnValue(ProductMock[0]),
-      find: jest.fn().mockReturnValue(ProductMock),
-      create: jest.fn().mockReturnValue(ProductMock),
-      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
-      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
-      exec: jest
-        .fn()
-        .mockResolvedValue([{ skip: "test" }])
-        .mockReturnValue([]),
-    });
-    mockedinitializeProductModel.mockReturnValue({
-      aggregate: jest.fn().mockReturnThis(),
-      findOne: jest.fn().mockReturnThis(),
-      sort: jest.fn().mockReturnValue(ProductMock[0]),
-      find: jest.fn().mockReturnValue(ProductMock),
-      create: jest.fn().mockReturnValue(ProductMock),
-      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
-      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
-      exec: jest
-        .fn()
-        .mockResolvedValue([{ skip: "test" }])
-        .mockReturnValue([]),
-    });
-    const productController = await initializeProductController();
-    await productController.updateAssessmentById(req, res, next);
-    expect(res.status).toHaveBeenCalledWith(404);
-  });
-
-  it("Should route to updateAssessmentById for failure message", async () => {
-    mockedProductModel.mockReturnValue({
-      aggregate: jest.fn().mockReturnThis(),
-      findOne: jest.fn().mockReturnThis(),
-      sort: jest.fn().mockReturnValue(ProductMock[0]),
-      find: jest.fn().mockReturnValue(ProductMock),
-      create: jest.fn().mockReturnValue(ProductMock),
-      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
-      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
-      exec: jest
-        .fn()
-        .mockResolvedValue([{ skip: "test" }])
-        .mockReturnValue(ProductMock),
-    });
-    mockedinitializeProductModel.mockReturnValue({
-      aggregate: jest.fn().mockReturnThis(),
-      findOne: jest.fn().mockReturnThis(),
-      sort: jest.fn().mockReturnValue(ProductMock[0]),
-      find: jest.fn().mockReturnValue(ProductMock),
-      create: jest.fn().mockReturnValue(ProductMock),
-      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
-      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
-      exec: jest
-        .fn()
-        .mockResolvedValue([{ skip: "test" }])
-        .mockReturnValue(ProductMock),
-    });
-    req.body = {
-      ...req.body,
-      assessmentId: "test",
+    const req = mockRequest();
+    const next = jest.fn();
+    res.locals = {
+      user: {
+        unique_name: "ITEST123",
+        name: "ITEST123"
+      }
+    }
+    req.query = {
+      skip: 1,
+      sortOrder: -1,
+      type: "experiment"
     };
-    const productController = await initializeProductController();
-    await productController.updateAssessmentById(req, res, next);
-    expect(res.status).toHaveBeenCalledWith(404);
-  });
-
-  it("Should route to deleteAssessmentById for failure message", async () => {
-    mockedProductModel.mockReturnValue({});
-    mockedinitializeProductModel.mockReturnValue({});
-    const productController = await initializeProductController();
-    await productController.deleteAssessmentById(req, res, next);
-    expect(next).toHaveBeenCalled();
-  });
-
-  it("Should route to deleteAssessmentById for failure message", async () => {
-    mockedProductModel.mockReturnValue({
-      aggregate: jest.fn().mockReturnThis(),
-      findOne: jest.fn().mockReturnThis(),
-      sort: jest.fn().mockReturnValue(ProductMock[0]),
-      find: jest.fn().mockReturnValue(ProductMock),
-      create: jest.fn().mockReturnValue(ProductMock),
-      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
-      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
-      exec: jest
-        .fn()
-        .mockResolvedValue([{ skip: "test" }])
-        .mockReturnValue([]),
-    });
-    mockedinitializeProductModel.mockReturnValue({
-      aggregate: jest.fn().mockReturnThis(),
-      findOne: jest.fn().mockReturnThis(),
-      sort: jest.fn().mockReturnValue(ProductMock[0]),
-      find: jest.fn().mockReturnValue(ProductMock),
-      create: jest.fn().mockReturnValue(ProductMock),
-      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
-      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
-      exec: jest
-        .fn()
-        .mockResolvedValue([{ skip: "test" }])
-        .mockReturnValue([]),
-    });
-    const productController = await initializeProductController();
-    await productController.deleteAssessmentById(req, res, next);
-    expect(res.status).toHaveBeenCalledWith(404);
-  });
-
-  it("Should route to deleteAssessmentById for failure message", async () => {
-    mockedProductModel.mockReturnValue({
-      aggregate: jest.fn().mockReturnThis(),
-      findOne: jest.fn().mockReturnThis(),
-      sort: jest.fn().mockReturnValue(ProductMock[0]),
-      find: jest.fn().mockReturnValue(ProductMock),
-      create: jest.fn().mockReturnValue(ProductMock),
-      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
-      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
-      exec: jest
-        .fn()
-        .mockResolvedValue([{ skip: "test" }])
-        .mockReturnValue(ProductMock),
-    });
-    mockedinitializeProductModel.mockReturnValue({
-      aggregate: jest.fn().mockReturnThis(),
-      findOne: jest.fn().mockReturnThis(),
-      sort: jest.fn().mockReturnValue(ProductMock[0]),
-      find: jest.fn().mockReturnValue(ProductMock),
-      create: jest.fn().mockReturnValue(ProductMock),
-      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
-      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
-      exec: jest
-        .fn()
-        .mockResolvedValue([{ skip: "test" }])
-        .mockReturnValue(ProductMock),
-    });
+    req.params = {
+      id: "66f2930877a89aa14b990958",
+      assessmentType : "experiment",
+      searchString: "test"
+    }
     req.body = {
-      ...req.body,
-      assessmentId: "test",
+      shortBrandCode: "JJB",
+      formula_number: "TAB2299983A-002",
+      type: "baseline",
+      name: "Poonam",
+      role: "Member",
+      mail: "PKadam04@kenvue.com",
+      assessmentType : "baseline",
+      productId: "66f2930877a89aa14b990958",
+      ...ProductMock[0].assessments.baseline
     };
-    const productController = await initializeProductController();
-    await productController.deleteAssessmentById(req, res, next);
-    expect(res.status).toHaveBeenCalledWith(404);
+    req.header['x-consumer-userId'] = 'ITEST236';
+  beforeEach(() => {
+    mockedCalculationsModel.mockReturnValue({
+      findOne: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+    })
+    mockedinitializeCalculationModel.mockReturnValue({
+      findOne: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+    })
+    mockedRawMaterialsModel.mockReturnValue({
+      findOne: jest.fn().mockReturnValue(RawMaterialMock),
+    })
+    mockedinitializeRawMaterialModel.mockReturnValue({
+      findOne: jest.fn().mockReturnValue(RawMaterialMock),
+    })
+    
+    mockedFormulaModel.mockReturnValue({
+      findOne: jest.fn().mockResolvedValue([{ "frml_cd_vers_concat": "test" }]).mockReturnValue(FormulaMock),
+    })
+    mockedinitializeFormulaModel.mockReturnValue({
+      findOne: jest.fn().mockResolvedValue([{ "frml_cd_vers_concat": "test" }]).mockReturnValue(FormulaMock),
+    })
+    mockedProductSearchModel.mockReturnValue({
+      findOne: jest.fn().mockResolvedValue([{ "PACKAGING_LVL.COMPONENT.CHILD_NM": "test" }]).mockReturnValue(ComponentSearchMock),
+      find: jest.fn().mockReturnThis(),
+      skip: jest.fn().mockReturnThis(),
+      limit: jest.fn().mockReturnThis(),
+      toArray: jest.fn().mockResolvedValue([{ "PACKAGING_LVL.COMPONENT.CHILD_NM": "test" }]).mockReturnValue(ComponentSearchMock),
+    })
+    mockedinitializeComponentSearchModel.mockReturnValue({
+      findOne: jest.fn().mockResolvedValue([{ "PACKAGING_LVL.COMPONENT.CHILD_NM": "test" }]).mockReturnValue(ComponentSearchMock),
+      find: jest.fn().mockReturnThis(),
+      skip: jest.fn().mockReturnThis(),
+      limit: jest.fn().mockReturnThis(),
+      toArray: jest.fn().mockResolvedValue([{ "PACKAGING_LVL.COMPONENT.CHILD_NM": "test" }]).mockReturnValue(ComponentSearchMock),
+    })
+  })
+
+  it('Should route to pagination, create, findByIdAndUpdate and findByIdAndDelete for success message', async () => {
+    mockedProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest.fn().mockResolvedValue([{ "skip": "test" }]).mockReturnValue(ProductMock),
+    })
+    mockedinitializeProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest.fn().mockResolvedValue([{ "skip": "test" }]).mockReturnValue(ProductMock),
+    })
+    const mRouter = {
+      get: (path, callback) => {
+        if (path === '/') {
+          callback(req, res, next);
+        }
+      },
+      post: (path, callback) => {
+        if (path === '/add-product') {
+          callback(req, res, next);
+        }
+      },
+      put: (path, callback) => {
+        if (path === '/edit-product/:id') {
+          callback(req, res, next);
+        }
+      },
+      delete: (path, callback) => {
+        if (path === '/delete/:id') {
+          callback(req, res, next);
+        }
+      },
+      then: jest.fn()
+    } as never;
+    jest.spyOn(express, 'Router').mockImplementationOnce(() => mRouter);
+
+    productRouter();
   });
 
-  it("Should route to addTeamMember for failure message", async () => {
-    mockedProductModel.mockReturnValue({});
-    mockedinitializeProductModel.mockReturnValue({});
-    const productController = await initializeProductController();
-    await productController.addTeamMember(req, res, next);
-    expect(res.status).toHaveBeenCalledWith(404);
-    expect(res.json).toHaveBeenCalledWith({
-      message: "Incorrect Product Id",
-    });
+  it('Should route to all four request for success message', async () => {
+    mockedProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest.fn().mockResolvedValue([{ "skip": "test" }]).mockReturnValue(ProductMock),
+    })
+    mockedinitializeProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest.fn().mockResolvedValue([{ "skip": "test" }]).mockReturnValue(ProductMock),
+    })
+    const mRouter = {
+      get: (path, callback) => {
+        if (path === '/myproduct') {
+          callback(req, res, next);
+        }
+      },
+      post: (path, callback) => {
+        if (path === '/add-assessment') {
+          callback(req, res, next);
+        }
+      },
+      put: (path, callback) => {
+        if (path === '/edit-assessment/:id') {
+          callback(req, res, next);
+        }
+      },
+      delete: (path, callback) => {
+        if (path === '/delete-assessment/:id') {
+          callback(req, res, next);
+        }
+      },
+      then: jest.fn()
+    } as never;
+    jest.spyOn(express, 'Router').mockImplementationOnce(() => mRouter);
+
+    productRouter();
   });
 
-  it("Should route to updateMemberById for failure message", async () => {
-    mockedProductModel.mockReturnValue({});
-    mockedinitializeProductModel.mockReturnValue({});
-    const productController = await initializeProductController();
-    await productController.updateMemberById(req, res, next);
-    expect(res.status).toHaveBeenCalledWith(404);
-    expect(res.json).toHaveBeenCalledWith({
-      message: "Incorrect Product Id",
-    });
+  it('Should route to all four request for success message', async () => {
+    mockedProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest.fn().mockResolvedValue([{ "skip": "test" }]).mockReturnValue(ProductMock),
+    })
+    mockedinitializeProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest.fn().mockResolvedValue([{ "skip": "test" }]).mockReturnValue(ProductMock),
+    })
+    req.body = {
+      shortBrandCode: "JJB",
+      formula_number: "TAB2299983A-002",
+      type: "experimental",
+      name: "Poonam",
+      role: "Member",
+      mail: "PKadam04@kenvue.com",
+      assessmentType : "baseline",
+      productId: "66f2930877a89aa14b990958",
+      ...ProductMock[0].assessments.baseline
+    };
+    const mRouter = {
+      get: (path, callback) => {
+        if (path === '/myproduct') {
+          callback(req, res, next);
+        }
+      },
+      post: (path, callback) => {
+        if (path === '/add-assessment') {
+          callback(req, res, next);
+        }
+      },
+      put: (path, callback) => {
+        if (path === '/edit-assessment/:id') {
+          callback(req, res, next);
+        }
+      },
+      delete: (path, callback) => {
+        if (path === '/delete-assessment/:id') {
+          callback(req, res, next);
+        }
+      },
+      then: jest.fn()
+    } as never;
+    jest.spyOn(express, 'Router').mockImplementationOnce(() => mRouter);
+
+    productRouter();
   });
 
-  it("Should route to deleteMemberById for failure message", async () => {
-    mockedProductModel.mockReturnValue({});
-    mockedinitializeProductModel.mockReturnValue({});
-    const productController = await initializeProductController();
-    await productController.deleteMemberById(req, res, next);
-    expect(res.status).toHaveBeenCalledWith(404);
-    expect(res.json).toHaveBeenCalledWith({
-      message: "Incorrect Product Id",
-    });
+  it('Should route to all four request for success message', async () => {
+    mockedProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest.fn().mockResolvedValue([{ "skip": "test" }]).mockReturnValue(ProductMock),
+    })
+    mockedinitializeProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest.fn().mockResolvedValue([{ "skip": "test" }]).mockReturnValue(ProductMock),
+    })
+    const mRouter = {
+      get: (path, callback) => {
+        if (path === '/productDetails/:id') {
+          callback(req, res, next);
+        }
+      },
+      post: (path, callback) => {
+        if (path === '/add-member') {
+          callback(req, res, next);
+        }
+      },
+      put: (path, callback) => {
+        if (path === '/edit-member/:id') {
+          callback(req, res, next);
+        }
+      },
+      delete: (path, callback) => {
+        if (path === '/delete-member/:id') {
+          callback(req, res, next);
+        }
+      },
+      then: jest.fn()
+    } as never;
+    jest.spyOn(express, 'Router').mockImplementationOnce(() => mRouter);
+
+    productRouter();
   });
 
-  it("Should route to addEditPackagingDetails for failure message", async () => {
-    mockedProductModel.mockReturnValue({});
-    mockedinitializeProductModel.mockReturnValue({});
-    const productController = await initializeProductController();
-    await productController.addEditPackagingDetails(req, res, next);
-    expect(res.status).toHaveBeenCalledWith(404);
-    expect(res.json).toHaveBeenCalledWith({
-      message: "Incorrect Product Id",
-    });
+  it('Should route to all four request for success message', async () => {
+    mockedProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest.fn().mockResolvedValue([{ "skip": "test" }]).mockReturnValue(ProductMock),
+    })
+    mockedinitializeProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest.fn().mockResolvedValue([{ "skip": "test" }]).mockReturnValue(ProductMock),
+    })
+    const mRouter = {
+      get: (path, callback) => {
+        if (path === '/productDetails/:id') {
+          callback(req, res, next);
+        }
+      },
+      post: (path, callback) => {
+        if (path === '/assessment/add-update-packaging') {
+          callback(req, res, next);
+        }
+      },
+      put: (path, callback) => {
+        if (path === '/edit-member/:id') {
+          callback(req, res, next);
+        }
+      },
+      delete: (path, callback) => {
+        if (path === '/assessment/delete-formulation') {
+          callback(req, res, next);
+        }
+      },
+      then: jest.fn()
+    } as never;
+    jest.spyOn(express, 'Router').mockImplementationOnce(() => mRouter);
+
+    productRouter();
   });
 
-  it("Should route to experimentalAssessmentDetails for failure message", async () => {
-    mockedProductModel.mockReturnValue({});
-    mockedinitializeProductModel.mockReturnValue({});
-    const productController = await initializeProductController();
-    await productController.experimentalAssessmentDetails(req, res, next);
-    expect(res.status).toHaveBeenCalledWith(404);
-    expect(res.json).toHaveBeenCalledWith({
-      message: "Incorrect Product Id",
-    });
+  it('Should route to all four request for success message', async () => {
+    mockedProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnThis(),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest.fn().mockResolvedValue([{ "skip": "test" }]).mockReturnValue(ProductMock),
+    })
+    mockedinitializeProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnThis(),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest.fn().mockResolvedValue([{ "skip": "test" }]).mockReturnValue(ProductMock),
+    })
+    const mRouter = {
+      get: (path, callback) => {
+        if (path === '/assessment/details/:assessmentType/:id') {
+          callback(req, res, next);
+        }
+      },
+      post: (path, callback) => {
+        if (path === '/assessment/add-update-formulation') {
+          callback(req, res, next);
+        }
+      },
+      put: (path, callback) => {
+        if (path === '/edit-member/:id') {
+          callback(req, res, next);
+        }
+      },
+      delete: (path, callback) => {
+        if (path === '/assessment/delete-formulation') {
+          callback(req, res, next);
+        }
+      },
+      then: jest.fn()
+    } as never;
+    jest.spyOn(express, 'Router').mockImplementationOnce(() => mRouter);
+
+    productRouter();
   });
 
-  it("Should route to addUpdateFormulationDetails for failure message", async () => {
-    mockedProductModel.mockReturnValue({});
-    mockedinitializeProductModel.mockReturnValue({});
+  it('Should route to all four request for success message', async () => {
+    mockedProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest.fn().mockResolvedValue([{ "skip": "test" }]).mockReturnValue(ProductMock),
+    })
+    mockedinitializeProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest.fn().mockResolvedValue([{ "skip": "test" }]).mockReturnValue(ProductMock),
+    })
+    const mRouter = {
+      get: (path, callback) => {
+        if (path === '/search/:searchString') {
+          callback(req, res, next);
+        }
+      },
+      post: (path, callback) => {
+        if (path === '/assessment/add-update-formulation') {
+          callback(req, res, next);
+        }
+      },
+      put: (path, callback) => {
+        if (path === '/edit-member/:id') {
+          callback(req, res, next);
+        }
+      },
+      delete: (path, callback) => {
+        if (path === '/assessment/delete-formulation') {
+          callback(req, res, next);
+        }
+      },
+      then: jest.fn()
+    } as never;
+    jest.spyOn(express, 'Router').mockImplementationOnce(() => mRouter);
+
+    productRouter();
+  });
+
+  it('Should route to processPackaging for success message', async () => {
+    mockedProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest.fn().mockResolvedValue([{ "skip": "test" }]).mockReturnValue(ProductMock),
+    })
+    mockedinitializeProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest.fn().mockResolvedValue([{ "skip": "test" }]).mockReturnValue(ProductMock),
+    })
     const productController = await initializeProductController();
-    await productController.addUpdateFormulationDetails(req, res, next);
-    expect(res.status).toHaveBeenCalledWith(404);
-    expect(res.json).toHaveBeenCalledWith({
-      message: "Incorrect Product Id",
-    });
+    await productController.processPackaging(ProductMock[1].assessments.baseline.packaging_level)
+  });
+
+  it('Should route to processPackaging for failure message', async () => {
+    mockedProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest.fn().mockResolvedValue([{ "skip": "test" }]).mockReturnValue(ProductMock),
+    })
+    mockedinitializeProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest.fn().mockResolvedValue([{ "skip": "test" }]).mockReturnValue(ProductMock),
+    })
+    const productController = await initializeProductController();
+    await productController.processPackaging(ProductMock[3].assessments.baseline.packaging_level)
+  });
+
+  it('Should route to checkDataValues for success message', async () => {
+    mockedProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest.fn().mockResolvedValue([{ "skip": "test" }]).mockReturnValue(ProductMock),
+    })
+    mockedinitializeProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest.fn().mockResolvedValue([{ "skip": "test" }]).mockReturnValue(ProductMock),
+    })
+    const productController = await initializeProductController();
+    await productController.checkDataValues(
+      req.body.formulation.netContent,
+        req.body.formulation.rawMaterials,
+        req.body.formulation.useDose,
+        req.body.formulation.consumableUse,
+        req.body.formulation.productionZone,
+        req.body.formulation.salesZone,
+        req.body.formulation.rawMaterialsPercentage
+    )
+  });
+
+  it('Should route to checkRecycleStatus for success message', async () => {
+    mockedProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest.fn().mockResolvedValue([{ "skip": "test" }]).mockReturnValue(ProductMock),
+    })
+    mockedinitializeProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest.fn().mockResolvedValue([{ "skip": "test" }]).mockReturnValue(ProductMock),
+    })
+    const productController = await initializeProductController();
+    await productController.checkRecycleStatus(
+      "66e13e3359d7edf2a177e0fa",
+        "66e13e3359d7edf2a177e0fa",
+        "primary",
+        "Experimental",
+    )
+  });
+
+  it('Should route to processDataAndCallLambda for success message', async () => {
+    mockedProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest.fn().mockResolvedValue([{ "skip": "test" }]).mockReturnValue(ProductMock),
+    })
+    mockedinitializeProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest.fn().mockResolvedValue([{ "skip": "test" }]).mockReturnValue(ProductMock),
+    })
+    const productController = await initializeProductController();
+    await productController.processDataAndCallLambda(
+
+      {...ProductMock[0].assessments.baseline,
+        productId : "66e13e3359d7edf2a177e0fa",
+        assessmentType: "baseline",
+        user: {
+          unique_name: "ITEST123",
+          name: "ITEST123"
+        }
+      },
+      [
+        "formula_end_of_life",
+        "usephase",
+        "distribution",
+        "packproduction",
+        "packagingeol",
+      ],
+    )
+  }, 20000);
+
+  it('Should route to processDataAndCallLambda for success message', async () => {
+    mockedProductModel.mockReturnValue({
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(null),
+    })
+    mockedinitializeProductModel.mockReturnValue({
+      sort: jest.fn().mockReturnValue(null),
+      findOne: jest.fn().mockReturnThis(),
+    })
+    const productController = await initializeProductController();
+    await productController.generateProductSipId("Caladryl")
   });
 });
-
 """
-can we removed that test cases and passed the test file successfully or try other fixes?
