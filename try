@@ -1,10 +1,465 @@
-PS C:\Users\PJadha29\Documents\updated e2e\visualization-mf> helm get manifest rise-visualization-mf -n rise-predev
-helm : The term 'helm' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of 
-the name, or if a path was included, verify that the path is correct and try again.
-At line:1 char:1
-+ helm get manifest rise-visualization-mf -n rise-predev
-+ ~~~~
-    + CategoryInfo          : ObjectNotFound: (helm:String) [], CommandNotFoundException
-    + FullyQualifiedErrorId : CommandNotFoundException
+ FAIL  modules/product/_test_/product.routes.spec.ts
+  ● Test suite failed to run
 
-PS C:\Users\PJadha29\Documents\updated e2e\visualization-mf>
+    src/utils/logger/logger-config.ts:11:34 - error TS1343: The 'import.meta' meta-property is only allowed when the '--module' option is 'es2020', 'es2022', 'esnext', 'system', 'node16', 'node18', or 'nodenext'.
+
+    11 const __filename = fileURLToPath(import.meta.url);
+                                        ~~~~~~~~~~~
+
+ FAIL  modules/product/_test_/product.controller.spec.ts
+  ● Test suite failed to run
+
+    src/utils/logger/logger-config.ts:11:34 - error TS1343: The 'import.meta' meta-property is only allowed when the '--module' option is 'es2020', 'es2022', 'esnext', 'system', 'node16', 'node18', or 'nodenext'.
+
+    11 const __filename = fileURLToPath(import.meta.url);
+                                        ~~~~~~~~~~~
+i am getting above error while running test cases why
+following is my modules/product/_test_/product.routes.spec.ts
+"""
+import { mockRequest, mockResponse } from "../../../utils/MockInterceptor.js";
+import { ProductMock } from "../../../mocks/Product.mock.js";
+import ProductModel, { initializeProductModel } from "../product.model.js";
+import initializeProductController from "../product.controller.js";
+
+const mockedProductModel = ProductModel  as jest.Mock;
+const mockedinitializeProductModel = initializeProductModel as jest.Mock;
+
+jest.mock("p-limit", () => {
+  return 12;
+});
+jest.mock("../product.model");
+jest.mock("../../calculation_api/calculation.model");
+jest.mock("../../formula/formula.model");
+jest.mock("../../raw_material_search/rm_search.model");
+
+describe("initializeProductController", () => {
+  const res = mockResponse();
+  const req = mockRequest();
+  const next = jest.fn();
+  res.locals = {
+    user: {
+      unique_name: "ITEST123",
+      name: "ITEST123",
+    },
+  };
+  req.query = {
+    skip: 1,
+    sortOrder: -1,
+    type: "experiment",
+  };
+  req.params = {
+    id: "66f3b5d7d17ef901390cc805",
+    assessmentType: "experimental",
+    searchString: "test",
+  };
+  req.body = {
+    shortBrandCode: "JJB",
+    formula_number: "TAB2299983A-002",
+    type: "baseline",
+    name: "Poonam",
+    role: "Member",
+    mail: "PKadam04@kenvue.com",
+    assessmentType: "baseline",
+    productId: "66f2930877a89aa14b990958",
+    ...ProductMock[0].assessments.baseline,
+  };
+  req.header["x-consumer-userId"] = "ITEST236";
+
+  it("Should route to pagination for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.pagination(req, res, next);
+    expect(next).toHaveBeenCalled();
+  });
+
+  it("Should route to myProductPagination for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.myProductPagination(req, res, next);
+    expect(next).toHaveBeenCalled();
+  });
+
+  it("Should route to create for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.create(req, res, next);
+    expect(next).toHaveBeenCalled();
+  });
+
+  it("Should route to findById for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.findById(req, res, next);
+    expect(next).toHaveBeenCalled();
+  });
+
+  it("Should route to findByIdAndUpdate for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.findByIdAndUpdate(req, res, next);
+    expect(next).toHaveBeenCalled();
+  });
+
+  it("Should route to findByIdAndDelete for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.findByIdAndDelete(req, res, next);
+    expect(next).toHaveBeenCalled();
+  });
+
+  it("Should route to createAssessment for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.createAssessment(req, res, next);
+    expect(next).toHaveBeenCalled();
+  });
+
+  it("Should route to createAssessment for failure message", async () => {
+    mockedProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest
+        .fn()
+        .mockResolvedValue([{ skip: "test" }])
+        .mockReturnValue([]),
+    });
+    mockedinitializeProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest
+        .fn()
+        .mockResolvedValue([{ skip: "test" }])
+        .mockReturnValue([]),
+    });
+    const productController = await initializeProductController();
+    await productController.createAssessment(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+  });
+
+  it("Should route to updateAssessmentById for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.updateAssessmentById(req, res, next);
+    expect(next).toHaveBeenCalled();
+  });
+
+  it("Should route to updateAssessmentById for failure message", async () => {
+    mockedProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest
+        .fn()
+        .mockResolvedValue([{ skip: "test" }])
+        .mockReturnValue([]),
+    });
+    mockedinitializeProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest
+        .fn()
+        .mockResolvedValue([{ skip: "test" }])
+        .mockReturnValue([]),
+    });
+    const productController = await initializeProductController();
+    await productController.updateAssessmentById(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+  });
+
+  it("Should route to updateAssessmentById for failure message", async () => {
+    mockedProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest
+        .fn()
+        .mockResolvedValue([{ skip: "test" }])
+        .mockReturnValue(ProductMock),
+    });
+    mockedinitializeProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest
+        .fn()
+        .mockResolvedValue([{ skip: "test" }])
+        .mockReturnValue(ProductMock),
+    });
+    req.body = {
+      ...req.body,
+      assessmentId: "test",
+    };
+    const productController = await initializeProductController();
+    await productController.updateAssessmentById(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+  });
+
+  it("Should route to deleteAssessmentById for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.deleteAssessmentById(req, res, next);
+    expect(next).toHaveBeenCalled();
+  });
+
+  it("Should route to deleteAssessmentById for failure message", async () => {
+    mockedProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest
+        .fn()
+        .mockResolvedValue([{ skip: "test" }])
+        .mockReturnValue([]),
+    });
+    mockedinitializeProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest
+        .fn()
+        .mockResolvedValue([{ skip: "test" }])
+        .mockReturnValue([]),
+    });
+    const productController = await initializeProductController();
+    await productController.deleteAssessmentById(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+  });
+
+  it("Should route to deleteAssessmentById for failure message", async () => {
+    mockedProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest
+        .fn()
+        .mockResolvedValue([{ skip: "test" }])
+        .mockReturnValue(ProductMock),
+    });
+    mockedinitializeProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest
+        .fn()
+        .mockResolvedValue([{ skip: "test" }])
+        .mockReturnValue(ProductMock),
+    });
+    req.body = {
+      ...req.body,
+      assessmentId: "test",
+    };
+    const productController = await initializeProductController();
+    await productController.deleteAssessmentById(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+  });
+
+  it("Should route to addTeamMember for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.addTeamMember(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({
+      message: "Incorrect Product Id",
+    });
+  });
+
+  it("Should route to updateMemberById for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.updateMemberById(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({
+      message: "Incorrect Product Id",
+    });
+  });
+
+  it("Should route to deleteMemberById for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.deleteMemberById(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({
+      message: "Incorrect Product Id",
+    });
+  });
+
+  it("Should route to addEditPackagingDetails for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.addEditPackagingDetails(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({
+      message: "Incorrect Product Id",
+    });
+  });
+
+  it("Should route to experimentalAssessmentDetails for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.experimentalAssessmentDetails(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({
+      message: "Incorrect Product Id",
+    });
+  });
+
+  it("Should route to addUpdateFormulationDetails for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.addUpdateFormulationDetails(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({
+      message: "Incorrect Product Id",
+    });
+  });
+});
+
+"""
+following is my src/utils/logger/logger-config.ts
+"""
+// Required imports
+import rTracer from 'cls-rtracer';
+import { createLogger, format, transports } from 'winston';
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+
+const { combine, timestamp, printf, json, label } = format;
+
+// Resolve __dirname for ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Define the log file directory
+const LOG_DIR = path.join(__dirname, '../../logs');
+
+// Ensure the logs directory exists
+if (!fs.existsSync(LOG_DIR)) {
+  fs.mkdirSync(LOG_DIR, { recursive: true });
+}
+
+// Get the current date in YYYY-MM-DD format
+const getLogFileName = () => {
+  const currentDate = new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD
+  return path.join(LOG_DIR, `${currentDate}.log`);
+};
+
+// Log level configuration
+const LOGLEVEL = process.env.LOG_LEVEL || 'http';
+
+const loggerConfig = {
+  levels: {
+    error: 0,
+    warn: 1,
+    info: 2,
+    http: 3,
+    verbose: 4,
+    debug: 5,
+    silly: 6,
+  },
+};
+
+const logLevels = Object.keys(loggerConfig.levels);
+
+// Correlation ID format
+const rTracerFormat = printf((info) => {
+  const rid = rTracer.id();
+  const logInfo = { ...info, correlationId: rid };
+  return JSON.stringify(logInfo);
+});
+
+// File transport for logging into date-wise log files
+const fileTransport = new transports.File({
+  filename: getLogFileName(), // Dynamic filename based on date
+  level: 'http', // Minimum log level for file
+  format: combine(
+    label({ label: process.env.npm_package_name || 'App' }),
+    timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+    json(), // Store log messages as JSON
+    printf(({ timestamp, level, message, label, ...meta }) => {
+      return `[${timestamp}] [${label}] [${level.toUpperCase()}] ${message} ${JSON.stringify(
+        meta
+      )}`;
+    })
+  ),
+});
+
+// Create the logger
+const logger = createLogger({
+  levels: loggerConfig.levels,
+  level: LOGLEVEL && logLevels.includes(LOGLEVEL?.toLowerCase()) ? LOGLEVEL.toLowerCase() : 'http',
+  transports: [
+    new transports.Console({
+      format: format.combine(
+        format.label({ label: process.env.npm_package_name }),
+        format.timestamp(),
+        format.json(),
+        rTracerFormat
+      ),
+    }),
+    fileTransport,
+  ],
+});
+
+// Export the logger and rTracer
+export { rTracer, logger };
+"""
+how to resolve this error and passed all test cases 
