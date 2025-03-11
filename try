@@ -1,15 +1,13 @@
-src/modules/product/_test_/product.routes.spec.ts                                                                                                                
-  ● Test suite failed to run
-                                                                                                                                                                        
-    TypeError: Cannot read properties of undefined (reading 'ObjectId')
 
-      1409 |         "createdBy": "Dinesh",
-      1410 |         "modifiedBy": "",
-    > 1411 |         "_id": new Types.ObjectId("66f2930877a89aa14b990958"),
-           |                          ^
-      1412 |         "createdAt": {
-      1413 |           "$date": "2024-09-24T10:23:04.130Z"
-      1414 |         },
+ RUNS  src/modules/product/_test_/product.routes.spec.ts
+C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\helpers\postgresAudit.service.ts:600
+  return Sequelize_audit_js_1.AuditModel.upsert({
+                                         ^
 
-      at ObjectId (mocks/Product.mock.ts:1411:26)
-      at Object.<anonymous> (modules/product/_test_/product.routes.spec.ts:2:1)
+TypeError: Sequelize_audit_js_1.AuditModel.upsert is not a function
+    at updateOrCreateToPostgres (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\helpers\postgresAudit.service.ts:600:42)
+    at formatAndSaveAuditData (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\modules\audit\audit.service.ts:182:65)
+    at productController.findByIdAndDelete (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\modules\product\product.controller.ts:559:29)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+Node.js v20.16.0
