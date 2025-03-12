@@ -1,62 +1,75 @@
-javascript
-import { mockRequest, mockResponse } from "../../../utils/MockInterceptor.js";
-import { ProductMock } from "../../../mocks/Product.mock.js";
-import ProductModel from "../product.model.js"; // Import the actual model to mock
-import productRouter from "../product.routes.js";
-import express from "express";
+jsx
+import React from 'react';
+import './Toast.css'; // Import the CSS file for styling
 
-// Mocking the database connection
-jest.mock('../../../lib/db.connection', () => ({
-  connectDatabase: jest.fn().mockResolvedValue({
-    connection: { readyState: 1 },
-    disconnect: jest.fn()
-  }),
-}));
+const Toast = ({ message, onConfirm, onCancel }) => {
+  return (
+    <div className="toast">
+      <p>{message}</p>
+      <div className="toast-buttons">
+        <button onClick={onConfirm}>OK</button>
+        <button onClick={onCancel}>Cancel</button>
+      </div>
+    </div>
+  );
+};
 
-// Mocking data models
-jest.mock("../product.model");
-jest.mock("../../calculation_api/calculation.model");
-jest.mock("../../formula/formula.model");
-jest.mock("../../raw_material_search/rm_search.model");
-jest.mock("../../component_pc_search/component_search.model");
+export default Toast;
 
-const mockedProductModel = ProductModel as jest.Mock;
+css
+.toast {
+  position: fixed;
+  top: 100px; /* Position from top */
+  left: 50%;
+  transform: translateX(-50%); /* Center it horizontally */
+  background-color: gray; /* Background color */
+  color: white; /* Text color */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Ensure it appears above other elements */
+}
 
-describe('productRouter', () => {
-  const res = mockResponse();
-  const req = mockRequest();
-  const next = jest.fn();
+.toast-buttons {
+  display: flex;
+  justify-content: space-between;
+}
 
-  // Setup your request and response as needed
-  beforeEach(() => {
-    // This is where you'd set up any default mock implementations
-    mockedProductModel.mockReturnValue({
-      findOne: jest.fn().mockResolvedValue(ProductMock[0]),
-      // Add other methods you might use in your tests
-      create: jest.fn().mockResolvedValue(ProductMock[0]),
-      findByIdAndUpdate: jest.fn().mockResolvedValue(ProductMock[0]),
-      // Add other necessary mocks to your models
-    });
-  });
+.toast button {
+  margin: 0 5px;
+  background-color: white; /* Example button background */
+  color: gray; /* Example button text color */
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
-  it('Should route to pagination, create, findByIdAndUpdate and findByIdAndDelete for success message', async () => {
-    // Your test logic here...
-    const mRouter = {
-      get: jest.fn(),
-      post: jest.fn(),
-      put: jest.fn(),
-      delete: jest.fn(),
-    };
+css
+.toast {
+  position: fixed;
+  top: 100px; /* Position from top */
+  left: 50%;
+  transform: translateX(-50%); /* Center it horizontally */
+  background-color: gray; /* Background color */
+  color: white; /* Text color */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Ensure it appears above other elements */
+}
 
-    jest.spyOn(express, 'Router').mockImplementationOnce(() => mRouter);
+.toast-buttons {
+  display: flex;
+  justify-content: space-between;
+}
 
-    // Call the productRouter function to setup routing
-    productRouter();
-    
-    // Simulate requests (this should be how you invoke your API endpoints)
-    mRouter.get.mock.calls[0][1](req, res, next); // for GET /
-    // Add more calls for other routes/setups as necessary
-  });
-
-  // Add more test cases as needed...
-});
+.toast button {
+  margin: 0 5px;
+  background-color: white; /* Example button background */
+  color: gray; /* Example button text color */
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
