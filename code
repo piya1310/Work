@@ -1,19 +1,601 @@
-C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms> npm run test product.routes.spec.ts
+ FAIL  src/modules/product/_test_/product.controller.spec.ts (13.277 s)
+  ● Console
 
-> sip-api@1.0.0 test
-> cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --coverage --runInBand product.routes.spec.ts
+    console.log
+      TypeError: this.model.aggregate is not a function
+          at productController.aggregate [as myProductPagination] (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\modules\product\product.controller.ts:626:35)
+          at Object.<anonymous> (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\modules\product\_test_\product.controller.spec.ts:117:29)
 
-(node:11756) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
+      at productController.log [as myProductPagination] (modules/product/product.controller.ts:643:15)
 
- RUNS  src/modules/product/_test_/product.routes.spec.ts
-C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\helpers\postgresAudit.service.ts:597
-  index_js_1.default.info('postgresAudit.service > Request recieved for updateOrCreateToPostgres', `${auditData}`);
-                     ^
+  ● initializeProductController › Should route to updateAssessmentById for failure message
 
-TypeError: index_js_1.default.info is not a function
-    at updateOrCreateToPostgres (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\helpers\postgresAudit.service.ts:597:22)
-    at formatAndSaveAuditData (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\modules\audit\audit.service.ts:182:65)
-    at productController.findByIdAndDelete (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\modules\product\product.controller.ts:21150:53)
+    expect(jest.fn()).toHaveBeenCalledWith(...expected)
 
-Node.js v20.16.0
+    Expected: 404
+
+    Number of calls: 0
+
+      229 |     const productController = await initializeProductController();
+      230 |     await productController.updateAssessmentById(req, res, next);
+    > 231 |     expect(res.status).toHaveBeenCalledWith(404);
+          |                        ^
+      232 |   });
+      233 |
+      234 |   it("Should route to updateAssessmentById for failure message", async () => {
+
+      at Object.<anonymous> (modules/product/_test_/product.controller.spec.ts:231:24)
+
+  ● initializeProductController › Should route to updateAssessmentById for failure message
+
+    expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+    Expected: 404
+
+    Number of calls: 0
+
+      265 |     const productController = await initializeProductController();
+      266 |     await productController.updateAssessmentById(req, res, next);
+    > 267 |     expect(res.status).toHaveBeenCalledWith(404);
+          |                        ^
+      268 |   });
+      269 |
+      270 |   it("Should route to deleteAssessmentById for failure message", async () => {
+
+      at Object.<anonymous> (modules/product/_test_/product.controller.spec.ts:267:24)
+
+  ● initializeProductController › Should route to deleteAssessmentById for failure message
+
+    expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+    Expected: 404
+
+    Number of calls: 0
+
+      305 |     const productController = await initializeProductController();
+      306 |     await productController.deleteAssessmentById(req, res, next);
+    > 307 |     expect(res.status).toHaveBeenCalledWith(404);
+          |                        ^
+      308 |   });
+      309 |
+      310 |   it("Should route to deleteAssessmentById for failure message", async () => {
+
+      at Object.<anonymous> (modules/product/_test_/product.controller.spec.ts:307:24)
+
+  ● initializeProductController › Should route to deleteAssessmentById for failure message
+
+    expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+    Expected: 404
+
+    Number of calls: 0
+
+      341 |     const productController = await initializeProductController();
+      342 |     await productController.deleteAssessmentById(req, res, next);
+    > 343 |     expect(res.status).toHaveBeenCalledWith(404);
+          |                        ^
+      344 |   });
+      345 |
+      346 |   it("Should route to addTeamMember for failure message", async () => {
+
+      at Object.<anonymous> (modules/product/_test_/product.controller.spec.ts:343:24)
+
+  ● initializeProductController › Should route to addTeamMember for failure message
+
+    expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+    Expected: 404
+
+    Number of calls: 0
+
+      349 |     const productController = await initializeProductController();
+      350 |     await productController.addTeamMember(req, res, next);
+    > 351 |     expect(res.status).toHaveBeenCalledWith(404);
+          |                        ^
+      352 |     expect(res.json).toHaveBeenCalledWith({
+      353 |       message: "Incorrect Product Id",
+      354 |     });
+
+      at Object.<anonymous> (modules/product/_test_/product.controller.spec.ts:351:24)
+
+  ● initializeProductController › Should route to updateMemberById for failure message
+
+    expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+    Expected: 404
+
+    Number of calls: 0
+
+      360 |     const productController = await initializeProductController();
+      361 |     await productController.updateMemberById(req, res, next);
+    > 362 |     expect(res.status).toHaveBeenCalledWith(404);
+          |                        ^
+      363 |     expect(res.json).toHaveBeenCalledWith({
+      364 |       message: "Incorrect Product Id",
+      365 |     });
+
+      at Object.<anonymous> (modules/product/_test_/product.controller.spec.ts:362:24)
+
+  ● initializeProductController › Should route to deleteMemberById for failure message
+
+    expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+    Expected: 404
+
+    Number of calls: 0
+
+      371 |     const productController = await initializeProductController();
+      372 |     await productController.deleteMemberById(req, res, next);
+    > 373 |     expect(res.status).toHaveBeenCalledWith(404);
+          |                        ^
+      374 |     expect(res.json).toHaveBeenCalledWith({
+      375 |       message: "Incorrect Product Id",
+      376 |     });
+
+      at Object.<anonymous> (modules/product/_test_/product.controller.spec.ts:373:24)
+
+  ● initializeProductController › Should route to addEditPackagingDetails for failure message
+
+    expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+    Expected: 404
+
+    Number of calls: 0
+
+      382 |     const productController = await initializeProductController();
+      383 |     await productController.addEditPackagingDetails(req, res, next);
+    > 384 |     expect(res.status).toHaveBeenCalledWith(404);
+          |                        ^
+      385 |     expect(res.json).toHaveBeenCalledWith({
+      386 |       message: "Incorrect Product Id",
+      387 |     });
+
+      at Object.<anonymous> (modules/product/_test_/product.controller.spec.ts:384:24)
+
+  ● initializeProductController › Should route to experimentalAssessmentDetails for failure message
+
+    expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+    Expected: 404
+
+    Number of calls: 0
+
+      393 |     const productController = await initializeProductController();
+      394 |     await productController.experimentalAssessmentDetails(req, res, next);
+    > 395 |     expect(res.status).toHaveBeenCalledWith(404);
+          |                        ^
+      396 |     expect(res.json).toHaveBeenCalledWith({
+      397 |       message: "Incorrect Product Id",
+      398 |     });
+
+      at Object.<anonymous> (modules/product/_test_/product.controller.spec.ts:395:24)
+
+  ● initializeProductController › Should route to addUpdateFormulationDetails for failure message
+
+    expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+    Expected: 404
+
+    Number of calls: 0
+
+      404 |     const productController = await initializeProductController();
+      405 |     await productController.addUpdateFormulationDetails(req, res, next);
+    > 406 |     expect(res.status).toHaveBeenCalledWith(404);
+          |                        ^
+      407 |     expect(res.json).toHaveBeenCalledWith({
+      408 |       message: "Incorrect Product Id",
+      409 |     });
+
+      at Object.<anonymous> (modules/product/_test_/product.controller.spec.ts:406:24)
+i am getting above error in folliwing file
+"""
+import { mockRequest, mockResponse } from "../../../utils/MockInterceptor.js";
+import { ProductMock } from "../../../mocks/Product.mock.js";
+import ProductModel, { initializeProductModel } from "../product.model.js";
+import initializeProductController from "../product.controller.js";
+jest.mock('../../../utils/logger', () => {
+  return {
+    __esModule: true,
+    default: {
+      error: jest.fn(),
+      warn: jest.fn(),
+      info: jest.fn(),
+      debug: jest.fn(),
+      http: jest.fn(),
+      transaction: jest.fn(),
+    },
+  };
+});
+jest.mock('../../../utils/logger/logger-config', () => ({
+  LOG_DIR: '/dummy/logs',
+  combine: jest.fn(),
+  timestamp: jest.fn(),
+  printf: jest.fn(),
+  json: jest.fn(),
+  label: jest.fn(),
+}));
+jest.mock('sequelize', () => {
+  const mockSequelize = {
+    authenticate: jest.fn().mockResolvedValue(undefined),
+    define: jest.fn(() => ({
+      upsert:jest.fn(),
+    })),
+    sync: jest.fn(),
+    close: jest.fn(),
+  };
+  const actualSequelize=jest.requireActual('sequelize')
+  return { Sequelize: jest.fn(() => mockSequelize), DataTypes:actualSequelize.DataTypes};
+});
+jest.mock('../../../lib/db.connection', () => ({
+  connections: jest.fn().mockResolvedValue({
+    connection: { readyState: 1 },
+    disconnect:jest.fn()
+  })
+}));
+jest.mock('pg',() => {
+  const mClient = {
+    connect: jest.fn(),
+    query: jest.fn(),
+    end: jest.fn(),
+    connectionParameters: {
+      user: '',
+      database: '',
+      port: '',
+      host: '',
+    },
+  };
+  return { Client: jest.fn(() => mClient) };
+});
+
+jest.mock("p-limit", () => {
+  return () => (fn: any) => fn();
+});
+jest.mock("../product.model");
+jest.mock("../../calculation_api/calculation.model");
+jest.mock("../../formula/formula.model");
+jest.mock("../../raw_material_search/rm_search.model");
+const mockedProductModel = ProductModel as jest.Mock;
+const mockedinitializeProductModel = initializeProductModel as jest.Mock;
+
+describe("initializeProductController", () => {
+  const res = mockResponse();
+  const req = mockRequest();
+  const next = jest.fn();
+  res.locals = {
+    user: {
+      unique_name: "ITEST123",
+      name: "ITEST123",
+    },
+  };
+  req.query = {
+    skip: 1,
+    sortOrder: -1,
+    type: "experiment",
+  };
+  req.params = {
+    id: "66f3b5d7d17ef901390cc805",
+    assessmentType: "experimental",
+    searchString: "test",
+  };
+  req.body = {
+    shortBrandCode: "JJB",
+    formula_number: "TAB2299983A-002",
+    type: "baseline",
+    name: "Poonam",
+    role: "Member",
+    mail: "PKadam04@kenvue.com",
+    assessmentType: "baseline",
+    productId: "66f2930877a89aa14b990958",
+    ...ProductMock[0].assessments.baseline,
+  };
+  req.header["x-consumer-userId"] = "ITEST236";
+  
+
+  it("Should route to pagination for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.pagination(req, res, next);
+    expect(next).toHaveBeenCalled();
+  });
+
+  it("Should route to myProductPagination for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.myProductPagination(req, res, next);
+    expect(next).toHaveBeenCalled();
+  });
+
+  it("Should route to create for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.create(req, res, next);
+    expect(next).toHaveBeenCalled();
+  });
+
+  it("Should route to findById for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.findById(req, res, next);
+    expect(next).toHaveBeenCalled();
+  });
+
+  it("Should route to findByIdAndUpdate for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.findByIdAndUpdate(req, res, next);
+    expect(next).toHaveBeenCalled();
+  });
+
+  it("Should route to findByIdAndDelete for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.findByIdAndDelete(req, res, next);
+    expect(next).toHaveBeenCalled();
+  });
+
+  it("Should handle createAssessment failure", async () => {
+    mockedProductModel.mockReturnValue({
+      findByIdAndUpdate: jest.fn().mockRejectedValue(new Error("DB Error"))
+    });
+    const productController = await initializeProductController();
+    await productController.createAssessment(req, res, next);
+    expect(next).toHaveBeenCalledWith(expect.any(Error));
+  });
+
+  it("Should route to createAssessment for failure message", async () => {
+    mockedProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest
+        .fn()
+        .mockResolvedValue([{ skip: "test" }])
+        .mockReturnValue([]),
+    });
+    mockedinitializeProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest
+        .fn()
+        .mockResolvedValue([{ skip: "test" }])
+        .mockReturnValue([]),
+    });
+    const productController = await initializeProductController();
+    await productController.createAssessment(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+  }, 30000);
+
+  it("Should route to updateAssessmentById for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.updateAssessmentById(req, res, next);
+    expect(next).toHaveBeenCalled();
+  });
+
+  it("Should route to updateAssessmentById for failure message", async () => {
+    mockedProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest
+        .fn()
+        .mockResolvedValue([{ skip: "test" }])
+        .mockReturnValue([]),
+    });
+    mockedinitializeProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest
+        .fn()
+        .mockResolvedValue([{ skip: "test" }])
+        .mockReturnValue([]),
+    });
+    const productController = await initializeProductController();
+    await productController.updateAssessmentById(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+  });
+
+  it("Should route to updateAssessmentById for failure message", async () => {
+    mockedProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest
+        .fn()
+        .mockResolvedValue([{ skip: "test" }])
+        .mockReturnValue(ProductMock),
+    });
+    mockedinitializeProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest
+        .fn()
+        .mockResolvedValue([{ skip: "test" }])
+        .mockReturnValue(ProductMock),
+    });
+    req.body = {
+      ...req.body,
+      assessmentId: "test",
+    };
+    const productController = await initializeProductController();
+    await productController.updateAssessmentById(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+  });
+
+  it("Should route to deleteAssessmentById for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.deleteAssessmentById(req, res, next);
+    expect(next).toHaveBeenCalled();
+  });
+
+  it("Should route to deleteAssessmentById for failure message", async () => {
+    mockedProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest
+        .fn()
+        .mockResolvedValue([{ skip: "test" }])
+        .mockReturnValue([]),
+    });
+    mockedinitializeProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest
+        .fn()
+        .mockResolvedValue([{ skip: "test" }])
+        .mockReturnValue([]),
+    });
+    const productController = await initializeProductController();
+    await productController.deleteAssessmentById(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+  });
+
+  it("Should route to deleteAssessmentById for failure message", async () => {
+    mockedProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest
+        .fn()
+        .mockResolvedValue([{ skip: "test" }])
+        .mockReturnValue(ProductMock),
+    });
+    mockedinitializeProductModel.mockReturnValue({
+      aggregate: jest.fn().mockReturnThis(),
+      findOne: jest.fn().mockReturnThis(),
+      sort: jest.fn().mockReturnValue(ProductMock[0]),
+      find: jest.fn().mockReturnValue(ProductMock),
+      create: jest.fn().mockReturnValue(ProductMock),
+      findByIdAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      findOneAndUpdate: jest.fn().mockReturnValue(ProductMock),
+      exec: jest
+        .fn()
+        .mockResolvedValue([{ skip: "test" }])
+        .mockReturnValue(ProductMock),
+    });
+    req.body = {
+      ...req.body,
+      assessmentId: "test",
+    };
+    const productController = await initializeProductController();
+    await productController.deleteAssessmentById(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+  });
+
+  it("Should route to addTeamMember for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.addTeamMember(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({
+      message: "Incorrect Product Id",
+    });
+  });
+
+  it("Should route to updateMemberById for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.updateMemberById(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({
+      message: "Incorrect Product Id",
+    });
+  });
+
+  it("Should route to deleteMemberById for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.deleteMemberById(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({
+      message: "Incorrect Product Id",
+    });
+  });
+
+  it("Should route to addEditPackagingDetails for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.addEditPackagingDetails(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({
+      message: "Incorrect Product Id",
+    });
+  });
+
+  it("Should route to experimentalAssessmentDetails for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.experimentalAssessmentDetails(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({
+      message: "Incorrect Product Id",
+    });
+  });
+
+  it("Should route to addUpdateFormulationDetails for failure message", async () => {
+    mockedProductModel.mockReturnValue({});
+    mockedinitializeProductModel.mockReturnValue({});
+    const productController = await initializeProductController();
+    await productController.addUpdateFormulationDetails(req, res, next);
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({
+      message: "Incorrect Product Id",
+    });
+  });
+});
+"""
