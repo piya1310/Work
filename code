@@ -1,123 +1,43 @@
-import { fileURLToPath } from 'url';
+ RUNS  src/modules/product/_test_/product.routes.spec.ts
+C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\utils\logger\index.ts:336        
+C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\utils\logger\index.ts:336        
+    logger_config_js_1.logger.info(message, {
+                              ^
 
-const { combine, timestamp, printf, json, label } = format;
+TypeError: Cannot read properties of undefined (reading 'info')
+    at Function.info (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\utils\logger\index.ts:336:31)
+    at updateOrCreateToPostgres (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\helpers\postgresAudit.service.ts:597:22)
+    at formatAndSaveAuditData (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\modules\audit\audit.service.ts:182:65)
+    at productController.findByIdAndDelete (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\modules\product\product.controller.ts:559:29)
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Define the log file directory
-const LOG_DIR = path.join(__dirname, '../../logs');
-above is code from logger-config.js
-
-and following error i am getting in test cases as following
-"""
- FAIL  src/modules/product/_test_/product.routes.spec.ts
-  ● Test suite failed to run
-                                                                                         
-    src/utils/logger/logger-config.ts:11:34 - error TS1343: The 'import.meta' meta-property is only allowed when the '--module' option is 'es2020', 'es2022', 'esnext', 'system', 'node16', 'node18', or 'nodenext'.
-
-    11 const __filename = fileURLToPath(import.meta.url);
-                                        ~~~~~~~~~~~
-
- FAIL  src/modules/product/_test_/product.controller.spec.ts
-  ● Test suite failed to run
-                                                                                         
-    src/utils/logger/logger-config.ts:11:34 - error TS1343: The 'import.meta' meta-property is only allowed when the '--module' option is 'es2020', 'es2022', 'esnext', 'system', 'node16', 'node18', or 'nodenext'.
-
-    11 const __filename = fileURLToPath(import.meta.url);
-                                        ~~~~~~~~~~~
-
-following is my product.controller.spec.ts
-"""
+Node.js v20.16.0
+above error i am getting after added following code in product.routes.spec.ts
 import { mockRequest, mockResponse } from "../../../utils/MockInterceptor.js";
-import { ProductMock } from "../../../mocks/Product.mock.js";
+import {ProductMock} from "../../../mocks/Product.mock.js";
 import ProductModel, { initializeProductModel } from "../product.model.js";
+import productRouter from "../product.routes.js";
+import CalculationsModel, { initializeCalculationModel } from "../../calculation_api/calculation.model.js";
+import FormulaModel, { initializeFormulaModel } from "../../formula/formula.model.js";
+import FormulaMock from "../../../mocks/Formula.mock.json";
+import ComponentSearchMock from "../../../mocks/ComponentSeach.mock.json";
 import initializeProductController from "../product.controller.js";
+import RawMaterialsModel, { initializeRawMaterialModel } from "../../raw_material_search/rm_search.model.js";
+import RawMaterialMock from "../../../mocks/RawMaterial.mock.json";
+import ProductSearchModel, { initializeComponentSearchModel } from "../../component_pc_search/component_search.model.js";
+import express from "express";
 
-jest.mock('sequelize', () => {
-  const mockSequelize = {
-    authenticate: jest.fn().mockResolvedValue(undefined),
-    define: jest.fn(() => ({
-      upsert:jest.fn(),
-    })),
-    sync: jest.fn(),
-    close: jest.fn(),
-  };
-  const actualSequelize=jest.requireActual('sequelize')
-  return { Sequelize: jest.fn(() => mockSequelize), DataTypes:actualSequelize.DataTypes};
-});
+jest.mock('../../../utils/logger/logger-config', () => ({
+  LOG_DIR: '/dummy/logs',
+  combine: jest.fn(),
+  timestamp: jest.fn(),
+  printf: jest.fn(),
+  json: jest.fn(),
+  label: jest.fn(),
+}));
+
 jest.mock('../../../lib/db.connection', () => ({
-  connections: jest.fn().mockResolvedValue({
+  connectDatabase: jest.fn().mockResolvedValue({
     connection: { readyState: 1 },
-    disconnect:jest.fn()
+    disconnect: jest.fn()
   })
 }));
-jest.mock('pg',() => {
-  const mClient = {
-    connect: jest.fn(),
-    query: jest.fn(),
-    end: jest.fn(),
-    connectionParameters: {
-      user: '',
-      database: '',
-      port: '',
-      host: '',
-    },
-  };
-  return { Client: jest.fn(() => mClient) };
-});
-
-jest.mock("p-limit", () => {
-  return 12;
-});
-jest.mock("../product.model");
-jest.mock("../../calculation_api/calculation.model");
-jest.mock("../../formula/formula.model");
-jest.mock("../../raw_material_search/rm_search.model");
-const mockedProductModel = ProductModel as jest.Mock;
-const mockedinitializeProductModel = initializeProductModel as jest.Mock;
-
-describe("initializeProductController", () => {
-  const res = mockResponse();
-  const req = mockRequest();
-  const next = jest.fn();
-  res.locals = {
-    user: {
-      unique_name: "ITEST123",
-      name: "ITEST123",
-    },
-  };
-  req.query = {
-    skip: 1,
-    sortOrder: -1,
-    type: "experiment",
-  };
-  req.params = {
-    id: "66f3b5d7d17ef901390cc805",
-    assessmentType: "experimental",
-    searchString: "test",
-  };
-  req.body = {
-    shortBrandCode: "JJB",
-    formula_number: "TAB2299983A-002",
-    type: "baseline",
-    name: "Poonam",
-    role: "Member",
-    mail: "PKadam04@kenvue.com",
-    assessmentType: "baseline",
-    productId: "66f2930877a89aa14b990958",
-    ...ProductMock[0].assessments.baseline,
-  };
-  req.header["x-consumer-userId"] = "ITEST236";
-
-  it("Should route to pagination for failure message", async () => {
-    mockedProductModel.mockReturnValue({});
-    mockedinitializeProductModel.mockReturnValue({});
-    const productController = await initializeProductController();
-    await productController.pagination(req, res, next);
-    expect(next).toHaveBeenCalled();
-  });
-"""
-
-"""
-can we mock in this in test case product.controller.spec.ts and in product.routes.spec.ts
