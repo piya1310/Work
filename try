@@ -1,125 +1,23 @@
-import React, { useState, useMemo } from 'react';
-// import other necessary components and hooks
-import { ToastMessage } from './ToastMessage'; // Ensure the import statement is correct
+import { render, screen } from '@testing-library/react';
+import SideBarAction from './SideBarAction'; // Adjust the import based on your file structure
 
-// Define the props interface for Root
-interface RootProps {
-  sipUiMfScreen?: any; // Adjust according to your actual type
-  // other props as needed
-}
-
-const Root: React.FC<RootProps> = (props) => {
-  const [userName, setUserName] = useState("");
-  const [loggedInUser, setLoggedInUser] = useState<UserData | null>(null);
-  const [showToast, setShowToast] = useState(false); // State to manage the visibility of the toast
-  const [toastContent, setToastContent] = useState(""); // Content for the toast message
-
-  // Assume this is getting user details properly
-  const userDetails = localStorage.getItem("userDetails");
-  const token = useMemo(() => userDetails, [userDetails]);
-
-  const handleSignOutClick = () => {
-    setToastContent("Are you sure you want to sign out?"); // Set the message for toast
-    setShowToast(true); // Trigger showing the toast message
-  };
-
-  const handleConfirm = () => {
-    localStorage.removeItem("landingTime");
-    localStorage.setItem("session", "0");
-    props?.sipUiMfScreen?.publish("core-header-ui-mf:signout");
-    setShowToast(false); // Hide the toast after confirming
-  };
-
-  const handleCancel = () => {
-    setShowToast(false); // Hide the toast on cancel
-  };
-
-  return (
-    <React.StrictMode>
-      {token ? (
-        <LoadingProvider>
-          <DataProvider>
-            <AutoSaveStateProvider>
-              <SidebarStateProvider>
-                <ThemeProvider theme={Theme}>
-                  <QueryClientProvider client={queryClient}>
-                    <BrowserRouter>
-                      <Box className="main-root">
-                        {token && window.location.pathname !== "/sip/login" && (
-                          <SideBarAction
-                            onSignOutClick={handleSignOutClick} // Pass the handler to SideBarAction
-                            mfProps={props?.sipUiMfScreen} // Pass other props if necessary
-                          />
-                        )}
-                        <Box component="main" className="dashboard-main">
-                          <LoadingScreen />
-                          <Routes>
-                            {/* Your routes go here */}
-                          </Routes>
-                        </Box>
-                        {/* Display the ToastMessage at the root level */}
-                        {showToast && (
-                          <ToastMessage
-                            content={toastContent}
-                            onConfirm={handleConfirm}
-                            onCancel={handleCancel}
-                          />
-                        )}
-                      </Box>
-                    </BrowserRouter>
-                  </QueryClientProvider>
-                </ThemeProvider>
-              </SidebarStateProvider>
-            </AutoSaveStateProvider>
-          </DataProvider>
-        </LoadingProvider>
-      ) : (
-        ""
-      )}
-    </React.StrictMode>
-  );
+// Your mock implementations of required props
+const mockMfProps = {
+  publish: jest.fn(),
+  subscribe: jest.fn(),
 };
 
-export default Root;
+// Mock function for onSignOutClick
+const mockOnSignOutClick = jest.fn();
 
-import React, { useContext } from 'react';
-import { ListItemIcon } from '@mui/material';
-// other necessary imports
-
-export interface SideBarProps {
-  mfProps?: MfProps; // Ensure you're importing the right MfProps type
-  onSignOutClick: () => void; // Add this prop
-}
-
-const SideBarAction: React.FC<SideBarProps> = (props) => {
-  const { onSignOutClick, mfProps } = props; // Destructure props
-
-  // Other states and logic
-
-  return (
-    <ListItemIcon
-      onClick={onSignOutClick} // Call the function received as prop
-      sx={{
-        cursor: "pointer",
-        marginTop: 18,
-        minWidth: 0,
-        float: "bottom",
-        mr: getWidth(open),
-        justifyContent: "center",
-        position: "fixed",
-        bottom: 0,
-        marginBottom: "48px",
-        marginLeft: "10px",
-      }}
-    >
-      <BootstrapTooltipSideBar
-        className="BootstrapTooltipSidebar"
-        title={<p className="BootstrapTooltipSidebar-p">Sign Out</p>}
-      >
-        {getSignOutIcon(open)}
-      </BootstrapTooltipSideBar>
-    </ListItemIcon>
+test('renders SideBarAction with required props', () => {
+  render(
+    <SideBarAction 
+      mfProps={mockMfProps} 
+      onSignOutClick={mockOnSignOutClick} // Provide the required prop here
+    />
   );
-};
 
-export default SideBarAction;
+  // Additional test assertions can follow, e.g.
+  expect(screen.getByText(/Sign Out/i)).toBeInTheDocument(); // Adjust based on your application's actual content
+});
