@@ -1,161 +1,46 @@
-PS C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms> npm run test product.routes.spec.ts
+Ran all test suites matching /product.routes.spec.ts/i.
+Jest did not exit one second after the test run has completed.
 
-> sip-api@1.0.0 test
-> cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --coverage --runInBand product.routes.spec.ts
+'This usually means that there are asynchronous operations that weren't stopped in your tests. Consider running Jest with `--detectOpenHandles` to troubleshoot this issue.       
 
-  console.log
-    Error in Calculation TypeError: limit is not a function
-        at limit (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\modules\calculation_api\calculation.controller.ts:679:11)
-        at Array.map (<anonymous>)
-        at CalculationController.map [as lambda_handler] (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\modules\calculation_api\calculation.controller.ts:678:29)
-        at productController.lambda_handler [as processDataAndCallLambda] (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\modules\product\product.controller.ts:332:56)
-        at Object.<anonymous> (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\modules\product\_test_\product.routes.spec.ts:631:5)
-
-      at CalculationController.log [as lambda_handler] (modules/calculation_api/calculation.controller.ts:749:15)
-
-(node:22988) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
-(Use `node --trace-warnings ...` to show where the warning was created)
-
- RUNS  src/modules/product/_test_/product.routes.spec.ts
-C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\helpers\postgresAudit.service.ts:597
-  index_js_1.default.info('postgresAudit.service > Request recieved for updateOrCreateToPostgres', `${auditData}`);
-                     ^
-
-TypeError: index_js_1.default.info is not a function
-    at updateOrCreateToPostgres (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\helpers\postgresAudit.service.ts:597:22)
-    at formatAndSaveAuditData (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\modules\audit\audit.service.ts:182:65)
-    at productController.findByIdAndDelete (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\modules\product\product.controller.ts:559:29)
-
-Node.js v20.16.0
-
-i am getting above error after doing following changes in product.routes.spec.ts
-"""
-import { mockRequest, mockResponse } from "../../../utils/MockInterceptor.js";
-import {ProductMock} from "../../../mocks/Product.mock.js";
-import ProductModel, { initializeProductModel } from "../product.model.js";
-import productRouter from "../product.routes.js";
-import CalculationsModel, { initializeCalculationModel } from "../../calculation_api/calculation.model.js";
-import FormulaModel, { initializeFormulaModel } from "../../formula/formula.model.js";
-import FormulaMock from "../../../mocks/Formula.mock.json";
-import ComponentSearchMock from "../../../mocks/ComponentSeach.mock.json";
-import initializeProductController from "../product.controller.js";
-import RawMaterialsModel, { initializeRawMaterialModel } from "../../raw_material_search/rm_search.model.js";
-import RawMaterialMock from "../../../mocks/RawMaterial.mock.json";
-import ProductSearchModel, { initializeComponentSearchModel } from "../../component_pc_search/component_search.model.js";
-import express from "express";
-
-jest.mock('../../../utils/logger', () => ({
-  default: {
-    info: jest.fn(),
-    error: jest.fn(),
-    warn: jest.fn(),
-    debug: jest.fn(),
-  },
-}));
-jest.mock('../../../utils/logger/logger-config', () => ({
-  LOG_DIR: '/dummy/logs',
-  combine: jest.fn(),
-  timestamp: jest.fn(),
-  printf: jest.fn(),
-  json: jest.fn(),
-  label: jest.fn(),
-}));
-
-jest.mock('../../../lib/db.connection', () => ({
-  connectDatabase: jest.fn().mockResolvedValue({
-    connection: { readyState: 1 },
-    disconnect: jest.fn()
-  })
-}));
-jest.mock('sequelize', () => {
-  const mockSequelize = {
-    authenticate: jest.fn().mockResolvedValue(undefined),
-    define: jest.fn(() => ({
-      upsert:jest.fn(),
-    })),
-    sync: jest.fn(),
-    close: jest.fn(),
-  };
-  const actualSequelize=jest.requireActual('sequelize')
-  return { Sequelize: jest.fn(() => mockSequelize), DataTypes:actualSequelize.DataTypes};
-});
-const mockedProductModel = ProductModel as jest.Mock;
-const mockedinitializeProductModel = initializeProductModel as jest.Mock;
-const mockedCalculationsModel = CalculationsModel as jest.Mock;
-const mockedinitializeCalculationModel = initializeCalculationModel as jest.Mock;
-const mockedFormulaModel = FormulaModel as jest.Mock;
-const mockedinitializeFormulaModel = initializeFormulaModel as jest.Mock;
-const mockedRawMaterialsModel = RawMaterialsModel as jest.Mock;
-const mockedinitializeRawMaterialModel = initializeRawMaterialModel as jest.Mock;
-const mockedProductSearchModel = ProductSearchModel as jest.Mock;
-const mockedinitializeComponentSearchModel = initializeComponentSearchModel as jest.Mock;
-
-jest.mock("p-limit", () => {
-  return () => 12;
-});
+  ●  Cannot log after tests are done. Did you forget to wait for something async in your test?
+    Attempted to log "Error: No recipients defined
+        at SMTPConnection._formatError (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+        at SMTPConnection._setEnvelope (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\node_modules\nodemailer\lib\smtp-connection\index.js:1047:34)
+        at SMTPConnection.send (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\node_modules\nodemailer\lib\smtp-connection\index.js:631:14)
+        at sendMessage (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\node_modules\nodemailer\lib\smtp-transport\index.js:228:28)
+        at C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\node_modules\nodemailer\lib\smtp-transport\index.js:289:21
+        at SMTPConnection.<anonymous> (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+        at Object.onceWrapper (node:events:633:28)
+        at SMTPConnection.emit (node:events:519:28)
+        at SMTPConnection._actionEHLO (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+        at SMTPConnection._processResponse (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+        at SMTPConnection._onData (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+        at TLSSocket.SMTPConnection._onSocketData (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\node_modules\nodemailer\lib\smtp-connection\index.js:195:44)
+        at TLSSocket.emit (node:events:519:28)
+        at addChunk (node:internal/streams/readable:559:12)
+        at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+        at TLSSocket.Readable.push (node:internal/streams/readable:390:5)
+        at TLSWrap.onStreamRead (node:internal/stream_base_commons:191:23) {
+      code: 'EENVELOPE',
+      command: 'API'
+    }".
 
 
-jest.mock("../product.model");
-jest.mock("../../calculation_api/calculation.model");
-jest.mock("../../formula/formula.model");
-jest.mock("../../raw_material_search/rm_search.model");
-jest.mock("../../component_pc_search/component_search.model");
-"""
-following is my index.ts from logger
 
-"""
-import { logger } from './logger-config.js';
-
-class Log {
-  static error(stepName: string, message: string, eventId?: string) {
-    logger.error(message, {
-      stepName,
-      eventId,
-    });
-  }
-
-  static warn(stepName: string, message: string, eventId?: string) {
-    logger.warn(message, {
-      stepName,
-      eventId,
-    });
-  }
-
-  static info(stepName: string, message: string, eventId?: string) {
-    logger.info(message, {
-      stepName,
-      eventId,
-    });
-  }
-
-  static debug(stepName: string, message: string, eventId?: string) {
-    logger.debug(message, {
-      stepName,
-      eventId,
-    });
-  }
-
-  static http(stepName: string, message: string, eventId?: string) {
-    logger.http(message, {
-      stepName,
-      eventId,
-    });
-  }
-
-  static transaction(req) {
-    const message = {
-      headers: req.headers,
-      httpVersion: req.httpVersion,
-      method: req.method,
-      originalUrl: req.originalUrl,
-      url: req.url,
-      query: req.query,
-      params: req.params,
-      body: req.body,
-    };
-    logger.http('Incoming request', message);
-  }
-}
-export default Log;
-"""
-please fix this test case file to run successfully
+      at SMTPConnection._formatError (../node_modules/nodemailer/lib/smtp-connection/index.js:809:19)
+      at SMTPConnection._setEnvelope (../node_modules/nodemailer/lib/smtp-connection/index.js:1047:34)
+      at SMTPConnection.send (../node_modules/nodemailer/lib/smtp-connection/index.js:631:14)
+      at sendMessage (../node_modules/nodemailer/lib/smtp-transport/index.js:228:28)     
+      at ../node_modules/nodemailer/lib/smtp-transport/index.js:289:21
+      at SMTPConnection.<anonymous> (../node_modules/nodemailer/lib/smtp-connection/index.js:215:17)
+      at SMTPConnection._actionEHLO (../node_modules/nodemailer/lib/smtp-connection/index.js:1371:14)
+      at SMTPConnection._processResponse (../node_modules/nodemailer/lib/smtp-connection/index.js:993:20)
+      at SMTPConnection._onData (../node_modules/nodemailer/lib/smtp-connection/index.js:774:14)
+      at TLSSocket.SMTPConnection._onSocketData (../node_modules/nodemailer/lib/smtp-connection/index.js:195:44)
+      at TLSWrap.onStreamRead (../node:internal/stream_base_commons:191:23) {
+        code: 'EENVELOPE',
+        command: 'API'
+      }".
+      at console.log (../node_modules/@jest/console/build/CustomConsole.js:141:10)       
+      at EmailController.send (modules/email/email.controller.ts:1818:15)
