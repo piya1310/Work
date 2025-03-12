@@ -1,67 +1,51 @@
-i am getting one problem in my react application 
-i am dispalying the product cards in screen 
-suppose i have 20 product then all 20 is displayed on screen on normal screen but 
-but when i am zoom my screen to 50% that time only 6 product is displayed on my screen . i acheck api response . in response all 20 product data is present then why my 6 product is displayed . and heignt is stopped for screen . but when i open inspect tool then all product is displayed . why this issue .
-providing you a code
-i want to confirm that why issue is there or there is any issue with InfiniteScroll package?
-"""
-import InfiniteScroll from "react-infinite-scroll-component";
- {data.product.length <= 0 && (
-        <div className="product_no_result_label">Nothing to see here yet!</div>
-      )}
-      <InfiniteScroll
-        dataLength={items?.length}
-        next={loadMore}
-        hasMore={hasMore}
-        loader={""}
-      >
-        {gridViewOpen ? (
-          <div style={{ top: "20px", marginTop: "10px" }}>
-            <GridviewCard
-              props={items}
-              refetch={data.refetch}
-              pageRouter="myproduct"
-              sort_order={value}
-              loggedInUserEmail={loginUserEmail}
-            />
-          </div>
-        ) : (
-          <div style={{ top: "20px", marginTop: "10px",paddingRight:"24px" }}>
-            <ListviewCard
-              props={items}
-              refetch={data.refetch}
-              pageRouter="myproduct"
-              sort_order={value}
-              loggedInUserEmail={loginUserEmail}
-            />
-          </div>
-        )}
-      </InfiniteScroll>
-"""
-and some code from Grid Component as following
-"""
-  return (
-    <>
-      <Grid className="product-grid-container">
-        {props?.map((row: ExperimentalDataItem, row_index: number) => (
-          // <Grid item xs={12} sm={6} md={4} lg={4} key={rowIndex}>
+  .custom-avatar-group {
+
+    justify-content: flex-start;
+    gap: 8px; // Aligns all avatars to the left
+  
+    // Style for each user avatar (with initials)
+    .user-avatar {
+      background-color: #673ab7; // Purple background for individual user avatars
+      color: white; // White text color for initials
+    margin - right: 8px; // 8px gap between each avatar
+
+    // Style specifically for the +N overflow avatar
+    .MuiAvatarGroup - avatar {
+      background - color: #673ab7; // Grey background for +N overflow avatar
+      color: rgb(255, 255, 255); // Black text color for +N
+      font - family: "Kenvue Sans", sans - serif;
+      font - size: 13.33px;
+      font - weight: 700;
+      line - height: 19.99px;
+      text - align: center; // Center text for +N display
+      width: 36px; // Ensuring fixed width for overflow avatar if needed
+      height: 36px;
+      gap: 8px;// Ensuring fixed height for overflow avatar if needed
+    }
+  }
+
+    return (
+      <>
+        <Grid className="product-grid-container">
+          {props?.map((row: ExperimentalDataItem, row_index: number) => (
+
             <div className="card-container" key={row_index + 1}>
-      
+
               <CardContent
                 className="card-content"
                 onClick={() => handleCardClick(row)}
               >
-                <Box sx={{display:"flex", flexDirection:"column", gap:"24px", alignItems:"self-start"}}>
-                  <Box sx={{display:"flex",width:"100%", flexDirection:"row", alignItems:"center", justifyContent:"space-between"}}>
-                  <Chip label={row.type} sx={{ backgroundColor: row.type === 'Final' ? "#FFB000 !important" : "#D3BDF2 !important" }} className="custom-chip" />
-                    <div className="date-label">    
-                    <span className="gridsorting">
-  {sort_order === "Created Date" ? "Date Created:" : "Date Modified:"} &nbsp;
-  {sort_order === "Created Date" ? formatDate(row.createdAt) : formatDate(row.updatedAt)}
-</span>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: "24px", alignItems: "self-start" }}>
+                  <Box sx={{ display: "flex", width: "100%", flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
+                    <Chip label={row.type} sx={{ backgroundColor: row.type === 'Final' ? "#FFB000 !important" : "#D3BDF2 !important" }} className="custom-chip" />
+                    <div className="date-label">
+                      <span className="gridsorting">
+                        {sort_order === "Created Date" ? "Date Created:" : "Date Modified:"} &nbsp;
+                        {sort_order === "Created Date" ? formatDate(row.createdAt) : formatDate(row.updatedAt)}
+                      </span>
 
                     </div>
-                  
+
                     {CheckCRUDAccess(row.users, "product") === 1 && (
                       <IconButton
                         onClick={(e) => handleMoreHorizClick(e, row)}
@@ -70,89 +54,99 @@ and some code from Grid Component as following
                         <MoreHorizIcon />
                       </IconButton>
                     )}
-                   
+
                   </Box>
                   <Menu
-                  
+
                     anchorEl={anchorEl}
                     open={Boolean(anchorEl)}
                     onClose={handleMenuClose}
                     className="menu"
                   >
-                   <MenuItem onClick={(ev) => handleOpenDialog(ev, {
-                                  productName: slcRow.productName ?? "",
-                                  brandName: slcRow.brandName ?? "",
-                                  projectId: slcRow.projectId ?? "",
-                                  description: slcRow.description ?? "",
-                                  projectName: slcRow.projectName ?? "",
-                                  _id: slcRow._id,
-                                })}>
+                    <MenuItem onClick={(ev) => handleOpenDialog(ev, {
+                      productName: slcRow.productName ?? "",
+                      brandName: slcRow.brandName ?? "",
+                      projectId: slcRow.projectId ?? "",
+                      description: slcRow.description ?? "",
+                      projectName: slcRow.projectName ?? "",
+                      _id: slcRow._id,
+                    })}>
                       Edit <ModeEditOutlinedIcon />
                     </MenuItem>
                     <Divider />
                     <MenuItem onClick={(ev) =>
-                                handleOpenDeletePopup(ev, slcRow._id)
-                              }>
+                      handleOpenDeletePopup(ev, slcRow._id)
+                    }>
                       Delete <DeleteIcon />
                     </MenuItem>
                   </Menu>
-  
-                  <Box sx={{display:"flex",width:"100%", flexDirection:"row", alignItems:"center", justifyContent:"space-between"}}>
+
+                  <Box sx={{ display: "flex", width: "100%", flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
                     <div className="section">
                       <div className="brand-name">{truncate(row.brandName, 22)}</div>
                       <div className="id-value">{truncate(row.productName, 50)}</div>
                     </div>
                   </Box>
-                  <Box sx={{display:"flex",width:"100%", flexDirection:"row", alignItems:"center", justifyContent:"space-between"}}>
-                  <div className="section">
-                    <div className="id-label">SIP ID</div>
-                    <div className="id-value">{row.productSipId}</div>
-                  </div>
-                  <div className="section">
-                    <div className="id-label">Project ID</div>
-                    <div className="id-value">{row.projectId || "N/A"}</div>
+                  <Box sx={{ display: "flex", width: "100%", flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
+                    <div className="section">
+                      <div className="id-label">SIP ID</div>
+                      <div className="id-value">{row.productSipId}</div>
+                    </div>
+                    <div className="section">
+                      <div className="id-label">Project ID</div>
+                      <div className="id-value">{row.projectId || "N/A"}</div>
                     </div>
                   </Box>
-                  <Box sx={{display:"flex",width:"100%", flexDirection:"row", alignItems:"center", justifyContent:"space-between"}}>
-                  <AvatarGroup max={4} className="custom-avatar-group" sx={{ zIndex: "-2" }}>
-                    {row.users.map((user: RowUsers, index: number) => (
-                      <Avatar sx={{zIndex:"-2"}} key={index+1} title={user.name} className="user-avatar">
-                        {getAvatarLetters(user?.name)}
-                      </Avatar>
-                    ))}
-                  </AvatarGroup>
+                  <Box sx={{ display: "flex", width: "100%", flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
+                    <AvatarGroup max={4} className="custom-avatar-group">
+                      {row.users.map((user: RowUsers, index: number) => (
+                        <Avatar key={index + 1} title={user.name} className="user-avatar">
+                          {getAvatarLetters(user?.name)}
+                        </Avatar>
+                      ))}
+                    </AvatarGroup>
                   </Box>
-                  <Box sx={{display:"flex",width:"100%", flexDirection:"row", alignItems:"center", justifyContent:"space-between"}}>
-                  <div className="section">
-                    <div className="description-title">Description</div>
-                    <div className="description-text">{truncate(row.description, 100) || "N/A"}</div>
-                  </div>
+                  <Box sx={{ display: "flex", width: "100%", flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
+                    <div className="section">
+                      <div className="description-title">Description</div>
+                      <div className="description-text">{truncate(row.description, 100) || "N/A"}</div>
+                    </div>
                   </Box>
                 </Box>
-                          
+
               </CardContent>
             </div>
-          // </Grid>
-          
-        ))}
-      </Grid>
-      <Popup
-        key={dialogKey}
-        open={dialogOpen}
-        onClose={handleCloseDialog}
-        onSubmit={handleSubmit}
-        initialValues={initialProductValues}
-        refetch={refetch}
-      />
-      <DeletePopupBox
-        open={deletePopupOpen}
-        onClose={handleCloseDeletePopup}
-        onDelete={handleDelete}
-        dialogTitle="Warning"
-        dialogContent={WARNING_MSG_DELETE_PRODUCT}
-        deleteHideButton={deleteHideButton}
-      />
-      {getToastContainer()}
-    </>
-  );
-"""
+
+
+          ))}
+        </Grid>
+        <Popup
+          key={dialogKey}
+          open={dialogOpen}
+          onClose={handleCloseDialog}
+          onSubmit={handleSubmit}
+          initialValues={initialProductValues}
+          refetch={refetch}
+        />
+        <DeletePopupBox
+          open={deletePopupOpen}
+          onClose={handleCloseDeletePopup}
+          onDelete={handleDelete}
+          dialogTitle="Warning"
+          dialogContent={WARNING_MSG_DELETE_PRODUCT}
+          deleteHideButton={deleteHideButton}
+        />
+        {getToastContainer()}
+      </>
+    );
+    in above code when my cards is displayed that time on screen and i scroll up and down that time the the avtar of users are moving up and down it is not stick with the product card.Avatarlike product card others element stayed as it is along with the card but my avtars are moving like they are not stick with particular cards.Avatarwhy this issue 
+      why this issue is persist how to solve?
+      < AvatarGroup max = { 4} className = "custom-avatar-group" >
+      {
+        row.users.map((user: RowUsers, index: number) => (
+          <Avatar key={index + 1} title={user.name} className="user-avatar">
+            {getAvatarLetters(user?.name)}
+          </Avatar>
+        ))
+      }
+                  </AvatarGroup >
