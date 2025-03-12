@@ -1,46 +1,19 @@
-Ran all test suites matching /product.routes.spec.ts/i.
-Jest did not exit one second after the test run has completed.
+C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms> npm run test product.routes.spec.ts
 
-'This usually means that there are asynchronous operations that weren't stopped in your tests. Consider running Jest with `--detectOpenHandles` to troubleshoot this issue.       
+> sip-api@1.0.0 test
+> cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --coverage --runInBand product.routes.spec.ts
 
-  ●  Cannot log after tests are done. Did you forget to wait for something async in your test?
-    Attempted to log "Error: No recipients defined
-        at SMTPConnection._formatError (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
-        at SMTPConnection._setEnvelope (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\node_modules\nodemailer\lib\smtp-connection\index.js:1047:34)
-        at SMTPConnection.send (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\node_modules\nodemailer\lib\smtp-connection\index.js:631:14)
-        at sendMessage (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\node_modules\nodemailer\lib\smtp-transport\index.js:228:28)
-        at C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\node_modules\nodemailer\lib\smtp-transport\index.js:289:21
-        at SMTPConnection.<anonymous> (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
-        at Object.onceWrapper (node:events:633:28)
-        at SMTPConnection.emit (node:events:519:28)
-        at SMTPConnection._actionEHLO (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
-        at SMTPConnection._processResponse (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
-        at SMTPConnection._onData (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
-        at TLSSocket.SMTPConnection._onSocketData (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\node_modules\nodemailer\lib\smtp-connection\index.js:195:44)
-        at TLSSocket.emit (node:events:519:28)
-        at addChunk (node:internal/streams/readable:559:12)
-        at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
-        at TLSSocket.Readable.push (node:internal/streams/readable:390:5)
-        at TLSWrap.onStreamRead (node:internal/stream_base_commons:191:23) {
-      code: 'EENVELOPE',
-      command: 'API'
-    }".
+(node:11756) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
 
+ RUNS  src/modules/product/_test_/product.routes.spec.ts
+C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\helpers\postgresAudit.service.ts:597
+  index_js_1.default.info('postgresAudit.service > Request recieved for updateOrCreateToPostgres', `${auditData}`);
+                     ^
 
+TypeError: index_js_1.default.info is not a function
+    at updateOrCreateToPostgres (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\helpers\postgresAudit.service.ts:597:22)
+    at formatAndSaveAuditData (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\modules\audit\audit.service.ts:182:65)
+    at productController.findByIdAndDelete (C:\Users\PJadha04\Documents\RDX BS MS\rdx-sip-bs-ms\src\modules\product\product.controller.ts:21150:53)
 
-      at SMTPConnection._formatError (../node_modules/nodemailer/lib/smtp-connection/index.js:809:19)
-      at SMTPConnection._setEnvelope (../node_modules/nodemailer/lib/smtp-connection/index.js:1047:34)
-      at SMTPConnection.send (../node_modules/nodemailer/lib/smtp-connection/index.js:631:14)
-      at sendMessage (../node_modules/nodemailer/lib/smtp-transport/index.js:228:28)     
-      at ../node_modules/nodemailer/lib/smtp-transport/index.js:289:21
-      at SMTPConnection.<anonymous> (../node_modules/nodemailer/lib/smtp-connection/index.js:215:17)
-      at SMTPConnection._actionEHLO (../node_modules/nodemailer/lib/smtp-connection/index.js:1371:14)
-      at SMTPConnection._processResponse (../node_modules/nodemailer/lib/smtp-connection/index.js:993:20)
-      at SMTPConnection._onData (../node_modules/nodemailer/lib/smtp-connection/index.js:774:14)
-      at TLSSocket.SMTPConnection._onSocketData (../node_modules/nodemailer/lib/smtp-connection/index.js:195:44)
-      at TLSWrap.onStreamRead (../node:internal/stream_base_commons:191:23) {
-        code: 'EENVELOPE',
-        command: 'API'
-      }".
-      at console.log (../node_modules/@jest/console/build/CustomConsole.js:141:10)       
-      at EmailController.send (modules/email/email.controller.ts:1818:15)
+Node.js v20.16.0
