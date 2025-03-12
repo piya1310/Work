@@ -1,58 +1,11 @@
-import React, { useState } from 'react';
-import Toast from './Toast'; // Adjust the import based on your file structure
-
-const SignOutComponent = (props) => {
-  const [showToast, setShowToast] = useState(false);
-
-  const handleSignOutClick = (event) => {
-    setShowToast(true); // Show the custom toast
-  };
-
-  const handleConfirm = () => {
-    localStorage.removeItem("landingTime");
-    localStorage.setItem("session", "0");
-    props?.mfProps?.publish("core-header-ui-mf:signout");
-    setShowToast(false); // Hide the toast
-  };
-
-  const handleCancel = () => {
-    setShowToast(false); // Hide the toast
-  };
-
+const Toast = ({ content, onConfirm, onCancel }) => {
   return (
-    <div>
-      <ListItemIcon
-        sx={{
-          cursor: "pointer",
-          marginTop: 18,
-          minWidth: 0,
-          float: "bottom",
-          mr: getWidth(open),
-          justifyContent: "center",
-          position: "fixed",
-          bottom: 0,
-          marginBottom: "48px",
-          marginLeft: "10px",
-        }}
-        onClick={handleSignOutClick}
-      >
-        <BootstrapTooltipSideBar
-          className="BootstrapTooltipSidebar"
-          title={<p className="BootstrapTooltipSidebar-p">Sign Out</p>}
-        >
-          {getSignOutIcon(open)}
-        </BootstrapTooltipSideBar>
-      </ListItemIcon>
-
-      {showToast && (
-        <Toast 
-          message="Are you sure to Sign out?"
-          onConfirm={handleConfirm}
-          onCancel={handleCancel}
-        />
-      )}
+    <div className="toast">
+      <p>{content}</p>
+      <div className="toast-buttons">
+        <button onClick={onConfirm}>OK</button>
+        <button onClick={onCancel}>Cancel</button>
+      </div>
     </div>
   );
 };
-
-export default SignOutComponent;
