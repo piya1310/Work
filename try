@@ -1,29 +1,37 @@
-const Root = (props: RootProps) => {
+import React, { useState, useMemo } from 'react';
+// import other necessary components and hooks
+import { ToastMessage } from './ToastMessage'; // Ensure the import statement is correct
+
+// Define the props interface for Root
+interface RootProps {
+  sipUiMfScreen?: any; // Adjust according to your actual type
+  // other props as needed
+}
+
+const Root: React.FC<RootProps> = (props) => {
   const [userName, setUserName] = useState("");
   const [loggedInUser, setLoggedInUser] = useState<UserData | null>(null);
-  const [showToast, setShowToast] = useState(false); // State to manage ToastMessage
-  const [toastContent, setToastContent] = useState(""); // State for toast content
-  const loggedInUserDetails = getLoggedInUserDetails();
+  const [showToast, setShowToast] = useState(false); // State to manage the visibility of the toast
+  const [toastContent, setToastContent] = useState(""); // Content for the toast message
 
+  // Assume this is getting user details properly
   const userDetails = localStorage.getItem("userDetails");
-  const token = useMemo(() => {
-    return userDetails;
-  }, [userDetails]);
+  const token = useMemo(() => userDetails, [userDetails]);
 
   const handleSignOutClick = () => {
-    setToastContent("Are you sure to Sign out?"); // Set the toast content
-    setShowToast(true); // Show the custom toast
+    setToastContent("Are you sure you want to sign out?"); // Set the message for toast
+    setShowToast(true); // Trigger showing the toast message
   };
 
   const handleConfirm = () => {
     localStorage.removeItem("landingTime");
     localStorage.setItem("session", "0");
-    props?.mfProps?.publish("core-header-ui-mf:signout");
-    setShowToast(false); // Hide the toast
+    props?.sipUiMfScreen?.publish("core-header-ui-mf:signout");
+    setShowToast(false); // Hide the toast after confirming
   };
 
   const handleCancel = () => {
-    setShowToast(false); // Hide the toast
+    setShowToast(false); // Hide the toast on cancel
   };
 
   return (
@@ -39,8 +47,8 @@ const Root = (props: RootProps) => {
                       <Box className="main-root">
                         {token && window.location.pathname !== "/sip/login" && (
                           <SideBarAction
-                            mfProps={props?.sipUiMfScreen}
-                            onSignOutClick={handleSignOutClick} // pass handler to SideBarAction
+                            onSignOutClick={handleSignOutClick} // Pass the handler to SideBarAction
+                            mfProps={props?.sipUiMfScreen} // Pass other props if necessary
                           />
                         )}
                         <Box component="main" className="dashboard-main">
@@ -59,7 +67,6 @@ const Root = (props: RootProps) => {
                         )}
                       </Box>
                     </BrowserRouter>
-                    {/* <ReactQueryDevtools initialIsOpen={true} /> */}
                   </QueryClientProvider>
                 </ThemeProvider>
               </SidebarStateProvider>
@@ -75,29 +82,44 @@ const Root = (props: RootProps) => {
 
 export default Root;
 
+import React, { useContext } from 'react';
+import { ListItemIcon } from '@mui/material';
+// other necessary imports
 
-export default function SideBarAction(props: SideBarProps) {
-  const { onSignOutClick } = props; // Destructure here
+export interface SideBarProps {
+  mfProps?: MfProps; // Ensure you're importing the right MfProps type
+  onSignOutClick: () => void; // Add this prop
+}
+
+const SideBarAction: React.FC<SideBarProps> = (props) => {
+  const { onSignOutClick, mfProps } = props; // Destructure props
+
+  // Other states and logic
 
   return (
-    window.location.pathname !== "/sip/login" && (
-      <Box className="sidebar-main">
-        <CssBaseline />
-        <Drawer className="sidebar-drawer" variant="permanent" open={open}>
-          {/* ... Other code remains unchanged ... */}
-          <ListItemIcon
-            onClick={onSignOutClick} // Call the function passed from Root
-          >
-            <BootstrapTooltipSideBar
-              className="BootstrapTooltipSidebar"
-              title={<p className="BootstrapTooltipSidebar-p">Sign Out</p>}
-            >
-              {getSignOutIcon(open)}
-            </BootstrapTooltipSideBar>
-          </ListItemIcon>
-          {/* ... Rest of the code ... */}
-        </Drawer>
-      </Box>
-    )
+    <ListItemIcon
+      onClick={onSignOutClick} // Call the function received as prop
+      sx={{
+        cursor: "pointer",
+        marginTop: 18,
+        minWidth: 0,
+        float: "bottom",
+        mr: getWidth(open),
+        justifyContent: "center",
+        position: "fixed",
+        bottom: 0,
+        marginBottom: "48px",
+        marginLeft: "10px",
+      }}
+    >
+      <BootstrapTooltipSideBar
+        className="BootstrapTooltipSidebar"
+        title={<p className="BootstrapTooltipSidebar-p">Sign Out</p>}
+      >
+        {getSignOutIcon(open)}
+      </BootstrapTooltipSideBar>
+    </ListItemIcon>
   );
-}
+};
+
+export default SideBarAction;
