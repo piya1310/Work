@@ -1,4 +1,10 @@
-const Toast = ({ content, onConfirm, onCancel }) => {
+interface ToastProps {
+  content: string; // This prop can accept a string.
+  onConfirm: () => void; // This prop is a function.
+  onCancel: () => void; // This prop is a function.
+}
+
+const Toast: React.FC<ToastProps> = ({ content, onConfirm, onCancel }) => {
   return (
     <div className="toast">
       <p>{content}</p>
@@ -9,3 +15,8 @@ const Toast = ({ content, onConfirm, onCancel }) => {
     </div>
   );
 };
+  <Toast 
+    content="Are you sure to Sign out?"
+    onConfirm={handleConfirm}
+    onCancel={handleCancel}
+  />
