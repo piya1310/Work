@@ -1,22 +1,199 @@
-interface ToastProps {
-  content: string; // This prop can accept a string.
-  onConfirm: () => void; // This prop is a function.
-  onCancel: () => void; // This prop is a function.
-}
+the following is my signOutToast.componnet.tsx
+"""
 
-const Toast: React.FC<ToastProps> = ({ content, onConfirm, onCancel }) => {
+import React from "react";
+import CloseIcon from "@mui/icons-material/Close";
+import { ToastProps } from "../breadcrumb/types";
+import "../../assets/css/tooltip.scss";
+export const ToastMessage: React.FC<ToastProps> = ({ content, onConfirm, onCancel }) => {
+    return (
+        <div className="toast" style={{ zIndex: '9999999' }}>
+            <div className="toastDiv">
+                <div className="toasttitleIcon">
+                    <span className="toastTitle">Confirm Sign out</span>
+                    <CloseIcon onClick={onCancel} />
+                </div>
+
+                <span>{content}</span>
+            </div>
+            <div className="toast-buttons">
+                <button onClick={onConfirm}>OK</button>
+                <button onClick={onCancel}>Cancel</button>
+            </div>
+        </div>
+    );
+};
+css
+.toast {
+  position: absolute;
+  top: 50%;
+   width: 708px;
+    height: 232px;
+  /* Position from top */
+  left: 50%;
+  transform: translateX(-50%);
+  /* Center it horizontally */
+  background-color: #ffffff !important;
+  /* Background color */
+  color: black;
+  /* Text color */
+  padding: 16px;
+  border-radius:32px;
+  border-left-width: 4px;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  z-index: 9999999;
+  /* Ensure it appears above other elements */
+}
+"""
+when i click on signOut button that time i want to show this ToastMessage in center of my screen 
+need to make  the top layer of application that means its z inedx it top most and when it appears on screen then all other element is hiding behind toastMessage 
+i am calling ToastMessage in my SidebarAction.component.tsx
+where my signOut button is present as following
+export default function SideBarAction(props: SideBarProps) {
+  const [showToast, setShowToast] = useState(false);
+
+  const handleSignOutClick = () => {
+    setShowToast(true); // Show the custom toast
+  };
+
+  const handleConfirm = () => {
+    localStorage.removeItem("landingTime");
+    localStorage.setItem("session", "0");
+    props?.mfProps?.publish("core-header-ui-mf:signout");
+    setShowToast(false); // Hide the toast
+  };
+
+  const handleCancel = () => {
+    setShowToast(false); // Hide the toast
+  };
+return window.location.pathname !== "/sip/login" ? (
+    <Box className="sidebar-main">
+      <CssBaseline />
+      <Drawer className="sidebar-drawer" variant="permanent" open={open}>
+        <ListItemIcon
+          sx={{
+            minWidth: 0,
+            mr: open ? 0 : "auto",
+            justifyContent: "center",
+          }}
+        >
+          {renderLogo(open)}
+        </ListItemIcon>
+<ListItemText primary="Home" sx={{ opacity: getOpacity(open)}} />
+
+          <ListItemIcon
+            sx={{
+              cursor: "pointer",
+              marginTop: 18,
+              minWidth: 0,
+              float: "bottom",
+              mr: getWidth(open),
+              justifyContent: "center",
+              position: "fixed",
+              bottom: 0,
+              marginBottom: "48px",
+              marginLeft: "10px",
+            }}
+            onClick={handleSignOutClick}
+          >
+            <BootstrapTooltipSideBar
+              className="BootstrapTooltipSidebar"
+              title={<p className="BootstrapTooltipSidebar-p">Sign Out</p>}
+            >
+              {getSignOutIcon(open)}
+            </BootstrapTooltipSideBar>
+          </ListItemIcon>
+
+          {showToast && (
+            <ToastMessage
+              content="Are you sure to Sign out?"
+              onConfirm={handleConfirm}
+              onCancel={handleCancel}
+            />
+          )}
+          <ListItemText primary="Home" sx={{ opacity: getOpacity(open) }} />
+
+"""
+when i click on sign out button my ToastMessage is comes in screen center position .and it is a top layer of application 
+following is my root.component.tsx 
+which calls all the element
+
+const Root = (props: RootProps) => {
+  const [userName, setUserName] = useState("");
+  const [loggedInUser, setLoggedInUser] = useState<UserData | null>(null);
+  const loggedInUserDetails = getLoggedInUserDetails();
+
+  const userDetails = localStorage.getItem("userDetails");
+
+  const token = useMemo(() => {
+    return userDetails;
+  }, [userDetails]);
   return (
-    <div className="toast">
-      <p>{content}</p>
-      <div className="toast-buttons">
-        <button onClick={onConfirm}>OK</button>
-        <button onClick={onCancel}>Cancel</button>
-      </div>
-    </div>
+    <React.StrictMode>
+
+      {token ? (
+        <LoadingProvider>
+          <DataProvider>
+            <AutoSaveStateProvider>
+              <SidebarStateProvider>
+                <ThemeProvider theme={Theme}>
+                  <QueryClientProvider client={queryClient}>
+                    <BrowserRouter>
+
+                      <Box className="main-root">
+                        {token && window.location.pathname !== "/sip/login" && (
+                          <SideBarAction mfProps={props?.sipUiMfScreen} />
+                        )}
+                        <Box component="main" className="dashboard-main">
+                          <LoadingScreen />
+                          <Routes>
+                            <Route path="/dashboard" element={<Dashboard />} />
+                            <Route
+                              path="/allproduct"
+                              element={<AllProductDashboard />}
+                            />
+                            <Route
+                              path="/product-detail/:id/auditReport"
+                              element={<AuditReportPage isAssessment={false}/>}
+                            />
+                            <Route
+                              path="/product-detail/:id"
+                              element={<ProductDetail />}
+                            />
+                            <Route
+                              path="/my-product-detail/:id"
+                              element={<ProductDetail />}
+                            />
+                            <Route
+                              path="/product-assessment/:assessmentId"
+                              element={<ProductAssessmentDetailsPage />}
+                            />
+                            <Route
+                              path="/product-assessment/:id/auditReport"
+                              element={<AuditReportPage isAssessment={true}/>}
+                            />
+                            <Route
+                              path="/view-all-results/:assessmentId"
+                              element={<ViewAllResultsPage />}
+                            />
+                          </Routes>
+                        </Box>
+                      </Box>
+                    </BrowserRouter>
+                    {/* <ReactQueryDevtools initialIsOpen={true} /> */}
+                  </QueryClientProvider>
+                </ThemeProvider>
+              </SidebarStateProvider>
+            </AutoSaveStateProvider>
+          </DataProvider>
+        </LoadingProvider>
+      ) : (
+        ""
+      )}
+    </React.StrictMode>
   );
 };
-  <Toast 
-    content="Are you sure to Sign out?"
-    onConfirm={handleConfirm}
-    onCancel={handleCancel}
-  />
+
+export default Root;
+
+now help me to make my ToastMessage as top layer and when it comes on screen it will display in middle of screen and all others element is behind it
