@@ -1,68 +1,86 @@
-javascript
-import React, { useEffect, useState } from 'react';
+const [visibleItems, setVisibleItems] = useState(0);
+const [items, setItems] = useState<ExperimentalDataItem[]>([]);
 
-// Utility function to calculate visible items based on window size
-const calculateVisibleItems = () => {
-  const cardHeight = 200; // Approximate height of each card including margins (adjust as needed)
-  const windowHeight = window.innerHeight;
-  return Math.floor(windowHeight / cardHeight); // or wherever you want to calculate based on
-};
+useEffect(() => {
+  // Set initial visible items based on the data length
+  if (data?.product) {
+    setVisibleItems(data.product.length);
+  }
+}, [data?.product]);
 
-const YourComponent = (props) => {
-  const [visibleItems, setVisibleItems] = useState(calculateVisibleItems());
-  const [items, setItems] = useState<ExperimentalDataItem[]>([]);
-  const [hasMore, setHasMore] = useState(true);
+useEffect(() => {
+  if (sortValue === null) {
+    setItems(data?.product?.slice(0, visibleItems));
+  } else {
+    let copyArrayvalue: ExperimentalDataItem[] = [];
+    copyArrayvalue = productSortFunction(data?.product, sortValue);
+    setItems(copyArrayvalue);
+  }
+}, [visibleItems, data?.product?.length, data, sortValue]);
 
-  // Effect to manage the loading of items
-  useEffect(() => {
-    if (sortValue === null) {
-      setItems(data?.product?.slice(0, visibleItems));
-    } else {
-      let copyArrayvalue: ExperimentalDataItem[] = productSortFunction(data?.product, sortValue);
-      setItems(copyArrayvalue.slice(0, visibleItems));
-    }
-  }, [visibleItems, data?.product?.length, data, sortValue]);
-
-  // Load more items
-  const loadMore = () => {
-    setVisibleItems((prevVisibleItems) => prevVisibleItems + 4);
-    setHasMore(items.length > 0);
-  };
-
-  // Handling window resize to adjust visible items
-  useEffect(() => {
-    const handleResize = () => {
-      setVisibleItems(calculateVisibleItems());
-    };
-
-    window.addEventListener('resize', handleResize);
-    
-    // Clean up the event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  return (
-    <InfiniteScroll
-      dataLength={items?.length}
-      next={loadMore}
-      hasMore={hasMore}
-      loader={""}
-    >
-      <Grid className="product-grid-container">
-        {items.map((row: ExperimentalDataItem, row_index: number) => (
-          <div className="card-container" key={row_index + 1}>
-            <CardContent
-              className="card-content"
-              onClick={() => handleCardClick(row)}
-            >
-              // Card content goes here...
-            </CardContent>
-          </div>
-        ))}
-      </Grid>
-      // Other components...
-    </InfiniteScroll>
+const loadMore = () => {
+  setVisibleItems((prevVisibleItems) => 
+    Math.min(prevVisibleItems + 4, data.product.length) // Ensure it does not exceed available items
   );
+  items.length > 0 ? setHasMore(true) : setHasMore(false);
 };
+
+useEffect(() => {
+  if (value === "Modified Date") {
+    const copyArrayvalue: ExperimentalDataItem[] = [...data.product]
+      .sort((a, b) => {
+        const convertDate = a?.updatedAt ?? "";
+        const convertDateB = b?.updatedAt ?? "";
+        return (
+          new Date(convertDate).getTime() - new Date(convertDateB).getTime()
+        );
+      })
+      .reverse();
+    setItems(copyArrayvalue.slice(0, visibleItems));
+  }
+}, [data?.product, value, visibleItems]);
+
+<div style={{ width: "75px", display: "contents" }}>
+  <span
+    style={{
+      fontFamily: "kenvue-sans-regular",
+      fontWeight: "400",
+      fontSize: "13.33px",
+    }}
+  >
+    {data.product.length} Products
+  </span>
+</div>
+
+{data.product.length <= 0 && (
+  <div className="product_no_result_label">Nothing to see here yet!</div>
+)}
+
+<InfiniteScroll
+  dataLength={items?.length}
+  next={loadMore}
+  hasMore={hasMore}
+  loader={""}
+>
+  {gridViewOpen ? (
+    <div style={{ top: "20px", marginTop: "10px" }}>
+      <GridviewCard
+        props={items}
+        refetch={data.refetch}
+        pageRouter="myproduct"
+        sort_order={value}
+        loggedInUserEmail={loginUserEmail}
+      />
+    </div>
+  ) : (
+    <div style={{ top: "20px", marginTop: "10px", paddingRight: "24px" }}>
+      <ListviewCard
+        props={items}
+        refetch={data.refetch}
+        pageRouter="myproduct"
+        sort_order={value}
+        loggedInUserEmail={loginUserEmail}
+      />
+    </div>
+  )}
+</InfiniteScroll>
