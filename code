@@ -1,12 +1,23 @@
+.more-icon {
+  cursor: pointer; /* Show pointer when hovering */
+}
+
+.more-icon:hover {
+  background-color: lightgray; /* Change background color on hover */
+}
+
+.more-icon:active {
+  background-color: gray; /* Change background color when the element is clicked */
+}
+
 {CheckCRUDAccess(row.users, "product") === 1 && (
-    <div
-      onClick={(e) => handleMoreHorizClick(e, row)}
-      className="more-icon"
-      role="button"
-      tabIndex={0} // Make it accessible
-      onKeyPress={(e) => { if (e.key === 'Enter') handleMoreHorizClick(e, row); }}
-      aria-label="More options" // Accessible label
-    >
-      <span>⋮</span> {/* Three dots character for More Horiz */}
-    </div>
-  )}
+  <div
+    onClick={(e) => handleMoreHorizClick(e, row)}
+    onKeyDown={(e) => e.key === 'Enter' && handleMoreHorizClick(e, row)} // Handle Enter key
+    className="more-icon"
+    role="button"
+    tabIndex={0} // Make it focusable
+  >
+    <MoreHorizIcon />
+  </div>
+)}
