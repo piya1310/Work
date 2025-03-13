@@ -1,13 +1,47 @@
-<div className="custom-avatar-group">
-  {row.users.slice(0, 3).map((user: RowUsers, index: number) => (
-    <div key={index} className="user-avatar">
-      {getAvatarLetters(user?.name).slice(0, 3)} {/* Display max 3 letters */}
-    </div>
-  ))}
-  {/* Optionally show the overflow count if necessary */}
-  {row.users.length > 3 && (
-    <div className="overflow-avatar">
-      +{row.users.length - 3}
+<Box sx={{display:"flex", width:"100%", flexDirection:"row", alignItems:"center", justifyContent:"space-between"}}>
+  <Chip
+    label={row.type}
+    sx={{
+      backgroundColor: row.type === 'Final' ? "#FFB000 !important" : "#D3BDF2 !important"
+    }}
+    className="custom-chip"
+  />
+  <div className="date-label">    
+    <span className="gridsorting">
+      {sort_order === "Created Date" ? "Date Created:" : "Date Modified:"} &nbsp;
+      {sort_order === "Created Date" ? formatDate(row.createdAt) : formatDate(row.updatedAt)}
+    </span>
+  </div>
+  
+  {CheckCRUDAccess(row.users, "product") === 1 && (
+    <div
+      onClick={(e) => handleMoreHorizClick(e, row)}
+      className="more-icon"
+      role="button"
+      tabIndex={0} // Make it accessible
+      onKeyPress={(e) => { if (e.key === 'Enter') handleMoreHorizClick(e, row); }}
+      aria-label="More options" // Accessible label
+    >
+      <span>⋮</span> {/* Three dots character for More Horiz */}
     </div>
   )}
-</div>
+</Box>
+.more-icon {
+  cursor: pointer; /* Make the cursor a pointer when hovering over the icon */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; /* Fixed width for the icon */
+  height: 36px; /* Fixed height for the icon */
+  background-color: transparent; /* No background color */
+  border: none; /* No border */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.more-icon:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Light hover effect */
+}
+
+.more-icon:focus {
+  outline: none; /* Remove outline on focus */
+}
