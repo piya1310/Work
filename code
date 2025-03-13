@@ -1,123 +1,78 @@
-<div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "16px" }}>
-          {/* GridView Open and Close */}
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <div className="all_my_product_sort_grid_list_label1"
-              style={{
-              }}
-            >
-              Product Sort:
-            </div>
-            <div style={{
-              border: "none", paddingLeft: "10px"
-            }}>
+import { useState, useEffect } from 'react';
 
-              <select
-                style={{ height: "28px", border: "none", fontFamily: "kenvue-sans-regular", outline:"none" }}
-                value={value}
-                onChange={handleChange}
-              // className="all_my_product_sort_grid_list_label1"
-              >
-                <option value={"Modified Date"} style={{ border: "none"}}>Modified Date</option>
+const YourComponent = (props) => {
+  const [visibleItems, setVisibleItems] = useState(0); // Initialize to 0 or calculated dynamically
+  const [items, setItems] = useState([]); // Assuming you have an items state
+  const [hasMore, setHasMore] = useState(false);
+  
+  useEffect(() => {
+    // Update items based on props.ExperimentalData and visibleItems
+    setItems(props?.ExperimentalData?.slice(0, visibleItems));
+  }, [visibleItems, props?.ExperimentalData]);
 
-                <option value="A-Z" style={{ border: "none" }}>A-Z</option>
+  useEffect(() => {
+    // Set visibleItems to the length of items when items are updated
+    if (props?.ExperimentalData) {
+      setVisibleItems(props.ExperimentalData.length);
+    }
+  }, [props?.ExperimentalData]);
 
-                <option value={"Created Date"} style={{ border: "none"}}>Created Date</option>
-              </select>
+  const loadMore = () => {
+    setVisibleItems((prevVisibleItems) => prevVisibleItems + 4);
+    props?.ExperimentalData?.length > 0 ? setHasMore(true) : setHasMore(false);
+  };
 
-            </div>
-          </div>
-          <div style={{}}>
+  return (
+    <>
+      {items?.length > 0 ? (
+        <>
+          <span
+            style={{
+              fontFamily: "kenvue-sans-regular",
+              fontWeight: "400",
+              fontSize: "13.33px",
+              marginLeft: "8px",
+              marginBottom: "10px",
+            }}
+          >
+            {items?.length > 0 && items ? `${items?.length} Assessments` : " "}
+          </span>
+
+          <InfiniteScroll
+            dataLength={items.length}
+            next={loadMore}
+            hasMore={hasMore}
+            loader={""}
+            style={{ overflow: "hidden" }}
+          >
             {gridViewOpen ? (
-              <button
-                onClick={GridViewOpenClick}
-                style={{
-                  cursor: "pointer",
-                  alignItems: "center",
-                  display: "flex",
-                  border: "none",
-                  textDecorationColor: "#6CC24A",
-                  borderBottom: "2px solid #00B097",
-                  borderWidth: "7%",
-                  marginRight: "auto",
-                  float: "right",
-                  background: "none",
-
-                  padding: 0,
-                }}
-              >
-
-                <AppsIcon style={{ marginLeft: "0px" }} />
-                <span style={{}} className="all_my_product_sort_grid_list_label1"><b> Grid View</b></span>
-              </button>
+              <div style={{ marginTop: "24px" }}>
+                <GridViewComponentExperimental
+                  props={items}
+                  varProductData={props.varproductData}
+                  refetch={props.refetch}
+                  varUserCRUDAccess={props.varUserCRUDAccess}
+                  sort_order={value}
+                />
+              </div>
             ) : (
-              <button
-                onClick={GridViewOpenClick}
-                style={{
-                  marginLeft: "5px",
-                  cursor: "pointer",
-                  alignItems: "center",
-                  display: "flex",
-                  marginRight: "auto",
-                  float: "right",
-                  borderBottomStyle: "none",
-                  background: "none",
-                  border: "none",
-                  padding: 0,
-
-                }}
-              >
-
-                <AppsIcon style={{ marginLeft: "0px" }} />{" "}
-                <span style={{}} className="all_my_product_sort_grid_list_label1"> Grid View</span>
-              </button>
+              <div style={{
+                paddingRight: "24px", gap: "24px", display: "grid", marginTop: "24px",
+              }}>
+                <ListViewComponentExperimental
+                  props={items}
+                  varProductData={props.varproductData}
+                  refetch={props.refetch}
+                  varUserCRUDAccess={props.varUserCRUDAccess}
+                  sort_order={value}
+                />
+              </div>
             )}
-          </div>
+          </InfiniteScroll>
+        </>
+      ) : null}
+    </>
+  );
+};
 
-          {/* ,ListView Open and Close */}
-          <div style={{}}>
-            {listViewOpen ? (
-              <button
-                onClick={ListViewOpenClick}
-                className="list-view"
-
-                style={{
-
-                  float: "right",
-                  cursor: "pointer",
-                  marginLeft: "0px",
-                  alignItems: "center",
-                  display: "flex",
-                  background: "none",
-                  border: "none",
-                  padding: 0,
-                  textDecorationColor: "#6CC24A",
-                  borderBottom: "2px solid #00B097",
-                  borderWidth: "71%",
-                }}
-              >
-                <FormatListBulletedIcon />
-                <span style={{}} className="all_my_product_sort_grid_list_label1"> <b>List View</b></span>
-              </button>
-            ) : (
-              <button
-                onClick={ListViewOpenClick}
-                className="list-view"
-                style={{
-
-                  float: "right",
-                  cursor: "pointer",
-                  alignItems: "center",
-                  textDecoration: "none",
-                  borderBottomStyle: "none",
-                  display: "flex",
-                  background: "none",
-                  border: "none",
-                  padding: 0,
-                }}
-              >
-                <FormatListBulletedIcon />
-                <span style={{}} className="all_my_product_sort_grid_list_label1"> List View</span>
-              </button>
-            )}
-          </div>
-        </div>
+export default YourComponent;
