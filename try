@@ -92,5 +92,14 @@ useEffect(() => {
   )}
 </InfiniteScroll>
 
-here const [visibleItems, setVisibleItems] = useState(6); i specified the static number.
-the problem is when i 
+here const [visibleItems, setVisibleItems] = useState(6); i specified the static numberas 6
+i am getting one problem in my react application 
+i am dispalying the product cards in screen 
+suppose i have 20 product then all 20 is displayed on screen on normal screen but 
+but when i am zoom my screen to 50% that time only 6 product is displayed on my screen . i guess this issue is due to we specify 6 in useState
+ i acheck api response . in response all 20 product data is present then why my 6 product is displayed .
+ and heignt is stopped for screen . but when i open inspect tool then all product is displayed .
+i dont want to specify 6. or any static value it should be dynamic .
+thats why i am getting issue
+could you please fix it
+
