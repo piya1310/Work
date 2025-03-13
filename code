@@ -1,47 +1,13 @@
 <div className="custom-avatar-group">
-  {row.users.map((user: RowUsers, index: number) => (
+  {row.users.slice(0, 3).map((user: RowUsers, index: number) => (
     <div key={index} className="user-avatar">
-      {getAvatarLetters(user?.name)}
+      {getAvatarLetters(user?.name).slice(0, 3)} {/* Display max 3 letters */}
     </div>
   ))}
   {/* Optionally show the overflow count if necessary */}
-  {row.users.length > 4 && (
+  {row.users.length > 3 && (
     <div className="overflow-avatar">
-      +{row.users.length - 4}
+      +{row.users.length - 3}
     </div>
   )}
 </div>
-.custom-avatar-group {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 8px; 
-}
-
-.user-avatar {
-  background-color: #673ab7; /* Purple background for individual user avatars */
-  color: white; /* White text color for initials */
-  width: 36px; /* Set fixed width for avatars */
-  height: 36px; /* Set fixed height for avatars */
-  border-radius: 50%; /* Make it circular */
-  display: flex; /* Use flexbox to center the text */
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
-  font-family: "Kenvue Sans", sans-serif; /* Use the desired font */
-  font-size: 13.33px; /* Font size for initials */
-  font-weight: 700; /* Weight for initials */
-}
-
-.overflow-avatar {
-  background-color: #673ab7; /* Same background for overflow avatar */
-  color: rgb(255, 255, 255); /* White text color for count */
-  font-family: "Kenvue Sans", sans-serif;
-  font-size: 13.33px;
-  font-weight: 700; /* Ensure bold */
-  line-height: 36px; /* Middle align with height of 36px */
-  text-align: center; /* Center text for +N display */
-  width: 36px; /* Fixed width */
-  height: 36px; /* Fixed height */
-  border-radius: 50%; /* Circular shape */
-}
