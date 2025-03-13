@@ -1,23 +1,36 @@
-.more-icon {
-  cursor: pointer; /* Show pointer when hovering */
-}
+<div style={{display: "flex", alignItems:"center" }}>
+          <div className="all_my_product_sort_grid_list_label1"
+            style={{
+            }}
+          >
+            Product Sort:
+          </div>
+          <div>
+            <FormControl
+              sx={{
+                m: 0,
+                border: "none",
+                "& fieldset": {
+                  border: "none",
+                },
+              }}
+            >
+              <Select
+                style={{ height: "28px", border: "none", fontFamily: "kenvue-sans-regular" }}
+                value={value}
+                IconComponent={ExpandMoreIcon}
+                onChange={handleChange}
+                // className="all_my_product_sort_grid_list_label1"
+              >
+                <MenuItem value={"Modified Date"}>Modified Date</MenuItem>
 
-.more-icon:hover {
-  background-color: lightgray; /* Change background color on hover */
-}
+                <MenuItem value="A-Z">A-Z</MenuItem>
 
-.more-icon:active {
-  background-color: gray; /* Change background color when the element is clicked */
-}
-
-{CheckCRUDAccess(row.users, "product") === 1 && (
-  <div
-    onClick={(e) => handleMoreHorizClick(e, row)}
-    onKeyDown={(e) => e.key === 'Enter' && handleMoreHorizClick(e, row)} // Handle Enter key
-    className="more-icon"
-    role="button"
-    tabIndex={0} // Make it focusable
-  >
-    <MoreHorizIcon />
-  </div>
-)}
+                <MenuItem value={"Created Date"}>Created Date</MenuItem>
+              </Select>
+            </FormControl>
+          </div>
+        </div>
+here when i am scrolling my screen that time Product Sort: is stick with screen but the modified date i.e dropdown is moving it is not staying align with the Product Sort text 
+it is moving up and down when i scroll up and down 
+why this issue and how to fix it?
