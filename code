@@ -1,57 +1,47 @@
 javascript
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
-// Assuming the height of each product card is known, replace `CARD_HEIGHT` with the actual height in pixels
-const CARD_HEIGHT = 150; // Example height of each card, adjust accordingly
+// Utility function to calculate visible items based on window size
+const calculateVisibleItems = () => {
+  const cardHeight = 200; // Approximate height of each card including margins (adjust as needed)
+  const windowHeight = window.innerHeight;
+  return Math.floor(windowHeight / cardHeight); // or wherever you want to calculate based on
+};
 
-const MyComponent = ({ data, sortValue, value, loginUserEmail }) => {
-  const [visibleItems, setVisibleItems] = useState(0);
+const YourComponent = (props) => {
+  const [visibleItems, setVisibleItems] = useState(calculateVisibleItems());
   const [items, setItems] = useState<ExperimentalDataItem[]>([]);
   const [hasMore, setHasMore] = useState(true);
 
-  const updateVisibleItems = () => {
-    const numberOfItems = Math.floor(window.innerHeight / CARD_HEIGHT);
-    setVisibleItems(numberOfItems > 0 ? numberOfItems : 1); // Ensure at least 1 item is displayed
-  };
-
-  useEffect(() => {
-    // Set initial visible items on mount
-    updateVisibleItems();
-
-    // Update visible items on window resize
-    window.addEventListener('resize', updateVisibleItems);
-    return () => {
-      window.removeEventListener('resize', updateVisibleItems);
-    };
-  }, []);
-
+  // Effect to manage the loading of items
   useEffect(() => {
     if (sortValue === null) {
       setItems(data?.product?.slice(0, visibleItems));
     } else {
-      let copyArrayValue: ExperimentalDataItem[] = productSortFunction(data?.product, sortValue);
-      setItems(copyArrayValue);
+      let copyArrayvalue: ExperimentalDataItem[] = productSortFunction(data?.product, sortValue);
+      setItems(copyArrayvalue.slice(0, visibleItems));
     }
   }, [visibleItems, data?.product?.length, data, sortValue]);
 
+  // Load more items
   const loadMore = () => {
     setVisibleItems((prevVisibleItems) => prevVisibleItems + 4);
-    items.length > 0 ? setHasMore(true) : setHasMore(false);
+    setHasMore(items.length > 0);
   };
 
+  // Handling window resize to adjust visible items
   useEffect(() => {
-    if (value === "Modified Date") {
-      const copyArrayValue: ExperimentalDataItem[] = [...data.product]
-        .sort((a, b) => {
-          const convertDate = a?.updatedAt ?? "";
-          const convertDateB = b?.updatedAt ?? "";
-          return new Date(convertDate).getTime() - new Date(convertDateB).getTime();
-        })
-        .reverse();
+    const handleResize = () => {
+      setVisibleItems(calculateVisibleItems());
+    };
 
-      setItems(copyArrayValue.slice(0, visibleItems));
-    }
-  }, [data?.product, value, visibleItems]);
+    window.addEventListener('resize', handleResize);
+    
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <InfiniteScroll
@@ -60,29 +50,19 @@ const MyComponent = ({ data, sortValue, value, loginUserEmail }) => {
       hasMore={hasMore}
       loader={""}
     >
-      {gridViewOpen ? (
-        <div style={{ top: "20px", marginTop: "10px" }}>
-          <GridviewCard
-            props={items}
-            refetch={data.refetch}
-            pageRouter="myproduct"
-            sort_order={value}
-            loggedInUserEmail={loginUserEmail}
-          />
-        </div>
-      ) : (
-        <div style={{ top: "20px", marginTop: "10px", paddingRight: "24px" }}>
-          <ListviewCard
-            props={items}
-            refetch={data.refetch}
-            pageRouter="myproduct"
-            sort_order={value}
-            loggedInUserEmail={loginUserEmail}
-          />
-        </div>
-      )}
+      <Grid className="product-grid-container">
+        {items.map((row: ExperimentalDataItem, row_index: number) => (
+          <div className="card-container" key={row_index + 1}>
+            <CardContent
+              className="card-content"
+              onClick={() => handleCardClick(row)}
+            >
+              // Card content goes here...
+            </CardContent>
+          </div>
+        ))}
+      </Grid>
+      // Other components...
     </InfiniteScroll>
   );
 };
-
-export default MyComponent;
