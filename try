@@ -1,1 +1,96 @@
-I encountered an issue with the implementation of the InfiniteScroll library from the 'react-infinite-scroll-component' package. The problem is not related to screen responsiveness but rather how the InfiniteScroll component is integrated into the application.
+export interface ExperimentalDataItem {
+  _id: string;
+  name: string;
+  zone: string;
+  net_content: string;
+  assessmentId: string;
+  fg_spec: string;
+  formula_number: string;
+  lab_notebook_code: string;
+  pc_spec: string;
+  isPackagingDataCompleted: boolean;
+  isFormulationDataCompleted: boolean;
+  isDeleted?: boolean;
+  updatedAt?: string;
+  createdAt?: string;
+  users?: Array<RowUsers>;
+  description?: string;
+  projectId?: string;
+  projectName?: string;
+  productSipId?: string;
+  productName?: string;
+  brandName?: string;
+  sku_erp_code?: string;
+  isCalculating?: boolean;
+  isEdited?: boolean;
+  createdBy?: string;
+
+  type?: string;
+  assessments?: {
+    baseline?: Assessment;
+    experimental?: Assessment[];
+    final?: Assessment;
+  };
+}
+const [visibleItems, setVisibleItems] = useState(6);
+const [items, setItems] = useState < ExperimentalDataItem[] > ([]);
+
+useEffect(() => {
+  if (sortValue === null) {
+    setItems(data?.product?.slice(0, visibleItems));
+  } else {
+    let copyArrayvalue: ExperimentalDataItem[] = [];
+    copyArrayvalue = productSortFunction(data?.product, sortValue);
+    setItems(copyArrayvalue);
+  }
+}, [visibleItems, data?.product?.length, data, sortValue]);
+const loadMore = () => {
+  setVisibleItems((prevVisibleItems) => prevVisibleItems + 4);
+
+  items.length > 0 ? setHasMore(true) : setHasMore(false);
+};
+useEffect(() => {
+  if (value === "Modified Date") {
+    const copyArrayvalue: ExperimentalDataItem[] = [...data.product]
+      .sort((a, b) => {
+        const convertDate = a?.updatedAt ?? ""; //.replace(/(st|nd|rd|th)/, "");
+        const convertDateB = b?.updatedAt ?? ""; //.replace(/(st|nd|rd|th)/, "");
+        return (
+          new Date(convertDate).getTime() - new Date(convertDateB).getTime()
+        );
+      })
+      .reverse();
+    setItems(copyArrayvalue.slice(0, visibleItems));
+  }
+}, [data?.product, value, visibleItems]);
+<InfiniteScroll
+  dataLength={items?.length}
+  next={loadMore}
+  hasMore={hasMore}
+  loader={""}
+>
+  {gridViewOpen ? (
+    <div style={{ top: "20px", marginTop: "10px" }}>
+      <GridviewCard
+        props={items}
+        refetch={data.refetch}
+        pageRouter="myproduct"
+        sort_order={value}
+        loggedInUserEmail={loginUserEmail}
+      />
+    </div>
+  ) : (
+    <div style={{ top: "20px", marginTop: "10px", paddingRight: "24px" }}>
+      <ListviewCard
+        props={items}
+        refetch={data.refetch}
+        pageRouter="myproduct"
+        sort_order={value}
+        loggedInUserEmail={loginUserEmail}
+      />
+    </div>
+  )}
+</InfiniteScroll>
+
+here const [visibleItems, setVisibleItems] = useState(6); i specified the static number.
+the problem is when i 
