@@ -1,1 +1,13 @@
-Thank you for your kind words to Uttam regarding my contributions. I truly appreciate your support and recognition, which means a lot to me.
+I need to write a node code for "send email using nodemailer"
+need a single node file 
+following are prerequistics 
+use below prerequistics and write a code using node to send an email using nodemailer
+
+ host: "smtp.kenvue.com", // Replace with your SMTP server
+  port: 25, // Replace with your SMTP port
+  secure: false, // true for 465, false for other ports
+  auth: {
+    user: "SA-JX2-SIP-USER@kenvue.com", // Replace with your email
+    pass: '5Utq8eT)"c?D4Bml', // Replace with your email password
+  },
+ 
