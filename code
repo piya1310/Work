@@ -13,3 +13,4 @@ Error: Data command failed: 550 #5.7.1 Your access to submit messages to this e-
   response: '550 #5.7.1 Your access to submit messages to this e-mail system has been rejected.',
   responseCode: 550,
   command: 'DATA'
+why i am getting above error in my nodemailer mail code. how to fix this error . why i am getting this error
