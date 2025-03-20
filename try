@@ -1,43 +1,110 @@
-  const handleSearchSelect = (result: RawMaterialsData) => {
-    setRows([...rows, result]);
-    handelFormulationTableChanges([...rows, result]);
-    setSearchValue("");
-    setSearchResults([]);
-  };
-<Popper
-                        open={isSearchResultsOpen}
-                        anchorEl={anchorEl}
-                        placement="top-start"
-                        className="formulation-table-searchresults"
-                      >
-                        <div
-                          ref={listRef}
-                          className="search-results"
-                          style={{
-                            fontFamily: "kenvue-sans-regular",
-                            height: getSearchResultHeight(),
-                          }}
-                        >
-                          <Table>
-                            <TableBody>
-                              {mode !== "view" &&
-                                searchResults?.map((result, index) => (
-                                  <TableRow
-                                    key={`${index}+${result.tradeName}`}
-                                    hover
-                                    onClick={() => handleSearchSelect(result)}
-                                  >
-                                    <TableCell style={{ fontFamily: "kenvue-sans-regular" }}>{result.tradeName}</TableCell>
-                                    <TableCell style={{ fontFamily: "kenvue-sans-regular" }}>{result.rawMaterialId}</TableCell>
-                                  </TableRow>
-                                ))}
-                            </TableBody>
-                          </Table>
-                        </div>
-                      </Popper>
-here when my searchResults is empty that time i want to show "No result Found".
-when searchResults has data that time we are showing the following table cells.<TableCell style={{ fontFamily: "kenvue-sans-regular" }}>{result.tradeName}</TableCell>
-                                    <TableCell style={{ fontFamily: "kenvue-sans-regular" }}>{result.rawMaterialId}</TableCell>
+import React, { useState } from 'react';
 
-but when searchResults is empty that time we need to show TableCell msg as "No result Found".
-how to do?
+function YourComponent() {
+  const [searchValue, setSearchValue] = useState('');
+  const [isSearchPerformed, setIsSearchPerformed] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
+  
+  const handleSearchChange = (event) => {
+    const value = event.target.value;
+    setSearchValue(value);
+    
+    if (value) {
+      setIsSearchPerformed(true);
+    } else {
+      setIsSearchPerformed(false);
+    }
+    
+    // Your logic to fetch or filter search results based on `value`
+    // Update `searchResults` accordingly
+  };
+
+  return (
+    <div className={`disabledfield-wrapper ${!isFormulaCompositionEditable ? "setWidthforwrapper" : ""}`}>
+      {isFormulaCompositionEditable && (
+        <>
+          <TextField
+            value={searchValue}
+            onChange={handleSearchChange}
+            className="disabledfield"
+            placeholder="Search Raw material or code here..."
+            InputProps={{
+              disableUnderline: true,
+              endAdornment: isLoading ? (
+                <CircularProgress
+                  color="inherit"
+                  size={20}
+                  sx={{ position: "absolute", right: "5px" }}
+                />
+              ) : (
+                <p style={{ position: "absolute", right: "5px", minWidth: "20px" }}></p>
+              ),
+            }}
+            sx={{
+              width: "100%",
+              maxWidth: "400px",
+              marginBottom: "10px",
+              marginTop: "5px",
+              "& input": {
+                padding: "8px 14px",
+              },
+              "& fieldset": {
+                border: "none",
+              },
+              "& .MuiOutlinedInput-root": {
+                "&:hover fieldset": {
+                  border: "none",
+                },
+                "&.Mui-focused": {
+                  "& fieldset": {
+                    border: "2px solid #00B097",
+                  },
+                },
+              },
+            }}
+          />
+          <Popper
+            open={isSearchResultsOpen}
+            anchorEl={anchorEl}
+            placement="top-start"
+            className="formulation-table-searchresults"
+          >
+            <div
+              ref={listRef}
+              className="search-results"
+              style={{
+                fontFamily: "kenvue-sans-regular",
+                height: getSearchResultHeight(),
+              }}
+            >
+              <Table>
+                <TableBody>
+                  {mode !== "view" && isSearchPerformed && searchResults.length > 0 ? (
+                    searchResults.map((result, index) => (
+                      <TableRow
+                        key={`${index}+${result.tradeName}`}
+                        hover
+                        onClick={() => handleSearchSelect(result)}
+                      >
+                        <TableCell style={{ fontFamily: "kenvue-sans-regular" }}>{result.tradeName}</TableCell>
+                        <TableCell style={{ fontFamily: "kenvue-sans-regular" }}>{result.rawMaterialId}</TableCell>
+                      </TableRow>
+                    ))
+                  ) : (
+                    isSearchPerformed && (
+                      <TableRow>
+                        <TableCell colSpan={2} style={{ fontFamily: "kenvue-sans-regular", fontSize: "14px", fontWeight: "400" }}>
+                          No result found
+                        </TableCell>
+                      </TableRow>
+                    )
+                  )}
+                </TableBody>
+              </Table>
+            </div>
+          </Popper>
+        </>
+      )}
+    </div>
+  );
+}
