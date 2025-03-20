@@ -1,119 +1,43 @@
-export interface ExperimentalDataItem {
-  _id: string;
-  name: string;
-  zone: string;
-  net_content: string;
-  assessmentId: string;
-  fg_spec: string;
-  formula_number: string;
-  lab_notebook_code: string;
-  pc_spec: string;
-  isPackagingDataCompleted: boolean;
-  isFormulationDataCompleted: boolean;
-  isDeleted?: boolean;
-  updatedAt?: string;
-  createdAt?: string;
-  users?: Array<RowUsers>;
-  description?: string;
-  projectId?: string;
-  projectName?: string;
-  productSipId?: string;
-  productName?: string;
-  brandName?: string;
-  sku_erp_code?: string;
-  isCalculating?: boolean;
-  isEdited?: boolean;
-  createdBy?: string;
-
-  type?: string;
-  assessments?: {
-    baseline?: Assessment;
-    experimental?: Assessment[];
-    final?: Assessment;
+  const handleSearchSelect = (result: RawMaterialsData) => {
+    setRows([...rows, result]);
+    handelFormulationTableChanges([...rows, result]);
+    setSearchValue("");
+    setSearchResults([]);
   };
-}
-const [visibleItems, setVisibleItems] = useState(6);
-const [items, setItems] = useState < ExperimentalDataItem[] > ([]);
+<Popper
+                        open={isSearchResultsOpen}
+                        anchorEl={anchorEl}
+                        placement="top-start"
+                        className="formulation-table-searchresults"
+                      >
+                        <div
+                          ref={listRef}
+                          className="search-results"
+                          style={{
+                            fontFamily: "kenvue-sans-regular",
+                            height: getSearchResultHeight(),
+                          }}
+                        >
+                          <Table>
+                            <TableBody>
+                              {mode !== "view" &&
+                                searchResults?.map((result, index) => (
+                                  <TableRow
+                                    key={`${index}+${result.tradeName}`}
+                                    hover
+                                    onClick={() => handleSearchSelect(result)}
+                                  >
+                                    <TableCell style={{ fontFamily: "kenvue-sans-regular" }}>{result.tradeName}</TableCell>
+                                    <TableCell style={{ fontFamily: "kenvue-sans-regular" }}>{result.rawMaterialId}</TableCell>
+                                  </TableRow>
+                                ))}
+                            </TableBody>
+                          </Table>
+                        </div>
+                      </Popper>
+here when my searchResults is empty that time i want to show "No result Found".
+when searchResults has data that time we are showing the following table cells.<TableCell style={{ fontFamily: "kenvue-sans-regular" }}>{result.tradeName}</TableCell>
+                                    <TableCell style={{ fontFamily: "kenvue-sans-regular" }}>{result.rawMaterialId}</TableCell>
 
-useEffect(() => {
-  if (sortValue === null) {
-    setItems(data?.product?.slice(0, visibleItems));
-  } else {
-    let copyArrayvalue: ExperimentalDataItem[] = [];
-    copyArrayvalue = productSortFunction(data?.product, sortValue);
-    setItems(copyArrayvalue);
-  }
-}, [visibleItems, data?.product?.length, data, sortValue]);
-const loadMore = () => {
-  setVisibleItems((prevVisibleItems) => prevVisibleItems + 4);
-
-  items.length > 0 ? setHasMore(true) : setHasMore(false);
-};
-useEffect(() => {
-  if (value === "Modified Date") {
-    const copyArrayvalue: ExperimentalDataItem[] = [...data.product]
-      .sort((a, b) => {
-        const convertDate = a?.updatedAt ?? ""; //.replace(/(st|nd|rd|th)/, "");
-        const convertDateB = b?.updatedAt ?? ""; //.replace(/(st|nd|rd|th)/, "");
-        return (
-          new Date(convertDate).getTime() - new Date(convertDateB).getTime()
-        );
-      })
-      .reverse();
-    setItems(copyArrayvalue.slice(0, visibleItems));
-  }
-}, [data?.product, value, visibleItems]);
- <div style={{width:"75px", display:"contents"}}>
-      <span
-        style={{
-          fontFamily: "kenvue-sans-regular",
-          fontWeight: "400",
-          fontSize: "13.33px",
-        }}
-      >
-        {data.product.length} Products
-      </span></div>
-
-      {data.product.length <= 0 && (
-        <div className="product_no_result_label">Nothing to see here yet!</div>
-      )}
-      <InfiniteScroll
-        dataLength={items?.length}
-        next={loadMore}
-        hasMore={hasMore}
-        loader={""}
-      >
-        {gridViewOpen ? (
-          <div style={{ top: "20px", marginTop: "10px" }}>
-            <GridviewCard
-              props={items}
-              refetch={data.refetch}
-              pageRouter="myproduct"
-              sort_order={value}
-              loggedInUserEmail={loginUserEmail}
-            />
-          </div>
-        ) : (
-          <div style={{ top: "20px", marginTop: "10px",paddingRight:"24px" }}>
-            <ListviewCard
-              props={items}
-              refetch={data.refetch}
-              pageRouter="myproduct"
-              sort_order={value}
-              loggedInUserEmail={loginUserEmail}
-            />
-          </div>
-        )}
-      </InfiniteScroll>
-
-here const [visibleItems, setVisibleItems] = useState(6); i specified the static numberas 6
-i am getting one problem in my react application 
-i am dispalying the product cards in screen 
-suppose i have 20 product then all 20 is displayed on screen on normal screen but 
-but when i am zoom my screen to 50% that time only 6 product is displayed on my screen . i guess this issue is due to we specify 6 in useState
- i acheck api response . in response all 20 product data is present then why my 6 product is displayed .
- and heignt is stopped for screen . but when i open inspect tool then all product is displayed .
-i dont want to specify 6. or any static value it should be dynamic .
-can we give {data.product.length } in useState. it actually contains the number of available cards . if we passed {data.product.length } to useState then problem will solve but how to passed {data.product.length } to useState
-
-could you please fix it
+but when searchResults is empty that time we need to show TableCell msg as "No result Found".
+how to do?
