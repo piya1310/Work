@@ -22,3 +22,8 @@ export const CustomTooltip = styled(({ className, ...props }: TooltipProps) => (
     transformOrigin: "center bottom", // Tooltip opens above the element
   },
 }));
+
+my requirement
+if you check atached photo in that tooltip "DI Water, USP - For Vogue only" i am having slightly triangle.
+i dont want these triangle in my tooltip
+how to remove this
