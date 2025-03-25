@@ -1,16 +1,152 @@
-Error: Data command failed: 550 #5.7.1 Your access to submit messages to this e-mail system has been rejected.
-    at SMTPConnection._formatError (/home/node/app/node_modules/nodemailer/lib/smtp-connection/index.js:809:19)
-    at SMTPConnection._actionDATA (/home/node/app/node_modules/nodemailer/lib/smtp-connection/index.js:1702:34)
-    at SMTPConnection.<anonymous> (/home/node/app/node_modules/nodemailer/lib/smtp-connection/index.js:1674:26)
-    at SMTPConnection._processResponse (/home/node/app/node_modules/nodemailer/lib/smtp-connection/index.js:993:20)
-    at SMTPConnection._onData (/home/node/app/node_modules/nodemailer/lib/smtp-connection/index.js:774:14)
-    at SMTPConnection._onSocketData (/home/node/app/node_modules/nodemailer/lib/smtp-connection/index.js:195:44)
-    at TLSSocket.emit (node:events:517:28)
-    at addChunk (node:internal/streams/readable:368:12)
-    at readableAddChunk (node:internal/streams/readable:341:9)
-    at Readable.push (node:internal/streams/readable:278:10) {
-  code: 'EENVELOPE',
-  response: '550 #5.7.1 Your access to submit messages to this e-mail system has been rejected.',
-  responseCode: 550,
-  command: 'DATA'
-why i am getting above error in my nodemailer mail code. how to fix this error . why i am getting this error
+const twentyFourHoursInMs = 1000 * 60 * 60 * 24;
+
+  // Create a QueryClient and set the default query function
+
+  const queryClient = new QueryClient({
+
+    defaultOptions: {
+
+      queries: {
+
+        queryFn: defaultQueryFn, // Set the default query function
+
+        refetchOnWindowFocus: false,
+
+        refetchOnMount: false,
+
+        refetchOnReconnect: false,
+
+        retry: false,
+
+        staleTime: twentyFourHoursInMs,
+
+      },
+
+    },
+
+  });
+
+  <ThemeProvider theme={Theme}>
+
+                  <QueryClientProvider client={queryClient}>
+
+                    <BrowserRouter>
+
+
+
+                      <Box className="main-root">
+
+                        {token && window.location.pathname !== "/sip/login" && (
+
+                          <SideBarAction onSignOutClick={
+
+                            handleSignOutClick
+
+                          } mfProps={props?.sipUiMfScreen} />
+
+                        )}
+
+                        <Box component="main" className="dashboard-main">
+
+                          <LoadingScreen />
+
+                          <Routes>
+
+                            <Route path="/dashboard" element={<Dashboard />} />
+
+                            <Route
+
+                              path="/allproduct"
+
+                              element={<AllProductDashboard />}
+
+                            />
+
+                            <Route
+
+                              path="/product-detail/:id/auditReport"
+
+                              element={<AuditReportPage isAssessment={false}/>}
+
+                            />
+
+                            <Route
+
+                              path="/product-detail/:id"
+
+                              element={<ProductDetail />}
+
+                            />
+
+                            <Route
+
+                              path="/my-product-detail/:id"
+
+                              element={<ProductDetail />}
+
+                            />
+
+                            <Route
+
+                              path="/my-product-detail/:id/auditReport"
+
+                              element={<AuditReportPage isAssessment={false}/>}
+
+                            />
+
+                            <Route
+
+                              path="/product-assessment/:assessmentId"
+
+                              element={<ProductAssessmentDetailsPage />}
+
+                            />
+
+                            <Route
+
+                              path="/product-assessment/:id/auditReport"
+
+                              element={<AuditReportPage isAssessment={true}/>}
+
+                            />
+
+                            <Route
+
+                              path="/view-all-results/:assessmentId"
+
+                              element={<ViewAllResultsPage />}
+
+                            />
+
+                          </Routes>
+
+                        </Box>
+
+                        {
+
+                          showToast && (<ToastMessage content={toastContent}
+
+
+
+                            onConfirm={handleConfirm}
+
+
+
+                            onCancel={handleCancel} />
+
+                          )
+
+                        }
+
+                      </Box>
+
+                    </BrowserRouter>
+
+                    {/* <ReactQueryDevtools initialIsOpen={true} /> */}
+
+                  </QueryClientProvider>
+
+                </ThemeProvider>
+
+here what is the purpose of twentyFourHoursInMs?
+it is used for auto log out ? if user is idle for some time?or what is the purpose of it twentyFourHoursInMs
